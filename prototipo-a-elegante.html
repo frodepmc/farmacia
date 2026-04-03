@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia La Rambla - Prototipo A: Elegante Minimalista</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --turquoise-dark: #00796B;
+            --turquoise: #009688;
+            --turquoise-light: #4DB6AC;
+            --turquoise-pale: #B2DFDB;
+            --turquoise-ghost: #E0F2F1;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --gray-50: #F5F5F5;
+            --gray-100: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-500: #9E9E9E;
+            --gray-700: #616161;
+            --gray-900: #212121;
+            --gold: #C9A96E;
+            --gold-light: #E8D5B5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,150,136,0.08);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--turquoise);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .logo-text span {
+            color: var(--turquoise);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--turquoise); }
+
+        .nav-cta {
+            background: var(--turquoise) !important;
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 500 !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--turquoise-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--turquoise-ghost) 50%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,150,136,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,150,136,0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--turquoise-ghost);
+            color: var(--turquoise-dark);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--turquoise-pale);
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--turquoise);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.15;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero h1 em {
+            color: var(--turquoise);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--gray-700);
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--turquoise);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--turquoise-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,150,136,0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--turquoise);
+            padding: 14px 32px;
+            border: 1.5px solid var(--turquoise-light);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--turquoise-ghost);
+            border-color: var(--turquoise);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card {
+            width: 100%;
+            max-width: 440px;
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,150,136,0.06);
+            position: relative;
+        }
+
+        .hero-card-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--turquoise), var(--turquoise-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,150,136,0.2);
+        }
+
+        .hero-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray-900);
+        }
+
+        .hero-card p {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--turquoise-ghost);
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--turquoise);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: white;
+            padding: 12px 18px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-badge.top-right {
+            top: -20px;
+            right: -30px;
+            animation-delay: -2s;
+        }
+
+        .floating-badge.bottom-left {
+            bottom: -15px;
+            left: -30px;
+        }
+
+        .fb-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .fb-icon.green { background: #E8F5E9; }
+        .fb-icon.amber { background: #FFF8E1; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--turquoise);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            color: var(--gray-500);
+            font-size: 1.05rem;
+            max-width: 550px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header.center {
+            text-align: center;
+        }
+
+        .section-header.center .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* ===== SERVICIOS ===== */
+        .servicios { background: var(--off-white); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--turquoise), var(--turquoise-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+            border-color: transparent;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--turquoise-ghost);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--turquoise);
+            transform: scale(1.05);
+        }
+
+        .service-card:hover .service-icon span {
+            filter: brightness(10);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray-900);
+        }
+
+        .service-card p {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image-container {
+            position: relative;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 480px;
+            background: linear-gradient(135deg, var(--turquoise-pale), var(--turquoise-ghost));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-image-placeholder {
+            text-align: center;
+            color: var(--turquoise);
+        }
+
+        .about-image-placeholder .icon { font-size: 4rem; margin-bottom: 1rem; display: block; }
+        .about-image-placeholder p { font-size: 0.85rem; opacity: 0.7; }
+
+        .about-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 180px;
+            background: var(--turquoise);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,150,136,0.3);
+        }
+
+        .about-accent .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .about-accent .label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .about-text .section-title {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+
+        .about-feature .check {
+            width: 24px;
+            height: 24px;
+            background: var(--turquoise-ghost);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--turquoise);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ===== HORARIO ===== */
+        .horario { background: var(--off-white); }
+
+        .horario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .horario-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--gray-100);
+        }
+
+        .horario-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--gray-900);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .horario-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--gray-50);
+        }
+
+        .horario-row:last-child { border-bottom: none; }
+
+        .horario-row .day {
+            font-weight: 400;
+            color: var(--gray-700);
+        }
+
+        .horario-row .time {
+            font-weight: 500;
+            color: var(--turquoise-dark);
+            background: var(--turquoise-ghost);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.88rem;
+        }
+
+        .horario-row.today {
+            background: var(--turquoise-ghost);
+            margin: 0 -1rem;
+            padding: 0.85rem 1rem;
+            border-radius: 8px;
+            border-bottom-color: transparent;
+        }
+
+        .horario-row.today .day {
+            font-weight: 600;
+            color: var(--turquoise-dark);
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: white;
+        }
+
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.7;
+            margin-bottom: 2px;
+        }
+
+        .contact-item-text .value {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--turquoise-dark);
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* ===== TESTIMONIOS ===== */
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border: 1px solid var(--gray-100);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-stars {
+            color: #FFAB00;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card blockquote {
+            color: var(--gray-700);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: white;
+        }
+
+        .testimonial-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-source {
+            font-size: 0.78rem;
+            color: var(--gray-500);
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--turquoise-ghost) 0%, var(--white) 100%);
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));
+            border-radius: 24px;
+            padding: 4rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .cta-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .cta-card p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .cta-card .btn-white {
+            background: white;
+            color: var(--turquoise-dark);
+            padding: 14px 36px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .cta-card .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand .logo-text {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-col ul { list-style: none; }
+
+        .footer-col li { margin-bottom: 0.75rem; }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover { color: var(--turquoise-light); }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        /* Tablet landscape */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-inner { gap: 2.5rem; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
+        /* Tablet portrait */
+        @media (max-width: 768px) {
+            section { padding: 4rem 1.5rem; }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 6rem 1.5rem 3rem;
+                gap: 2.5rem;
+            }
+
+            .hero p { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; flex-wrap: wrap; }
+            .hero-visual { margin-top: 1rem; }
+            .hero-card { margin: 0 auto; }
+
+            .floating-badge.top-right { right: 0; top: -15px; }
+            .floating-badge.bottom-left { left: 0; bottom: -10px; }
+
+            .services-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-accent { right: 20px; bottom: -15px; }
+
+            .horario-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .testimonios-grid { grid-template-columns: 1fr 1fr; }
+
+            .section-title { font-size: 2rem; }
+            .section-subtitle { font-size: 0.95rem; }
+
+            .cta-card { padding: 3rem 2rem; }
+            .cta-card h2 { font-size: 1.8rem; }
+
+            .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            section { padding: 3.5rem 1rem; }
+
+            .nav-links { display: none; }
+            .nav-inner { padding: 0 1rem; }
+
+            .hero-inner { padding: 5.5rem 1rem 2.5rem; gap: 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 0.95rem; }
+            .hero-badge { font-size: 0.75rem; padding: 6px 12px; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .btn-primary, .btn-outline { width: 100%; justify-content: center; text-align: center; }
+
+            .hero-card { padding: 2rem 1.5rem; }
+            .hero-card h3 { font-size: 1.25rem; }
+            .hero-card-stats { gap: 0.75rem; }
+            .floating-badge { font-size: 0.78rem; padding: 10px 14px; }
+            .floating-badge.top-right { right: -5px; }
+            .floating-badge.bottom-left { left: -5px; }
+
+            .services-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+            .service-card { padding: 1.75rem 1.5rem; }
+
+            .section-title { font-size: 1.75rem; }
+            .section-label { font-size: 0.72rem; }
+            .section-subtitle { font-size: 0.9rem; }
+
+            .about-image { height: 320px; }
+            .about-accent { position: relative; bottom: auto; right: auto; margin-top: 1rem; display: inline-flex; gap: 10px; align-items: center; width: auto; }
+            .about-accent .number { font-size: 1.8rem; }
+            .about-features { grid-template-columns: 1fr; gap: 0.75rem; }
+
+            .horario-card { padding: 1.75rem; }
+            .contact-card { padding: 1.75rem; }
+
+            .testimonios-grid { grid-template-columns: 1fr; }
+            .testimonial-card { padding: 1.5rem; }
+
+            .cta-card { padding: 2rem 1.25rem; border-radius: 16px; }
+            .cta-card h2 { font-size: 1.5rem; }
+            .cta-card p { font-size: 0.92rem; }
+
+            .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+
+        /* Tiny screens */
+        @media (max-width: 360px) {
+            .hero h1 { font-size: 1.75rem; }
+            .hero-card-stats { grid-template-columns: 1fr; }
+            .stat-item { padding: 0.75rem; }
+            .section-title { font-size: 1.5rem; }
+        }
+
+        /* ===== Animations ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon">+</div>
+            <span class="logo-text">Farmacia <span>La Rambla</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#horario">Horario</a></li>
+            <li><a href="#opiniones">Opiniones</a></li>
+            <li><a href="#contacto" class="nav-cta">Contactar</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-content fade-up">
+            <div class="hero-badge">Abiertos de 9:00 a 22:00 todos los dias</div>
+            <h1>Tu farmacia de <em>confianza</em> en el corazon de Palma</h1>
+            <p>Mas de 30 anos cuidando la salud de nuestros vecinos en La Rambla. Atencion personalizada, productos de calidad y consejo farmaceutico profesional.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn-primary">Visitanos hoy &rarr;</a>
+                <a href="#servicios" class="btn-outline">Nuestros servicios</a>
+            </div>
+        </div>
+        <div class="hero-visual fade-up" style="transition-delay: 0.2s">
+            <div class="hero-card">
+                <div class="hero-card-icon">&#9769;</div>
+                <h3>Atencion farmaceutica</h3>
+                <p>Consejo profesional y seguimiento personalizado para cada paciente.</p>
+                <div class="hero-card-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">4.1</span>
+                        <span class="stat-label">Google Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Resenas</span>
+                    </div>
+                </div>
+            </div>
+            <div class="floating-badge top-right">
+                <div class="fb-icon green">&#10003;</div>
+                Abierto ahora
+            </div>
+            <div class="floating-badge bottom-left">
+                <div class="fb-icon amber">&#9734;</div>
+                Excelente servicio
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Servicios -->
+<section class="servicios" id="servicios">
+    <div class="section-inner">
+        <div class="section-header center fade-up">
+            <span class="section-label">Nuestros servicios</span>
+            <h2 class="section-title">Todo lo que necesitas para tu salud</h2>
+            <p class="section-subtitle">Ofrecemos una amplia gama de servicios farmaceuticos con la mejor atencion profesional personalizada.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-up">
+                <div class="service-icon"><span>&#128138;</span></div>
+                <h3>Dispensacion de medicamentos</h3>
+                <p>Medicamentos con y sin receta, genericos y de marca. Siempre con el consejo profesional adecuado.</p>
+            </div>
+            <div class="service-card fade-up" style="transition-delay: 0.1s">
+                <div class="service-icon"><span>&#129657;</span></div>
+                <h3>Dermocosmetica</h3>
+                <p>Lineas de cuidado facial y corporal de las mejores marcas con asesoramiento personalizado.</p>
+            </div>
+            <div class="service-card fade-up" style="transition-delay: 0.2s">
+                <div class="service-icon"><span>&#127811;</span></div>
+                <h3>Fitoterapia y natural</h3>
+                <p>Productos naturales, complementos alimenticios y soluciones de fitoterapia para tu bienestar.</p>
+            </div>
+            <div class="service-card fade-up" style="transition-delay: 0.3s">
+                <div class="service-icon"><span>&#128118;</span></div>
+                <h3>Pediatria y maternidad</h3>
+                <p>Productos especializados para bebes, ninos y mamas. Atendemos todas sus necesidades.</p>
+            </div>
+            <div class="service-card fade-up" style="transition-delay: 0.4s">
+                <div class="service-icon"><span>&#128200;</span></div>
+                <h3>Control de salud</h3>
+                <p>Medicion de tension arterial, glucemia y otros parametros de salud con seguimiento continuo.</p>
+            </div>
+            <div class="service-card fade-up" style="transition-delay: 0.5s">
+                <div class="service-icon"><span>&#128230;</span></div>
+                <h3>Encargos y pedidos</h3>
+                <p>Realizamos pedidos de cualquier producto que necesites. Puedes dejarnos tus encargos con total confianza.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Nosotros -->
+<section class="about" id="nosotros">
+    <div class="section-inner">
+        <div class="about-grid">
+            <div class="about-image-container fade-up">
+                <div class="about-image">
+                    <div class="about-image-placeholder">
+                        <span class="icon">&#127978;</span>
+                        <p>Foto de Farmacia La Rambla</p>
+                    </div>
+                </div>
+                <div class="about-accent">
+                    <span class="number">+30</span>
+                    <span class="label">anos al servicio de Palma</span>
+                </div>
+            </div>
+            <div class="about-text fade-up" style="transition-delay: 0.2s">
+                <span class="section-label">Sobre nosotros</span>
+                <h2 class="section-title">Una farmacia con historia y vocacion</h2>
+                <p>En Farmacia La Rambla llevamos mas de tres decadas ofreciendo un servicio farmaceutico de calidad en el centro de Palma de Mallorca. Nuestro equipo de profesionales se dedica a cuidar de la salud y bienestar de cada persona que cruza nuestras puertas.</p>
+                <p>Creemos en la atencion cercana y personalizada. Cada paciente es unico y merece un trato profesional, amable y de confianza.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        Atencion personalizada
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        Equipo profesional
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        Horario ampliado
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        Centro de Palma
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Horario y Contacto -->
+<section class="horario" id="horario">
+    <div class="section-inner">
+        <div class="section-header center fade-up">
+            <span class="section-label">Horario y contacto</span>
+            <h2 class="section-title">Siempre cerca de ti</h2>
+            <p class="section-subtitle">Abiertos todos los dias de la semana para atenderte cuando lo necesites.</p>
+        </div>
+        <div class="horario-grid">
+            <div class="horario-card fade-up">
+                <h3>&#128336; Horario semanal</h3>
+                <div class="horario-row">
+                    <span class="day">Lunes</span>
+                    <span class="time">9:00 - 22:00</span>
+                </div>
+                <div class="horario-row">
+                    <span class="day">Martes</span>
+                    <span class="time">9:00 - 22:00</span>
+                </div>
+                <div class="horario-row">
+                    <span class="day">Miercoles</span>
+                    <span class="time">9:00 - 22:00</span>
+                </div>
+                <div class="horario-row">
+                    <span class="day">Jueves</span>
+                    <span class="time">9:00 - 22:00</span>
+                </div>
+                <div class="horario-row today">
+                    <span class="day">Viernes</span>
+                    <span class="time">9:00 - 22:00</span>
+                </div>
+                <div class="horario-row">
+                    <span class="day">Sabado</span>
+                    <span class="time">9:00 - 22:00</span>
+                </div>
+                <div class="horario-row">
+                    <span class="day">Domingo</span>
+                    <span class="time">9:00 - 22:00</span>
+                </div>
+            </div>
+            <div class="contact-card fade-up" style="transition-delay: 0.15s" id="contacto">
+                <h3>Contacta con nosotros</h3>
+                <p>Estamos en el centro de Palma, listos para atenderte con la mejor atencion farmaceutica.</p>
+                <div class="contact-item">
+                    <div class="contact-icon">&#128205;</div>
+                    <div class="contact-item-text">
+                        <div class="label">Direccion</div>
+                        <div class="value">La Rambla 14, 07003 Palma</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">&#128222;</div>
+                    <div class="contact-item-text">
+                        <div class="label">Telefono</div>
+                        <div class="value">971 71 15 11</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">&#128337;</div>
+                    <div class="contact-item-text">
+                        <div class="label">Horario</div>
+                        <div class="value">Lunes a Domingo: 9:00 - 22:00</div>
+                    </div>
+                </div>
+                <a href="#" class="map-btn">&#127758; Ver en Google Maps</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonios -->
+<section class="testimonios" id="opiniones">
+    <div class="section-inner">
+        <div class="section-header center fade-up">
+            <span class="section-label">Opiniones de nuestros clientes</span>
+            <h2 class="section-title">Lo que dicen de nosotros</h2>
+            <p class="section-subtitle">La confianza de nuestros clientes es nuestro mayor reconocimiento.</p>
+        </div>
+        <div class="testimonios-grid">
+            <div class="testimonial-card fade-up">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"Excelente trato, personalizado y atento. La misma atencion de siempre, un servicio excepcional."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar" style="background: var(--turquoise)">JL</div>
+                    <div>
+                        <div class="testimonial-name">Jordi Llabres Sans</div>
+                        <div class="testimonial-source">Google Reviews</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-up" style="transition-delay: 0.1s">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"Muy buenos asesores, siempre dan muestras. Es mi farmacia de confianza, atienden muy bien."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar" style="background: var(--turquoise-light)">CR</div>
+                    <div>
+                        <div class="testimonial-name">Camila Rocio Peralta</div>
+                        <div class="testimonial-source">Google Reviews</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-up" style="transition-delay: 0.2s">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"Farmacia muy recomendable, siempre intentan resolver todas tus dudas con amabilidad y profesionalidad."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar" style="background: var(--turquoise-dark)">M</div>
+                    <div>
+                        <div class="testimonial-name">Mar</div>
+                        <div class="testimonial-source">Google Reviews</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="section-inner">
+        <div class="cta-card fade-up">
+            <h2>Tu salud es nuestra prioridad</h2>
+            <p>Visitanos en La Rambla 14 o llamanos al 971 71 15 11. Estaremos encantados de atenderte.</p>
+            <a href="#contacto" class="btn-white">Contactar ahora &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="logo-text" style="font-family: 'Playfair Display', serif;">Farmacia La Rambla</span>
+                <p>Tu farmacia de confianza en el centro de Palma de Mallorca. Mas de 30 anos cuidando de tu salud.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegacion</h4>
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#horario">Horario</a></li>
+                    <li><a href="#opiniones">Opiniones</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Medicamentos</a></li>
+                    <li><a href="#">Dermocosmetica</a></li>
+                    <li><a href="#">Fitoterapia</a></li>
+                    <li><a href="#">Pediatria</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="#">La Rambla 14, Palma</a></li>
+                    <li><a href="tel:971711511">971 71 15 11</a></li>
+                    <li><a href="#">Google Maps</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Farmacia La Rambla. Todos los derechos reservados.</span>
+            <span>Palma de Mallorca, Illes Balears</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

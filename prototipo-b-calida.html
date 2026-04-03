@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia La Rambla - Prototipo B: Calida y Cercana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #009688;
+            --teal-dark: #00796B;
+            --teal-deeper: #004D40;
+            --teal-light: #4DB6AC;
+            --teal-pale: #B2DFDB;
+            --teal-ghost: #E0F2F1;
+            --cream: #FFF8F0;
+            --cream-dark: #F5EDE3;
+            --warm-white: #FFFCF9;
+            --sand: #E8DDD3;
+            --terracotta: #C4816B;
+            --white: #FFFFFF;
+            --text-dark: #2D2A26;
+            --text-mid: #5C5650;
+            --text-light: #8A8279;
+            --text-faint: #B5AEA6;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 40px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--warm-white);
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 2rem;
+        }
+
+        .nav-bar {
+            max-width: 1140px;
+            margin: 0 auto;
+            background: rgba(255,252,249,0.92);
+            backdrop-filter: blur(24px);
+            border-radius: 100px;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            border: 1px solid rgba(0,150,136,0.08);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-cross {
+            width: 32px;
+            height: 32px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .logo-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.75rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-mid);
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--teal); }
+
+        .nav-pill {
+            background: var(--teal) !important;
+            color: white !important;
+            padding: 8px 22px;
+            border-radius: 100px;
+            transition: all 0.3s !important;
+        }
+
+        .nav-pill:hover {
+            background: var(--teal-dark) !important;
+            transform: scale(1.03);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 7rem 2rem 4rem;
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .hero-bg-shape.one {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--teal-pale) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+        }
+
+        .hero-bg-shape.two {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--cream-dark) 0%, transparent 70%);
+            bottom: -100px;
+            left: -50px;
+        }
+
+        .hero-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--teal-dark);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .hero-tag svg { flex-shrink: 0; }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.4rem;
+            line-height: 1.15;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .highlight {
+            color: var(--teal);
+            position: relative;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--teal-pale);
+            opacity: 0.5;
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .hero-desc {
+            font-size: 1.08rem;
+            line-height: 1.75;
+            color: var(--text-mid);
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-warm {
+            background: var(--teal);
+            color: white;
+            padding: 15px 32px;
+            border: none;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,150,136,0.25);
+        }
+
+        .btn-warm:hover {
+            background: var(--teal-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,150,136,0.3);
+        }
+
+        .btn-soft {
+            color: var(--text-mid);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .btn-soft:hover { color: var(--teal); }
+
+        .btn-soft .arrow {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+
+        .btn-soft:hover .arrow {
+            background: var(--teal-ghost);
+        }
+
+        .hero-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .hero-mosaic {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .mosaic-tile {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+
+        .mosaic-tile:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+        }
+
+        .mosaic-tile.span { grid-column: span 2; }
+
+        .tile-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .tile-icon.teal { background: var(--teal-ghost); }
+        .tile-icon.cream { background: var(--cream-dark); }
+        .tile-icon.warm { background: #FFF3E0; }
+
+        .mosaic-tile h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .mosaic-tile p {
+            font-size: 0.83rem;
+            color: var(--text-light);
+            line-height: 1.55;
+        }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        .trust-avatars {
+            display: flex;
+        }
+
+        .trust-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid var(--cream);
+            margin-left: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .trust-avatar:first-child { margin-left: 0; }
+
+        .trust-text {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+        }
+
+        .trust-text strong { color: var(--teal-dark); }
+
+        /* ===== SECTIONS COMMON ===== */
+        section { padding: 6rem 2rem; }
+
+        .section-inner { max-width: 1140px; margin: 0 auto; }
+
+        .section-eyebrow {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-heading {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.4rem;
+            line-height: 1.2;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 1.02rem;
+            line-height: 1.7;
+            max-width: 520px;
+        }
+
+        .section-head { margin-bottom: 3.5rem; }
+        .section-head.centered { text-align: center; }
+        .section-head.centered .section-desc { margin: 0 auto; }
+
+        /* ===== SERVICIOS ===== */
+        .servicios-section { background: var(--warm-white); }
+
+        .servicios-flex {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .servicio-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            border: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: all 0.35s ease;
+            cursor: default;
+        }
+
+        .servicio-card:hover {
+            background: var(--teal-ghost);
+            border-color: var(--teal-pale);
+            transform: translateX(4px);
+        }
+
+        .servicio-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--teal-pale);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 40px;
+            transition: color 0.3s;
+        }
+
+        .servicio-card:hover .servicio-num { color: var(--teal); }
+
+        .servicio-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .servicio-card p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== NOSOTROS ===== */
+        .nosotros-section { background: var(--cream); }
+
+        .nosotros-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .nosotros-img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(160deg, var(--teal-pale) 0%, var(--teal-ghost) 50%, var(--cream-dark) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nosotros-img-inner {
+            text-align: center;
+            color: var(--teal-dark);
+            opacity: 0.6;
+        }
+
+        .nosotros-img-inner .big-icon { font-size: 5rem; display: block; margin-bottom: 0.75rem; }
+
+        .nosotros-badge {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nosotros-badge-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .nosotros-badge-text {
+            font-size: 0.88rem;
+            color: var(--text-mid);
+            line-height: 1.5;
+        }
+
+        .nosotros-badge-text strong {
+            display: block;
+            color: var(--text-dark);
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.05rem;
+        }
+
+        .nosotros-content .section-heading {
+            margin-bottom: 1.25rem;
+        }
+
+        .nosotros-content p {
+            color: var(--text-mid);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .valores-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        .valores-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text-mid);
+        }
+
+        .valor-dot {
+            width: 28px;
+            height: 28px;
+            background: var(--teal-ghost);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ===== HORARIO / CONTACTO ===== */
+        .info-section { background: var(--warm-white); }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        }
+
+        .info-card.featured {
+            background: var(--teal);
+            color: white;
+            border: none;
+            box-shadow: 0 8px 30px rgba(0,150,136,0.2);
+        }
+
+        .info-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card.featured h3 { color: white; }
+
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--cream-dark);
+            font-size: 0.9rem;
+        }
+
+        .schedule-row:last-child { border-bottom: none; }
+
+        .schedule-row .day { color: var(--text-mid); }
+        .schedule-row .hours { font-weight: 600; color: var(--teal-dark); }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .contact-row:last-child { border-bottom: none; }
+
+        .contact-row-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .contact-row-text {
+            font-size: 0.88rem;
+            opacity: 0.9;
+        }
+
+        .contact-row-text strong {
+            display: block;
+            font-size: 0.95rem;
+            opacity: 1;
+        }
+
+        .map-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--teal-ghost), var(--cream-dark));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: gap 0.3s;
+        }
+
+        .map-link:hover { gap: 12px; }
+
+        /* ===== REVIEWS ===== */
+        .reviews-section { background: var(--cream); }
+
+        .reviews-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+        }
+
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .rating-big {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            color: var(--teal-dark);
+            line-height: 1;
+        }
+
+        .rating-meta .stars {
+            color: #FFB300;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .rating-meta .count {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.25rem;
+        }
+
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: white;
+        }
+
+        .review-author-name {
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+        }
+
+        .review-author-stars {
+            color: #FFB300;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .review-card blockquote {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-mid);
+            font-style: normal;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            background: var(--warm-white);
+            padding: 6rem 2rem;
+        }
+
+        .cta-box {
+            max-width: 1140px;
+            margin: 0 auto;
+            background: var(--cream);
+            border-radius: var(--radius-xl);
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 250px;
+            height: 250px;
+            background: var(--teal-pale);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .cta-text { position: relative; z-index: 1; }
+
+        .cta-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .cta-text p {
+            color: var(--text-mid);
+            font-size: 1rem;
+            line-height: 1.65;
+            max-width: 450px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-warm-outline {
+            background: var(--white);
+            color: var(--teal-dark);
+            padding: 14px 28px;
+            border: 1.5px solid var(--teal-pale);
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-warm-outline:hover {
+            background: var(--teal-ghost);
+            border-color: var(--teal);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--teal-deeper);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-inner { max-width: 1140px; margin: 0 auto; }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-about p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .footer-about .logo-name { color: white; }
+
+        .footer-col h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--teal-light);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.7rem; }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover { color: white; }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        /* Tablet landscape */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-inner { gap: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
+        /* Tablet portrait */
+        @media (max-width: 768px) {
+            section { padding: 4rem 1.5rem; }
+
+            .nav-bar { padding: 0 1.25rem; height: 56px; }
+            nav { padding: 0.75rem 1.5rem; }
+
+            .hero { padding: 5.5rem 1.5rem 3rem; }
+            .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .hero-visual { order: -1; }
+            .hero h1 { font-size: 2.3rem; }
+            .hero-desc { font-size: 0.98rem; }
+            .hero-actions { flex-wrap: wrap; }
+
+            .servicios-flex { grid-template-columns: 1fr; }
+            .nosotros-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+            .nosotros-img { aspect-ratio: 16/10; }
+
+            .info-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .info-card:last-child { grid-column: span 2; }
+            .reviews-grid { grid-template-columns: 1fr 1fr; }
+            .reviews-top { flex-direction: column; gap: 1rem; align-items: flex-start; }
+
+            .cta-box { flex-direction: column; text-align: center; padding: 3rem 2rem; }
+            .cta-text p { margin: 0 auto; }
+            .cta-actions { justify-content: center; flex-wrap: wrap; }
+
+            .section-heading { font-size: 2rem; }
+            .section-desc { font-size: 0.95rem; }
+
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            section { padding: 3.5rem 1rem; }
+
+            .nav-links { display: none; }
+            nav { padding: 0.5rem 1rem; }
+            .nav-bar { padding: 0 1rem; }
+
+            .hero { padding: 5rem 1rem 2.5rem; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero-desc { font-size: 0.92rem; }
+            .hero-tag { font-size: 0.75rem; padding: 6px 12px; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .btn-warm { width: 100%; justify-content: center; text-align: center; }
+            .btn-soft { justify-content: center; }
+
+            .hero-mosaic { grid-template-columns: 1fr; }
+            .mosaic-tile.span { grid-column: span 1; }
+            .mosaic-tile { padding: 1.5rem; }
+
+            .hero-trust { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+
+            .servicio-card { padding: 1.5rem; gap: 1rem; }
+            .servicio-num { font-size: 1.5rem; width: 32px; }
+
+            .section-heading { font-size: 1.7rem; }
+            .section-eyebrow { font-size: 0.72rem; }
+
+            .nosotros-img { aspect-ratio: 4/3; }
+            .nosotros-badge { padding: 1rem; gap: 0.75rem; }
+            .nosotros-badge-icon { width: 40px; height: 40px; font-size: 16px; }
+            .valores-list li { font-size: 0.88rem; }
+
+            .info-grid { grid-template-columns: 1fr; }
+            .info-card:last-child { grid-column: span 1; }
+            .info-card { padding: 1.75rem; }
+            .schedule-row { font-size: 0.85rem; }
+
+            .reviews-grid { grid-template-columns: 1fr; }
+            .review-card { padding: 1.5rem; }
+            .rating-big { font-size: 2.5rem; }
+
+            .cta-box { padding: 2.5rem 1.25rem; border-radius: 24px; }
+            .cta-text h2 { font-size: 1.6rem; }
+            .cta-actions { flex-direction: column; width: 100%; }
+            .btn-warm, .btn-warm-outline { width: 100%; justify-content: center; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { text-align: center; }
+        }
+
+        /* Tiny screens */
+        @media (max-width: 360px) {
+            .hero h1 { font-size: 1.65rem; }
+            .section-heading { font-size: 1.5rem; }
+            .hero-mosaic { gap: 0.75rem; }
+            .info-card { padding: 1.5rem; }
+            .rating-summary { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar">
+    <div class="nav-bar">
+        <a href="#" class="logo">
+            <div class="logo-cross">+</div>
+            <span class="logo-name">Farmacia La Rambla</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#info">Horario</a></li>
+            <li><a href="#opiniones">Opiniones</a></li>
+            <li><a href="#info" class="nav-pill">Llamar</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-bg-shape one"></div>
+    <div class="hero-bg-shape two"></div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <div class="hero-tag">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="4" fill="#4DB6AC"/><circle cx="8" cy="8" r="7" stroke="#4DB6AC" stroke-width="1.5" stroke-dasharray="3 3"/></svg>
+                Abiertos de 9:00 a 22:00 &mdash; Todos los dias
+            </div>
+            <h1>Cuidamos de ti con <span class="highlight">cercania</span> y profesionalidad</h1>
+            <p class="hero-desc">En el corazon de Palma de Mallorca, Farmacia La Rambla te ofrece atencion personalizada, consejo farmaceutico experto y el trato calido que mereces.</p>
+            <div class="hero-actions">
+                <a href="#info" class="btn-warm">Contactanos &rarr;</a>
+                <a href="#servicios" class="btn-soft">
+                    <span class="arrow">&darr;</span>
+                    Descubre mas
+                </a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-avatars">
+                    <div class="trust-avatar" style="background: var(--teal)">JL</div>
+                    <div class="trust-avatar" style="background: var(--teal-light)">CR</div>
+                    <div class="trust-avatar" style="background: var(--teal-dark)">M</div>
+                    <div class="trust-avatar" style="background: var(--terracotta)">+47</div>
+                </div>
+                <div class="trust-text"><strong>4.1/5</strong> valoracion media en Google</div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-mosaic">
+                <div class="mosaic-tile">
+                    <div class="tile-icon teal">&#128138;</div>
+                    <h4>Farmacia</h4>
+                    <p>Medicamentos, genericos y consejo profesional</p>
+                </div>
+                <div class="mosaic-tile">
+                    <div class="tile-icon cream">&#10024;</div>
+                    <h4>Dermocosmetica</h4>
+                    <p>Cuidado facial y corporal especializado</p>
+                </div>
+                <div class="mosaic-tile span">
+                    <div class="tile-icon warm">&#128150;</div>
+                    <h4>Atencion personalizada</h4>
+                    <p>Cada paciente es unico. Te escuchamos, te asesoramos y te acompanamos en el cuidado de tu salud.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Servicios -->
+<section class="servicios-section" id="servicios">
+    <div class="section-inner">
+        <div class="section-head centered reveal">
+            <span class="section-eyebrow">Nuestros servicios</span>
+            <h2 class="section-heading">Todo para tu bienestar</h2>
+            <p class="section-desc">Una farmacia completa con servicios pensados para cuidar de ti y de tu familia.</p>
+        </div>
+        <div class="servicios-flex">
+            <div class="servicio-card reveal">
+                <div class="servicio-num">01</div>
+                <div>
+                    <h3>Dispensacion de medicamentos</h3>
+                    <p>Medicamentos con y sin receta, genericos y de marca. Siempre acompanados del consejo farmaceutico.</p>
+                </div>
+            </div>
+            <div class="servicio-card reveal" style="transition-delay: 0.08s">
+                <div class="servicio-num">02</div>
+                <div>
+                    <h3>Dermocosmetica profesional</h3>
+                    <p>Analisis de piel y recomendacion personalizada con las mejores marcas del mercado.</p>
+                </div>
+            </div>
+            <div class="servicio-card reveal" style="transition-delay: 0.16s">
+                <div class="servicio-num">03</div>
+                <div>
+                    <h3>Fitoterapia y nutricion</h3>
+                    <p>Complementos alimenticios, vitaminas y productos naturales para complementar tu salud.</p>
+                </div>
+            </div>
+            <div class="servicio-card reveal" style="transition-delay: 0.24s">
+                <div class="servicio-num">04</div>
+                <div>
+                    <h3>Pediatria y maternidad</h3>
+                    <p>Productos y asesoramiento especifico para bebes, ninos y futuras mamas.</p>
+                </div>
+            </div>
+            <div class="servicio-card reveal" style="transition-delay: 0.32s">
+                <div class="servicio-num">05</div>
+                <div>
+                    <h3>Control de parametros de salud</h3>
+                    <p>Tension arterial, glucemia, colesterol. Seguimiento continuo para tu tranquilidad.</p>
+                </div>
+            </div>
+            <div class="servicio-card reveal" style="transition-delay: 0.4s">
+                <div class="servicio-num">06</div>
+                <div>
+                    <h3>Encargos y pedidos especiales</h3>
+                    <p>Si no lo tenemos, lo pedimos. Dejanos tus encargos y te avisamos cuando esten listos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Nosotros -->
+<section class="nosotros-section" id="nosotros">
+    <div class="section-inner">
+        <div class="nosotros-layout">
+            <div class="nosotros-img reveal">
+                <div class="nosotros-img-inner">
+                    <span class="big-icon">&#127978;</span>
+                    <p>Foto de la farmacia</p>
+                </div>
+                <div class="nosotros-badge">
+                    <div class="nosotros-badge-icon">&#128150;</div>
+                    <div class="nosotros-badge-text">
+                        <strong>+30 anos de experiencia</strong>
+                        Cuidando de la salud en Palma
+                    </div>
+                </div>
+            </div>
+            <div class="nosotros-content reveal" style="transition-delay: 0.15s">
+                <span class="section-eyebrow">Sobre nosotros</span>
+                <h2 class="section-heading">Una farmacia familiar con valores</h2>
+                <p>Farmacia La Rambla nacio con la vocacion de ofrecer un servicio farmaceutico cercano, profesional y de confianza. Ubicados en La Rambla 14, en pleno centro de Palma, llevamos mas de tres decadas siendo la farmacia de referencia del barrio.</p>
+                <p>Nuestro equipo se forma continuamente para ofrecerte el mejor consejo y las soluciones mas actualizadas para tu salud.</p>
+                <ul class="valores-list">
+                    <li><div class="valor-dot">&#10003;</div> Trato humano y cercano</li>
+                    <li><div class="valor-dot">&#10003;</div> Profesionalidad y formacion continua</li>
+                    <li><div class="valor-dot">&#10003;</div> Compromiso con tu bienestar</li>
+                    <li><div class="valor-dot">&#10003;</div> Horario ampliado 365 dias</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Horario / Contacto / Mapa -->
+<section class="info-section" id="info">
+    <div class="section-inner">
+        <div class="section-head centered reveal">
+            <span class="section-eyebrow">Informacion practica</span>
+            <h2 class="section-heading">Horario, contacto y ubicacion</h2>
+        </div>
+        <div class="info-grid">
+            <div class="info-card reveal">
+                <h3>&#128336; Horario</h3>
+                <div class="schedule-row"><span class="day">Lunes</span><span class="hours">9:00 - 22:00</span></div>
+                <div class="schedule-row"><span class="day">Martes</span><span class="hours">9:00 - 22:00</span></div>
+                <div class="schedule-row"><span class="day">Miercoles</span><span class="hours">9:00 - 22:00</span></div>
+                <div class="schedule-row"><span class="day">Jueves</span><span class="hours">9:00 - 22:00</span></div>
+                <div class="schedule-row"><span class="day">Viernes</span><span class="hours">9:00 - 22:00</span></div>
+                <div class="schedule-row"><span class="day">Sabado</span><span class="hours">9:00 - 22:00</span></div>
+                <div class="schedule-row"><span class="day">Domingo</span><span class="hours">9:00 - 22:00</span></div>
+            </div>
+            <div class="info-card featured reveal" style="transition-delay: 0.1s">
+                <h3>&#128222; Contacto</h3>
+                <div class="contact-row">
+                    <div class="contact-row-icon">&#128205;</div>
+                    <div class="contact-row-text">
+                        Direccion
+                        <strong>La Rambla 14, 07003 Palma</strong>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-row-icon">&#128222;</div>
+                    <div class="contact-row-text">
+                        Telefono
+                        <strong>971 71 15 11</strong>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-row-icon">&#128337;</div>
+                    <div class="contact-row-text">
+                        Horario
+                        <strong>9:00 - 22:00 cada dia</strong>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-row-icon">&#127775;</div>
+                    <div class="contact-row-text">
+                        Valoracion
+                        <strong>4.1/5 en Google (50+ resenas)</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card map-card reveal" style="transition-delay: 0.2s">
+                <h3>&#127758; Ubicacion</h3>
+                <div class="map-placeholder">&#128506;</div>
+                <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 1rem;">Centro de Palma de Mallorca, junto a Mercat de l'Olivar</p>
+                <a href="#" class="map-link">Abrir en Google Maps &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews-section" id="opiniones">
+    <div class="section-inner">
+        <div class="reviews-top reveal">
+            <div>
+                <span class="section-eyebrow">Opiniones</span>
+                <h2 class="section-heading">Lo que dicen nuestros clientes</h2>
+            </div>
+            <div class="rating-summary">
+                <div class="rating-big">4.1</div>
+                <div class="rating-meta">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="count">Basado en 50+ resenas de Google</div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: var(--teal)">JL</div>
+                    <div>
+                        <div class="review-author-name">Jordi Llabres Sans</div>
+                        <div class="review-author-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    </div>
+                </div>
+                <blockquote>"Excelente trato, personalizado y atento. La misma atencion de siempre, un equipo que realmente se preocupa por sus clientes."</blockquote>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.1s">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: var(--teal-light)">CR</div>
+                    <div>
+                        <div class="review-author-name">Camila Rocio Peralta</div>
+                        <div class="review-author-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    </div>
+                </div>
+                <blockquote>"Muy buenos asesores, siempre dan muestras. Es mi farmacia de confianza, atienden muy bien y siempre puedes dejar pedidos."</blockquote>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.2s">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: var(--teal-dark)">M</div>
+                    <div>
+                        <div class="review-author-name">Mar</div>
+                        <div class="review-author-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    </div>
+                </div>
+                <blockquote>"Farmacia muy recomendable. Las farmaceuticas siempre intentan resolver todas tus dudas con amabilidad."</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-box reveal">
+        <div class="cta-text">
+            <h2>Ven a visitarnos</h2>
+            <p>Estamos en La Rambla 14, en pleno centro de Palma. Te atenderemos con la dedicacion y el carino de siempre.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="#info" class="btn-warm">Llamar ahora &rarr;</a>
+            <a href="#" class="btn-warm-outline">&#127758; Como llegar</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo">
+                    <div class="logo-cross">+</div>
+                    <span class="logo-name" style="color: white;">Farmacia La Rambla</span>
+                </div>
+                <p>Tu farmacia de confianza en el centro de Palma de Mallorca. Atencion personalizada desde hace mas de 30 anos.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegacion</h4>
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#info">Horario</a></li>
+                    <li><a href="#opiniones">Opiniones</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Medicamentos</a></li>
+                    <li><a href="#">Dermocosmetica</a></li>
+                    <li><a href="#">Fitoterapia</a></li>
+                    <li><a href="#">Pediatria</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="#">La Rambla 14, 07003 Palma</a></li>
+                    <li><a href="tel:971711511">971 71 15 11</a></li>
+                    <li><a href="#">Illes Balears</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Farmacia La Rambla. Todos los derechos reservados.
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
