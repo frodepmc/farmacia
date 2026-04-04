@@ -3,1064 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia La Rambla - Prototipo C: Moderna y Dinamica</title>
+    <title>Farmacia La Rambla — Tu farmacia de confianza en Palma</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=General+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cyan: #00BFA5;
-            --cyan-deep: #00897B;
-            --cyan-darker: #00695C;
-            --cyan-darkest: #004D40;
-            --cyan-light: #64FFDA;
-            --cyan-glow: rgba(0,191,165,0.15);
-            --cyan-ghost: #E0F7F3;
-            --dark: #0A1628;
-            --dark-card: #111D32;
-            --dark-lighter: #1A2942;
-            --dark-border: rgba(255,255,255,0.06);
+            --cy: #00BFA5;
+            --cy-dark: #00897B;
+            --cy-deeper: #00695C;
+            --cy-deep: #004D40;
+            --cy-light: #64FFDA;
+            --cy-glow: rgba(0,191,165,.15);
+            --cy-ghost: rgba(0,191,165,.06);
+            --dark: #0B1120;
+            --dark-card: #111C30;
+            --dark-lighter: #182740;
+            --dark-border: rgba(255,255,255,.06);
             --white: #FFFFFF;
-            --gray-50: #F8FAFB;
-            --gray-100: #EEF1F4;
-            --gray-200: #DDE2E8;
-            --gray-400: #9BA5B1;
-            --gray-600: #5A6577;
-            --gray-800: #2C3A4E;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Sora', sans-serif;
-            color: var(--white);
-            background: var(--dark);
-            overflow-x: hidden;
-        }
-
-        /* ===== NAV ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10,22,40,0.8);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 68px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-mark {
-            width: 36px;
-            height: 36px;
-            border: 2px solid var(--cyan);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cyan);
-            font-weight: 700;
-            font-size: 18px;
-            position: relative;
-        }
-
-        .logo-mark::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 14px;
-            background: var(--cyan-glow);
-            z-index: -1;
-        }
-
-        .logo-label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: -0.02em;
-        }
-
-        .logo-label span { color: var(--cyan); }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--gray-400);
-            font-size: 0.85rem;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover { color: var(--cyan); }
-
-        .nav-btn {
-            background: var(--cyan) !important;
-            color: var(--dark) !important;
-            padding: 9px 22px;
-            border-radius: 8px;
-            font-weight: 600 !important;
-            font-size: 0.85rem !important;
-            transition: all 0.3s !important;
-        }
-
-        .nav-btn:hover {
-            background: var(--cyan-light) !important;
-            box-shadow: 0 4px 20px var(--cyan-glow);
-        }
-
-        /* ===== MOBILE NAV ===== */
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: radial-gradient(ellipse at 30% 50%, rgba(0,191,165,0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 20%, rgba(0,137,123,0.06) 0%, transparent 40%),
-                        var(--dark);
-        }
-
-        .hero-grid-bg {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 70%);
-        }
-
-        .hero-glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.15;
-        }
-
-        .hero-glow.one { background: var(--cyan); top: 10%; left: 20%; }
-        .hero-glow.two { background: var(--cyan-deep); bottom: 10%; right: 15%; opacity: 0.1; }
-
-        .hero-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(0,191,165,0.3);
-            background: rgba(0,191,165,0.08);
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--cyan);
-            margin-bottom: 2rem;
-        }
-
-        .chip-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--cyan);
-            border-radius: 50%;
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.6rem;
-            line-height: 1.1;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--cyan), var(--cyan-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-sub {
-            font-size: 1.05rem;
-            line-height: 1.75;
-            color: var(--gray-400);
-            margin-bottom: 2.5rem;
-            max-width: 460px;
-            font-weight: 300;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-glow {
-            background: var(--cyan);
-            color: var(--dark);
-            padding: 14px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.92rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 20px var(--cyan-glow);
-        }
-
-        .btn-glow:hover {
-            background: var(--cyan-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0,191,165,0.3);
-        }
-
-        .btn-glass {
-            background: rgba(255,255,255,0.04);
-            color: var(--white);
-            padding: 14px 30px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            font-size: 0.92rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-glass:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        .hero-right {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .hero-stat-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .stat-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 16px;
-            padding: 1.75rem;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .stat-card:hover::before { opacity: 1; }
-
-        .stat-card:hover {
-            border-color: rgba(0,191,165,0.2);
-            background: var(--dark-lighter);
-        }
-
-        .stat-card.wide { grid-column: span 2; }
-
-        .stat-value {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--cyan);
-            display: block;
-            margin-bottom: 0.35rem;
-        }
-
-        .stat-label {
-            font-size: 0.82rem;
-            color: var(--gray-400);
-            font-weight: 400;
-        }
-
-        .stat-card.wide {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .status-live {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: var(--cyan);
-            font-weight: 500;
-        }
-
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--cyan);
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        /* ===== SECTIONS ===== */
-        section { padding: 6rem 2rem; }
-        .section-inner { max-width: 1200px; margin: 0 auto; }
-
-        .sec-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--cyan);
-            margin-bottom: 1rem;
-        }
-
-        .sec-tag::before {
-            content: '';
-            width: 20px;
-            height: 2px;
-            background: var(--cyan);
-            border-radius: 1px;
-        }
-
-        .sec-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-        }
-
-        .sec-desc {
-            color: var(--gray-400);
-            font-size: 1rem;
-            line-height: 1.7;
-            max-width: 520px;
-            font-weight: 300;
-        }
-
-        .sec-header { margin-bottom: 3.5rem; }
-        .sec-header.center { text-align: center; }
-        .sec-header.center .sec-desc { margin: 0 auto; }
-
-        /* ===== SERVICIOS ===== */
-        .servicios {
-            background: linear-gradient(180deg, var(--dark) 0%, rgba(10,22,40,0.95) 100%);
-            position: relative;
-        }
-
-        .servicios::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0,191,165,0.2), transparent);
-        }
-
-        .srv-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-
-        .srv-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .srv-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--cyan);
-            transition: all 0.4s;
-            transform: translateX(-50%);
-        }
-
-        .srv-card:hover::after { width: 60%; }
-
-        .srv-card:hover {
-            border-color: rgba(0,191,165,0.15);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .srv-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(0,191,165,0.1);
-            border: 1px solid rgba(0,191,165,0.15);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 1.25rem;
-            transition: all 0.3s;
-        }
-
-        .srv-card:hover .srv-icon {
-            background: var(--cyan);
-            border-color: var(--cyan);
-            box-shadow: 0 4px 15px var(--cyan-glow);
-        }
-
-        .srv-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.65rem;
-            color: var(--white);
-        }
-
-        .srv-card p {
-            font-size: 0.87rem;
-            color: var(--gray-400);
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        /* ===== ABOUT ===== */
-        .about {
-            background: var(--dark);
-            position: relative;
-        }
-
-        .about-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-visual {
-            position: relative;
-        }
-
-        .about-img-frame {
-            width: 100%;
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--dark-card), var(--dark-lighter));
-            border-radius: 20px;
-            border: 1px solid var(--dark-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .about-img-frame::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 40%, var(--cyan-glow), transparent 60%);
-        }
-
-        .about-placeholder {
-            text-align: center;
-            color: var(--gray-400);
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-placeholder .icon { font-size: 4rem; display: block; margin-bottom: 0.5rem; }
-
-        .about-float-card {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 14px;
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .afc-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--cyan);
-        }
-
-        .afc-text {
-            font-size: 0.82rem;
-            color: var(--gray-400);
-            line-height: 1.4;
-        }
-
-        .about-content .sec-title { margin-bottom: 1.5rem; }
-
-        .about-content p {
-            color: var(--gray-400);
-            line-height: 1.8;
-            margin-bottom: 1.25rem;
-            font-weight: 300;
-        }
-
-        .about-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 2rem;
-        }
-
-        .about-tag {
-            background: rgba(0,191,165,0.08);
-            border: 1px solid rgba(0,191,165,0.15);
-            color: var(--cyan);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-size: 0.82rem;
-            font-weight: 500;
-        }
-
-        /* ===== HORARIO ===== */
-        .horario-section {
-            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-card) 100%);
-        }
-
-        .horario-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .h-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 16px;
-            padding: 2.25rem;
-            transition: all 0.3s;
-        }
-
-        .h-card:hover { border-color: rgba(0,191,165,0.15); }
-
-        .h-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .h-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            font-size: 0.9rem;
-        }
-
-        .h-row:last-child { border-bottom: none; }
-
-        .h-row .day { color: var(--gray-400); }
-
-        .h-row .time {
-            color: var(--cyan);
-            font-weight: 600;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .h-row.active {
-            background: rgba(0,191,165,0.06);
-            margin: 0 -1rem;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            border-bottom: none;
-        }
-
-        .h-row.active .day { color: var(--cyan); font-weight: 500; }
-
-        .contact-glass {
-            background: linear-gradient(135deg, var(--cyan-darker), var(--cyan-darkest));
-            border: 1px solid rgba(0,191,165,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-glass::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0,191,165,0.15), transparent 60%);
-            border-radius: 50%;
-        }
-
-        .contact-glass h3 { color: var(--white); position: relative; }
-
-        .c-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-        }
-
-        .c-item:last-of-type { border-bottom: none; }
-
-        .c-icon {
-            width: 42px;
-            height: 42px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .c-label {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 2px;
-        }
-
-        .c-value {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--white);
-        }
-
-        .maps-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--white);
-            color: var(--dark);
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.88rem;
-            margin-top: 1.25rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .maps-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        /* ===== REVIEWS ===== */
-        .reviews {
-            background: var(--dark);
-        }
-
-        .reviews-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-
-        .rev-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-
-        .rev-card:hover {
-            border-color: rgba(0,191,165,0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .rev-stars {
-            color: #FFD54F;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            margin-bottom: 1.25rem;
-        }
-
-        .rev-card blockquote {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--gray-400);
-            margin-bottom: 1.5rem;
-            font-style: normal;
-            font-weight: 300;
-        }
-
-        .rev-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .rev-avatar {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.8rem;
-            color: var(--dark);
-        }
-
-        .rev-name {
-            font-weight: 500;
-            font-size: 0.88rem;
-            color: var(--white);
-        }
-
-        .rev-src {
-            font-size: 0.75rem;
-            color: var(--gray-600);
-        }
-
-        /* ===== CTA ===== */
-        .cta {
-            background: var(--dark);
-            padding: 0 2rem 6rem;
-        }
-
-        .cta-panel {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--cyan-darker), var(--cyan-darkest));
-            border-radius: 20px;
-            padding: 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0,191,165,0.2);
-        }
-
-        .cta-panel::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(0,191,165,0.15), transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(100,255,218,0.08), transparent 40%);
-        }
-
-        .cta-panel h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .cta-panel p {
-            color: rgba(255,255,255,0.8);
-            font-size: 1.05rem;
-            max-width: 480px;
-            margin: 0 auto 2rem;
-            position: relative;
-            font-weight: 300;
-        }
-
-        .cta-panel .btn-white {
-            background: var(--white);
-            color: var(--dark);
-            padding: 14px 32px;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-        }
-
-        .cta-panel .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255,255,255,0.15);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--dark-card);
-            border-top: 1px solid var(--dark-border);
-            padding: 3.5rem 2rem 2rem;
-            color: var(--gray-400);
-        }
-
-        .footer-inner { max-width: 1200px; margin: 0 auto; }
-
-        .footer-cols {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        .footer-brand p {
-            font-size: 0.85rem;
-            line-height: 1.7;
-            margin-top: 1rem;
-            color: var(--gray-600);
-        }
-
-        .footer-col h4 {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--gray-600);
-            margin-bottom: 1.25rem;
-            font-weight: 600;
-        }
-
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.65rem; }
-
-        .footer-col a {
-            color: var(--gray-400);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover { color: var(--cyan); }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.78rem;
-            color: var(--gray-600);
-        }
-
-        /* ===== RESPONSIVE ===== */
-
-        /* Tablet landscape */
-        @media (max-width: 1024px) {
-            .hero h1 { font-size: 2.8rem; }
-            .hero-inner { gap: 2.5rem; }
-            .srv-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-cols { grid-template-columns: 1fr 1fr; gap: 2rem; }
-        }
-
-        /* Tablet portrait */
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .mobile-toggle { display: block; }
-            section { padding: 4rem 1.5rem; }
-
-            .hero-inner {
-                grid-template-columns: 1fr;
-                padding: 6rem 1.5rem 3rem;
-                gap: 2.5rem;
-            }
-
-            .hero h1 { font-size: 2.2rem; }
-            .hero-sub { font-size: 0.95rem; max-width: 100%; }
-            .hero-btns { flex-direction: column; }
-            .btn-glow, .btn-glass { width: 100%; justify-content: center; }
-
-            .hero-stat-row { grid-template-columns: 1fr 1fr; }
-            .stat-card.wide { grid-column: span 2; flex-direction: column; text-align: center; gap: 0.75rem; }
-            .stat-card { padding: 1.5rem; }
-
-            .sec-title { font-size: 2rem; }
-            .sec-desc { font-size: 0.92rem; }
-            .srv-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .srv-card { padding: 1.75rem; }
-
-            .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-            .about-img-frame { aspect-ratio: 16/10; }
-            .about-float-card { position: relative; bottom: 0; right: 0; margin-top: 1rem; display: inline-flex; }
-
-            .horario-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .h-card { padding: 1.75rem; }
-            .reviews-row { grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .rev-card { padding: 1.75rem; }
-
-            .cta-panel { padding: 2.5rem 1.5rem; }
-            .cta-panel h2 { font-size: 1.8rem; }
-            .cta-panel p { font-size: 0.95rem; }
-
-            .footer-cols { grid-template-columns: 1fr; gap: 2rem; }
-            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-        }
-
-        /* Mobile */
-        @media (max-width: 480px) {
-            section { padding: 3.5rem 1rem; }
-            .nav-inner { padding: 0 1rem; }
-
-            .hero-inner { padding: 5.5rem 1rem 2.5rem; gap: 2rem; }
-            .hero h1 { font-size: 1.85rem; }
-            .hero-sub { font-size: 0.9rem; }
-            .hero-chip { font-size: 0.72rem; padding: 5px 12px; }
-
-            .hero-stat-row { grid-template-columns: 1fr; gap: 0.75rem; }
-            .stat-card.wide { grid-column: span 1; }
-            .stat-value { font-size: 1.6rem; }
-
-            .sec-title { font-size: 1.7rem; }
-            .sec-tag { font-size: 0.7rem; }
-            .sec-desc { font-size: 0.88rem; }
-
-            .srv-grid { grid-template-columns: 1fr; }
-            .srv-card { padding: 1.5rem; }
-            .srv-icon { width: 40px; height: 40px; font-size: 16px; }
-
-            .about-img-frame { aspect-ratio: 4/3; }
-            .about-content p { font-size: 0.9rem; }
-            .about-tags { gap: 0.4rem; }
-            .about-tag { font-size: 0.75rem; padding: 6px 12px; }
-            .afc-number { font-size: 1.6rem; }
-
-            .h-card { padding: 1.5rem; }
-            .h-row { font-size: 0.85rem; padding: 0.65rem 0; }
-            .c-item { gap: 10px; }
-            .c-icon { width: 36px; height: 36px; font-size: 14px; }
-            .maps-btn { width: 100%; justify-content: center; text-align: center; }
-
-            .reviews-row { grid-template-columns: 1fr; }
-            .rev-card { padding: 1.5rem; }
-
-            .cta-panel { padding: 2rem 1.25rem; border-radius: 16px; }
-            .cta-panel h2 { font-size: 1.5rem; }
-            .cta-panel p { font-size: 0.9rem; }
-            .cta { padding: 0 1rem 4rem; }
-        }
-
-        /* Tiny screens */
-        @media (max-width: 360px) {
-            .hero h1 { font-size: 1.6rem; }
-            .sec-title { font-size: 1.45rem; }
-            .stat-card { padding: 1.25rem; }
-            .stat-value { font-size: 1.4rem; }
-            .logo-label { font-size: 0.95rem; }
-        }
-
-        /* ===== ANIMATIONS ===== */
-        .anim {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .anim.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            --g50: #F0F4F8;
+            --g400: #8899A8;
+            --g600: #546678;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Manrope',sans-serif;color:var(--white);background:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+        /* === NAV === */
+        nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(11,17,32,.82);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--dark-border)}
+        .nav-inner{max-width:1180px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+        .logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+        .logo-mark{width:34px;height:34px;border:2px solid var(--cy);border-radius:9px;display:flex;align-items:center;justify-content:center;position:relative}
+        .logo-mark::after{content:'';position:absolute;inset:-4px;border-radius:13px;background:var(--cy-glow);z-index:-1}
+        .logo-mark svg{width:16px;height:16px}
+        .logo-label{font-weight:700;font-size:1.05rem;letter-spacing:-.02em}
+        .logo-label span{color:var(--cy)}
+        .nav-menu{display:flex;list-style:none;gap:1.75rem;align-items:center}
+        .nav-menu a{text-decoration:none;color:var(--g400);font-size:.84rem;font-weight:400;transition:color .25s}
+        .nav-menu a:hover{color:var(--cy)}
+        .nav-btn{background:var(--cy)!important;color:var(--dark)!important;padding:8px 20px;border-radius:8px;font-weight:600!important;font-size:.84rem!important}
+        .nav-btn:hover{background:var(--cy-light)!important;box-shadow:0 4px 16px var(--cy-glow)}
+        .nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--white)}
+
+        /* === HERO === */
+        .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 50%,rgba(0,191,165,.07),transparent 50%),radial-gradient(ellipse at 70% 20%,rgba(0,137,123,.05),transparent 40%),var(--dark)}
+        .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 55% 55% at 50% 50%,black 20%,transparent 65%)}
+        .hero-glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.12}
+        .hero-glow.a{background:var(--cy);width:450px;height:450px;top:10%;left:18%}
+        .hero-glow.b{background:var(--cy-dark);width:350px;height:350px;bottom:8%;right:12%;opacity:.08}
+        .hero-inner{max-width:1180px;margin:0 auto;padding:7.5rem 2rem 4.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;position:relative;z-index:1}
+        .hero-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(0,191,165,.25);background:rgba(0,191,165,.06);padding:5px 14px;border-radius:100px;font-size:.76rem;font-weight:500;color:var(--cy);margin-bottom:1.75rem}
+        .chip-dot{width:6px;height:6px;background:var(--cy);border-radius:50%;animation:blink 2s ease-in-out infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+        .hero h1{font-size:3.3rem;line-height:1.1;font-weight:800;letter-spacing:-.03em;margin-bottom:1.25rem}
+        .hero h1 .grad{background:linear-gradient(135deg,var(--cy),var(--cy-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-sub{font-size:1.02rem;line-height:1.75;color:var(--g400);margin-bottom:2.25rem;max-width:440px;font-weight:300}
+        .hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+        .btn-glow{background:var(--cy);color:var(--dark);padding:13px 26px;border:none;border-radius:10px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:7px;box-shadow:0 4px 16px var(--cy-glow)}
+        .btn-glow:hover{background:var(--cy-light);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,191,165,.28)}
+        .btn-glass{background:rgba(255,255,255,.03);color:var(--white);padding:13px 26px;border:1px solid rgba(255,255,255,.08);border-radius:10px;font-size:.9rem;font-weight:500;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:7px;backdrop-filter:blur(8px)}
+        .btn-glass:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15)}
+        .btn-glow svg,.btn-glass svg{width:15px;height:15px}
+
+        /* hero stats */
+        .hero-right{display:flex;flex-direction:column;gap:.75rem}
+        .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+        .stat-card{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:14px;padding:1.5rem;transition:all .3s;position:relative;overflow:hidden}
+        .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cy),transparent);opacity:0;transition:opacity .3s}
+        .stat-card:hover::before{opacity:1}
+        .stat-card:hover{border-color:rgba(0,191,165,.18);background:var(--dark-lighter)}
+        .stat-card.wide{grid-column:span 2;display:flex;align-items:center;gap:1.25rem}
+        .stat-val{font-size:1.8rem;font-weight:700;color:var(--cy);display:block;margin-bottom:.2rem}
+        .stat-lbl{font-size:.78rem;color:var(--g400);font-weight:400}
+        .status-live{display:flex;align-items:center;gap:7px;font-size:.84rem;color:var(--cy);font-weight:500}
+        .live-dot{width:8px;height:8px;background:var(--cy);border-radius:50%;box-shadow:0 0 8px var(--cy);animation:blink 2s ease-in-out infinite}
+
+        /* === BRANDS === */
+        .brands{padding:2.5rem 2rem;background:var(--dark-card);border-top:1px solid var(--dark-border);border-bottom:1px solid var(--dark-border)}
+        .brands-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+        .brands-label{font-size:.7rem;color:var(--g600);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+        .brand-t{font-weight:700;font-size:1.05rem;color:rgba(255,255,255,.12);letter-spacing:.04em;transition:color .25s}
+        .brand-t:hover{color:var(--cy)}
+
+        /* === SECTIONS === */
+        section{padding:5.5rem 2rem}
+        .sec-inner{max-width:1180px;margin:0 auto}
+        .sec-tag{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cy);margin-bottom:.75rem}
+        .sec-tag::before{content:'';width:18px;height:2px;background:var(--cy);border-radius:1px}
+        .sec-title{font-size:2.3rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem}
+        .sec-desc{color:var(--g400);font-size:.95rem;line-height:1.7;max-width:500px;font-weight:300}
+        .sec-head{margin-bottom:3rem}
+        .sec-head.c{text-align:center}
+        .sec-head.c .sec-desc{margin:0 auto}
+
+        /* === SERVICIOS === */
+        .servicios{background:var(--dark);position:relative}
+        .servicios::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,191,165,.18),transparent)}
+        .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+        .srv-card{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:14px;padding:1.75rem;transition:all .35s;position:relative;overflow:hidden}
+        .srv-card::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:var(--cy);transition:all .35s;transform:translateX(-50%)}
+        .srv-card:hover::after{width:55%}
+        .srv-card:hover{border-color:rgba(0,191,165,.12);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+        .srv-ic{width:44px;height:44px;background:rgba(0,191,165,.08);border:1px solid rgba(0,191,165,.12);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;transition:all .3s;color:var(--cy)}
+        .srv-ic svg{width:20px;height:20px;transition:all .3s}
+        .srv-card:hover .srv-ic{background:var(--cy);border-color:var(--cy);color:var(--dark);box-shadow:0 4px 12px var(--cy-glow)}
+        .srv-card h3{font-size:1.02rem;font-weight:600;margin-bottom:.4rem}
+        .srv-card p{font-size:.84rem;color:var(--g400);line-height:1.55;font-weight:300}
+
+        /* === ABOUT === */
+        .about{background:var(--dark)}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+        .about-visual{position:relative}
+        .about-frame{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--dark-card),var(--dark-lighter));border-radius:18px;border:1px solid var(--dark-border);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+        .about-frame::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,var(--cy-glow),transparent 55%)}
+        .about-ph{text-align:center;color:var(--g400);position:relative;z-index:1}
+        .about-ph svg{width:56px;height:56px;margin-bottom:.5rem;display:block;margin:0 auto .5rem;opacity:.4}
+        .about-ph span{font-size:.82rem;opacity:.5}
+        .about-float{position:absolute;bottom:-16px;right:-16px;background:var(--dark-card);border:1px solid var(--dark-border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+        .afc-num{font-size:1.8rem;font-weight:700;color:var(--cy)}
+        .afc-txt{font-size:.78rem;color:var(--g400);line-height:1.3}
+        .about-content .sec-title{margin-bottom:1.25rem}
+        .about-content p{color:var(--g400);line-height:1.8;margin-bottom:1rem;font-weight:300}
+        .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+        .about-tag{background:rgba(0,191,165,.06);border:1px solid rgba(0,191,165,.12);color:var(--cy);padding:7px 14px;border-radius:100px;font-size:.78rem;font-weight:500}
+
+        /* === HORARIO === */
+        .horario{background:linear-gradient(180deg,var(--dark),var(--dark-card))}
+        .hor-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+        .h-card{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:14px;padding:2rem;transition:all .25s}
+        .h-card:hover{border-color:rgba(0,191,165,.12)}
+        .h-card h3{font-size:1.1rem;font-weight:600;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
+        .h-card h3 svg{width:18px;height:18px;color:var(--cy)}
+        .h-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.87rem}
+        .h-row:last-child{border-bottom:none}
+        .h-row .day{color:var(--g400)}
+        .h-row .time{color:var(--cy);font-weight:600}
+        .contact-gls{background:linear-gradient(135deg,var(--cy-deeper),var(--cy-deep));border:1px solid rgba(0,191,165,.15);position:relative;overflow:hidden}
+        .contact-gls::before{content:'';position:absolute;top:-40%;right:-25%;width:250px;height:250px;background:radial-gradient(circle,rgba(0,191,165,.12),transparent 55%);border-radius:50%}
+        .contact-gls h3{color:white;position:relative}
+        .c-item{display:flex;align-items:center;gap:12px;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.08);position:relative}
+        .c-item:last-of-type{border-bottom:none}
+        .c-ic{width:38px;height:38px;background:rgba(255,255,255,.08);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .c-ic svg{width:16px;height:16px}
+        .c-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.45)}
+        .c-val{font-weight:500;font-size:.9rem}
+        .c-btns{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;position:relative}
+        .btn-ct{padding:10px 20px;border-radius:9px;text-decoration:none;font-weight:600;font-size:.84rem;transition:all .25s;display:inline-flex;align-items:center;gap:5px}
+        .btn-ct.w{background:white;color:var(--dark)}
+        .btn-ct.w:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+        .btn-ct.wa{background:#25D366;color:white}
+        .btn-ct.wa:hover{background:#1fbd59}
+        .btn-ct svg{width:14px;height:14px}
+
+        /* === REVIEWS === */
+        .reviews{background:var(--dark)}
+        .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+        .rev-card{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:14px;padding:1.75rem;transition:all .25s}
+        .rev-card:hover{border-color:rgba(0,191,165,.12);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+        .rev-stars{display:flex;gap:2px;margin-bottom:1rem}
+        .rev-stars svg{width:14px;height:14px;color:#FFD54F}
+        .rev-card blockquote{font-size:.87rem;line-height:1.65;color:var(--g400);margin-bottom:1.25rem;font-style:normal;font-weight:300}
+        .rev-author{display:flex;align-items:center;gap:10px}
+        .rev-av{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;color:var(--dark)}
+        .rev-name{font-weight:500;font-size:.85rem}
+        .rev-src{font-size:.72rem;color:var(--g600)}
+
+        /* === SOCIAL === */
+        .social-bar{padding:2.5rem 2rem;background:var(--dark-card);border-top:1px solid var(--dark-border)}
+        .social-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+        .social-inner>span{font-size:.8rem;color:var(--g600);font-weight:500}
+        .soc-link{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:var(--g400);font-size:.84rem;font-weight:500;padding:7px 14px;border-radius:8px;border:1px solid var(--dark-border);background:var(--dark);transition:all .25s}
+        .soc-link:hover{border-color:rgba(0,191,165,.25);color:var(--cy)}
+        .soc-link svg{width:16px;height:16px}
+
+        /* === CTA === */
+        .cta{background:var(--dark);padding:0 2rem 5.5rem}
+        .cta-panel{max-width:1180px;margin:0 auto;background:linear-gradient(135deg,var(--cy-deeper),var(--cy-deep));border-radius:18px;padding:3.5rem;text-align:center;position:relative;overflow:hidden;border:1px solid rgba(0,191,165,.15)}
+        .cta-panel::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(0,191,165,.12),transparent 45%),radial-gradient(circle at 80% 50%,rgba(100,255,218,.06),transparent 35%)}
+        .cta-panel h2{font-size:2rem;font-weight:700;margin-bottom:.75rem;position:relative}
+        .cta-panel p{color:rgba(255,255,255,.75);font-size:1rem;max-width:450px;margin:0 auto 1.5rem;position:relative;font-weight:300}
+        .cta-panel .btn-ct.w{padding:12px 28px;font-size:.9rem}
+
+        /* === FOOTER === */
+        footer{background:var(--dark-card);border-top:1px solid var(--dark-border);padding:3.5rem 2rem 1.75rem;color:var(--g400)}
+        .ft-inner{max-width:1180px;margin:0 auto}
+        .ft-cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--dark-border)}
+        .ft-brand p{font-size:.83rem;line-height:1.7;margin-top:.75rem;color:var(--g600)}
+        .ft-col h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--g600);margin-bottom:1rem;font-weight:600}
+        .ft-col ul{list-style:none}
+        .ft-col li{margin-bottom:.55rem}
+        .ft-col a{color:var(--g400);text-decoration:none;font-size:.83rem;transition:color .25s}
+        .ft-col a:hover{color:var(--cy)}
+        .ft-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.76rem;color:var(--g600)}
+
+        /* === RESPONSIVE === */
+        @media(max-width:1024px){
+            .hero h1{font-size:2.7rem} .srv-grid{grid-template-columns:1fr 1fr}
+            .ft-cols{grid-template-columns:1fr 1fr;gap:2rem}
+        }
+        @media(max-width:768px){
+            .nav-menu{display:none} .nav-toggle{display:block}
+            section{padding:4rem 1.5rem}
+            .hero-inner{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2rem}
+            .hero h1{font-size:2.1rem} .hero-sub{font-size:.93rem;max-width:100%}
+            .hero-btns{flex-direction:column}
+            .btn-glow,.btn-glass{width:100%;justify-content:center}
+            .stat-row{grid-template-columns:1fr 1fr}
+            .stat-card.wide{grid-column:span 2;flex-direction:column;text-align:center;gap:.5rem}
+            .srv-grid{grid-template-columns:1fr 1fr;gap:.75rem}
+            .about-grid{grid-template-columns:1fr;gap:2.5rem}
+            .about-frame{aspect-ratio:16/10}
+            .about-float{position:relative;bottom:auto;right:auto;margin-top:.75rem;display:inline-flex}
+            .hor-grid{grid-template-columns:1fr;gap:1rem}
+            .rev-grid{grid-template-columns:1fr 1fr;gap:.75rem}
+            .sec-title{font-size:1.85rem}
+            .cta-panel{padding:2.5rem 1.5rem} .cta-panel h2{font-size:1.7rem}
+            .ft-cols{grid-template-columns:1fr;gap:2rem}
+            .ft-bottom{flex-direction:column;gap:.4rem;text-align:center}
+        }
+        @media(max-width:480px){
+            section{padding:3.5rem 1rem} .nav-inner{padding:0 1rem}
+            .hero-inner{padding:5.5rem 1rem 2.5rem;gap:1.75rem}
+            .hero h1{font-size:1.8rem} .hero-sub{font-size:.88rem}
+            .hero-chip{font-size:.7rem;padding:4px 10px}
+            .stat-row{grid-template-columns:1fr;gap:.6rem}
+            .stat-card.wide{grid-column:span 1} .stat-val{font-size:1.5rem}
+            .stat-card{padding:1.25rem}
+            .sec-title{font-size:1.6rem} .sec-tag{font-size:.68rem}
+            .srv-grid{grid-template-columns:1fr} .srv-card{padding:1.5rem}
+            .about-frame{aspect-ratio:4/3}
+            .about-tags{gap:.35rem} .about-tag{font-size:.72rem;padding:5px 10px}
+            .h-card{padding:1.5rem} .h-row{font-size:.83rem}
+            .c-btns{flex-direction:column} .btn-ct{width:100%;justify-content:center}
+            .rev-grid{grid-template-columns:1fr} .rev-card{padding:1.5rem}
+            .cta-panel{padding:2rem 1.25rem;border-radius:14px}
+            .cta-panel h2{font-size:1.45rem}
+            .cta{padding:0 1rem 4rem}
+        }
+        @media(max-width:360px){
+            .hero h1{font-size:1.55rem} .sec-title{font-size:1.4rem}
+            .stat-val{font-size:1.3rem} .logo-label{font-size:.92rem}
+        }
+
+        .anim{opacity:0;transform:translateY(22px);transition:all .65s cubic-bezier(.22,1,.36,1)}
+        .anim.show{opacity:1;transform:translateY(0)}
     </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav>
     <div class="nav-inner">
         <a href="#" class="logo">
-            <div class="logo-mark">+</div>
+            <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cy)" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
             <span class="logo-label">Farmacia <span>La Rambla</span></span>
         </a>
-        <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+        <button class="nav-toggle" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
         <ul class="nav-menu">
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
@@ -1071,289 +268,199 @@
     </div>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
     <div class="hero-grid-bg"></div>
-    <div class="hero-glow one"></div>
-    <div class="hero-glow two"></div>
+    <div class="hero-glow a"></div><div class="hero-glow b"></div>
     <div class="hero-inner">
-        <div class="hero-left anim">
-            <div class="hero-chip">
-                <span class="chip-dot"></span>
-                Abierto ahora &middot; 9:00 - 22:00
-            </div>
-            <h1>Salud y bienestar en el <span class="gradient-text">centro de Palma</span></h1>
-            <p class="hero-sub">Mas de 30 anos de experiencia farmaceutica. Atencion profesional, cercana y disponible todos los dias del ano.</p>
+        <div class="anim">
+            <div class="hero-chip"><span class="chip-dot"></span> Abierto ahora &middot; 9:00 – 22:00</div>
+            <h1>Salud y bienestar en el <span class="grad">centro de Palma</span></h1>
+            <p class="hero-sub">Desde 1998, el equipo del farmaceutico Martorell ofrece atencion profesional, formulacion magistral y entrega a domicilio. Abiertos todos los dias del ano.</p>
             <div class="hero-btns">
-                <a href="#horario" class="btn-glow">Contactar &rarr;</a>
-                <a href="#servicios" class="btn-glass">Explorar servicios</a>
+                <a href="#horario" class="btn-glow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    Contactar
+                </a>
+                <a href="#servicios" class="btn-glass">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    Explorar servicios
+                </a>
             </div>
         </div>
-        <div class="hero-right anim" style="transition-delay: 0.15s">
-            <div class="hero-stat-row">
-                <div class="stat-card">
-                    <span class="stat-value">4.1</span>
-                    <span class="stat-label">Rating en Google</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value">50+</span>
-                    <span class="stat-label">Resenas verificadas</span>
-                </div>
+        <div class="hero-right anim" style="transition-delay:.12s">
+            <div class="stat-row">
+                <div class="stat-card"><span class="stat-val">4.1</span><span class="stat-lbl">Rating en Google</span></div>
+                <div class="stat-card"><span class="stat-val">50+</span><span class="stat-lbl">Resenas verificadas</span></div>
             </div>
-            <div class="hero-stat-row">
-                <div class="stat-card">
-                    <span class="stat-value">13h</span>
-                    <span class="stat-label">Abiertos al dia</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value">365</span>
-                    <span class="stat-label">Dias al ano</span>
-                </div>
+            <div class="stat-row">
+                <div class="stat-card"><span class="stat-val">13h</span><span class="stat-lbl">Abiertos al dia</span></div>
+                <div class="stat-card"><span class="stat-val">365</span><span class="stat-lbl">Dias al ano</span></div>
             </div>
             <div class="stat-card wide">
-                <div class="status-live">
-                    <span class="live-dot"></span>
-                    Abierto ahora
-                </div>
-                <span class="stat-label">La Rambla 14, 07003 Palma de Mallorca</span>
+                <div class="status-live"><span class="live-dot"></span> Abierto ahora</div>
+                <span class="stat-lbl">La Rambla 14, 07003 Palma &middot; Junto al Mercat de l'Olivar</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Servicios -->
+<!-- BRANDS -->
+<div class="brands">
+    <div class="brands-inner">
+        <span class="brands-label">Marcas de confianza</span>
+        <span class="brand-t">ISDIN</span><span class="brand-t">Caudalie</span><span class="brand-t">Aboca</span><span class="brand-t">Ricola</span>
+    </div>
+</div>
+
+<!-- SERVICIOS -->
 <section class="servicios" id="servicios">
-    <div class="section-inner">
-        <div class="sec-header center anim">
+    <div class="sec-inner">
+        <div class="sec-head c anim">
             <span class="sec-tag">Servicios</span>
             <h2 class="sec-title">Todo lo que tu salud necesita</h2>
-            <p class="sec-desc">Servicios farmaceuticos completos con la tecnologia y profesionalidad que mereces.</p>
+            <p class="sec-desc">Servicios farmaceuticos completos con profesionalidad y atencion personalizada desde 1998.</p>
         </div>
         <div class="srv-grid">
-            <div class="srv-card anim">
-                <div class="srv-icon">&#128138;</div>
-                <h3>Medicamentos</h3>
-                <p>Dispensacion con y sin receta. Genericos y de marca con consejo profesional.</p>
-            </div>
-            <div class="srv-card anim" style="transition-delay:0.07s">
-                <div class="srv-icon">&#10024;</div>
-                <h3>Dermocosmetica</h3>
-                <p>Cuidado facial y corporal. Analisis personalizado con marcas premium.</p>
-            </div>
-            <div class="srv-card anim" style="transition-delay:0.14s">
-                <div class="srv-icon">&#127811;</div>
-                <h3>Fitoterapia</h3>
-                <p>Productos naturales, complementos y soluciones de bienestar integral.</p>
-            </div>
-            <div class="srv-card anim" style="transition-delay:0.21s">
-                <div class="srv-icon">&#128118;</div>
-                <h3>Pediatria</h3>
-                <p>Productos especializados para bebes, ninos y mamas. Asesoramiento experto.</p>
-            </div>
-            <div class="srv-card anim" style="transition-delay:0.28s">
-                <div class="srv-icon">&#128200;</div>
-                <h3>Control de salud</h3>
-                <p>Tension, glucemia, colesterol. Seguimiento continuo de parametros vitales.</p>
-            </div>
-            <div class="srv-card anim" style="transition-delay:0.35s">
-                <div class="srv-icon">&#128230;</div>
-                <h3>Pedidos especiales</h3>
-                <p>Encargos personalizados. Si no lo tenemos, lo conseguimos para ti.</p>
-            </div>
+            <div class="srv-card anim"><div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><h3>Medicamentos</h3><p>Con y sin receta, genericos y marca con consejo profesional.</p></div>
+            <div class="srv-card anim" style="transition-delay:.06s"><div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Dermocosmetica</h3><p>ISDIN, Caudalie y analisis personalizado de piel.</p></div>
+            <div class="srv-card anim" style="transition-delay:.12s"><div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4.97 0-9-2.24-9-5v-4"/><path d="M12 22c4.97 0 9-2.24 9-5v-4"/><ellipse cx="12" cy="8" rx="9" ry="5"/></svg></div><h3>Formulacion magistral</h3><p>Formulas personalizadas para cada paciente.</p></div>
+            <div class="srv-card anim" style="transition-delay:.18s"><div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div><h3>SPD personalizado</h3><p>Dosificacion segura y comoda para tu medicacion diaria.</p></div>
+            <div class="srv-card anim" style="transition-delay:.24s"><div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div><h3>Ortopedia y salud</h3><p>Tension, glucemia, productos ortopedicos y seguimiento.</p></div>
+            <div class="srv-card anim" style="transition-delay:.3s"><div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div><h3>Entrega a domicilio</h3><p>Pedidos por WhatsApp (644 719 115) y Uber Eats.</p></div>
         </div>
     </div>
 </section>
 
-<!-- About -->
+<!-- ABOUT -->
 <section class="about" id="nosotros">
-    <div class="section-inner">
-        <div class="about-layout">
+    <div class="sec-inner">
+        <div class="about-grid">
             <div class="about-visual anim">
-                <div class="about-img-frame">
-                    <div class="about-placeholder">
-                        <span class="icon">&#127978;</span>
-                        <p style="font-size: 0.85rem;">Foto de la farmacia</p>
+                <div class="about-frame">
+                    <div class="about-ph">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        <span>Foto de la farmacia</span>
                     </div>
                 </div>
-                <div class="about-float-card">
-                    <span class="afc-number">+30</span>
-                    <span class="afc-text">anos de experiencia<br>en Palma</span>
-                </div>
+                <div class="about-float"><span class="afc-num">+27</span><span class="afc-txt">anos en<br>Palma</span></div>
             </div>
-            <div class="about-content anim" style="transition-delay:0.15s">
+            <div class="about-content anim" style="transition-delay:.12s">
                 <span class="sec-tag">Nosotros</span>
-                <h2 class="sec-title">Farmacia con historia, mirada al futuro</h2>
-                <p>Farmacia La Rambla lleva mas de tres decadas siendo referencia en el centro de Palma. Un equipo profesional comprometido con la salud de cada paciente.</p>
-                <p>Combinamos la experiencia y el trato cercano con la formacion continua y las ultimas novedades farmaceuticas para ofrecerte siempre lo mejor.</p>
+                <h2 class="sec-title">Farmacia Martorell — historia y futuro</h2>
+                <p>Registrada en el COFIB como Farmacia Martorell, desde 1998 somos referencia en La Rambla 14, esquina con C/ Horts, junto al Mercat de l'Olivar.</p>
+                <p>Combinamos experiencia, trato cercano y formacion continua para ofrecerte siempre lo mejor en salud y bienestar.</p>
                 <div class="about-tags">
-                    <span class="about-tag">Atencion personalizada</span>
-                    <span class="about-tag">Equipo experto</span>
-                    <span class="about-tag">Horario ampliado</span>
-                    <span class="about-tag">Centro de Palma</span>
-                    <span class="about-tag">Formacion continua</span>
+                    <span class="about-tag">Formulacion magistral</span>
+                    <span class="about-tag">SPD</span>
+                    <span class="about-tag">Entrega a domicilio</span>
+                    <span class="about-tag">Pedidos WhatsApp</span>
+                    <span class="about-tag">Herbodietica</span>
+                    <span class="about-tag">Ortopedia</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Horario -->
-<section class="horario-section" id="horario">
-    <div class="section-inner">
-        <div class="sec-header center anim">
+<!-- HORARIO -->
+<section class="horario" id="horario">
+    <div class="sec-inner">
+        <div class="sec-head c anim">
             <span class="sec-tag">Horario y contacto</span>
             <h2 class="sec-title">Siempre disponibles</h2>
-            <p class="sec-desc">Abiertos todos los dias con horario ampliado para que nunca te quedes sin atencion.</p>
+            <p class="sec-desc">Abiertos los 7 dias con horario ampliado. Pedidos por WhatsApp al 644 719 115.</p>
         </div>
-        <div class="horario-grid">
+        <div class="hor-grid">
             <div class="h-card anim">
-                <h3>&#128336; Horario semanal</h3>
-                <div class="h-row"><span class="day">Lunes</span><span class="time">09:00 - 22:00</span></div>
-                <div class="h-row"><span class="day">Martes</span><span class="time">09:00 - 22:00</span></div>
-                <div class="h-row"><span class="day">Miercoles</span><span class="time">09:00 - 22:00</span></div>
-                <div class="h-row"><span class="day">Jueves</span><span class="time">09:00 - 22:00</span></div>
-                <div class="h-row active"><span class="day">&#9679; Viernes</span><span class="time">09:00 - 22:00</span></div>
-                <div class="h-row"><span class="day">Sabado</span><span class="time">09:00 - 22:00</span></div>
-                <div class="h-row"><span class="day">Domingo</span><span class="time">09:00 - 22:00</span></div>
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Horario semanal</h3>
+                <div class="h-row"><span class="day">Lunes</span><span class="time">09:00 – 22:00</span></div>
+                <div class="h-row"><span class="day">Martes</span><span class="time">09:00 – 22:00</span></div>
+                <div class="h-row"><span class="day">Miercoles</span><span class="time">09:00 – 22:00</span></div>
+                <div class="h-row"><span class="day">Jueves</span><span class="time">09:00 – 22:00</span></div>
+                <div class="h-row"><span class="day">Viernes</span><span class="time">09:00 – 22:00</span></div>
+                <div class="h-row"><span class="day">Sabado</span><span class="time">09:00 – 22:00</span></div>
+                <div class="h-row"><span class="day">Domingo</span><span class="time">09:00 – 22:00</span></div>
             </div>
-            <div class="h-card contact-glass anim" style="transition-delay:0.1s">
-                <h3>&#128222; Contacto</h3>
-                <div class="c-item">
-                    <div class="c-icon">&#128205;</div>
-                    <div>
-                        <div class="c-label">Direccion</div>
-                        <div class="c-value">La Rambla 14, 07003 Palma</div>
-                    </div>
+            <div class="h-card contact-gls anim" style="transition-delay:.08s">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3"/></svg> Contacto</h3>
+                <div class="c-item"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="c-lbl">Direccion</div><div class="c-val">La Rambla 14, 07003 Palma</div></div></div>
+                <div class="c-item"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3"/></svg></div><div><div class="c-lbl">Telefono</div><div class="c-val">971 71 15 11</div></div></div>
+                <div class="c-item"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div><div><div class="c-lbl">WhatsApp pedidos</div><div class="c-val">644 719 115</div></div></div>
+                <div class="c-btns">
+                    <a href="tel:971711511" class="btn-ct w"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3"/></svg> Llamar</a>
+                    <a href="https://wa.me/34644719115" class="btn-ct wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.687-1.225A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.584l-.386-.232-2.786.728.76-2.684-.264-.407A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp</a>
                 </div>
-                <div class="c-item">
-                    <div class="c-icon">&#128222;</div>
-                    <div>
-                        <div class="c-label">Telefono</div>
-                        <div class="c-value">971 71 15 11</div>
-                    </div>
-                </div>
-                <div class="c-item">
-                    <div class="c-icon">&#128337;</div>
-                    <div>
-                        <div class="c-label">Horario</div>
-                        <div class="c-value">9:00 - 22:00 todos los dias</div>
-                    </div>
-                </div>
-                <a href="#" class="maps-btn">&#127758; Ver en Google Maps</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Reviews -->
+<!-- REVIEWS -->
 <section class="reviews" id="opiniones">
-    <div class="section-inner">
-        <div class="sec-header center anim">
+    <div class="sec-inner">
+        <div class="sec-head c anim">
             <span class="sec-tag">Opiniones</span>
             <h2 class="sec-title">Nuestros clientes hablan</h2>
             <p class="sec-desc">La confianza de nuestros pacientes es nuestra mejor carta de presentacion.</p>
         </div>
-        <div class="reviews-row">
+        <div class="rev-grid">
             <div class="rev-card anim">
-                <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <blockquote>"Excelente trato, personalizado y atento. La misma atencion de siempre, un servicio excepcional."</blockquote>
-                <div class="rev-author">
-                    <div class="rev-avatar" style="background: var(--cyan)">JL</div>
-                    <div>
-                        <div class="rev-name">Jordi Llabres Sans</div>
-                        <div class="rev-src">Google Reviews</div>
-                    </div>
-                </div>
+                <div class="rev-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <blockquote>"Excelente trato, personalizado y atento. Un servicio excepcional que se mantiene en el tiempo."</blockquote>
+                <div class="rev-author"><div class="rev-av" style="background:var(--cy)">JL</div><div><div class="rev-name">Jordi Llabres Sans</div><div class="rev-src">Google Reviews</div></div></div>
             </div>
-            <div class="rev-card anim" style="transition-delay:0.08s">
-                <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <blockquote>"Muy buenos asesores, siempre dan muestras. Es mi farmacia de confianza, atienden de maravilla."</blockquote>
-                <div class="rev-author">
-                    <div class="rev-avatar" style="background: var(--cyan-deep)">CR</div>
-                    <div>
-                        <div class="rev-name">Camila Rocio Peralta</div>
-                        <div class="rev-src">Google Reviews</div>
-                    </div>
-                </div>
+            <div class="rev-card anim" style="transition-delay:.06s">
+                <div class="rev-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <blockquote>"Mi farmacia de confianza. Muy buenos asesores, siempre dan muestras y atienden de maravilla."</blockquote>
+                <div class="rev-author"><div class="rev-av" style="background:var(--cy-dark)">CR</div><div><div class="rev-name">Camila Rocio Peralta</div><div class="rev-src">Google Reviews</div></div></div>
             </div>
-            <div class="rev-card anim" style="transition-delay:0.16s">
-                <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <blockquote>"Farmacia muy recomendable, las farmaceuticas resuelven todas tus dudas con amabilidad."</blockquote>
-                <div class="rev-author">
-                    <div class="rev-avatar" style="background: var(--cyan-darker)">M</div>
-                    <div>
-                        <div class="rev-name">Mar</div>
-                        <div class="rev-src">Google Reviews</div>
-                    </div>
-                </div>
+            <div class="rev-card anim" style="transition-delay:.12s">
+                <div class="rev-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <blockquote>"Farmacia muy recomendable. Resuelven todas tus dudas con amabilidad y siempre ofrecen soluciones."</blockquote>
+                <div class="rev-author"><div class="rev-av" style="background:var(--cy-deeper)">M</div><div><div class="rev-name">Mar</div><div class="rev-src">Google Reviews</div></div></div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- SOCIAL -->
+<div class="social-bar">
+    <div class="social-inner">
+        <span>Siguenos en redes</span>
+        <a href="https://instagram.com/farmacia_larambla14" class="soc-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> @farmacia_larambla14</a>
+        <a href="https://tiktok.com/@farma.la.rambla" class="soc-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.05a8.23 8.23 0 004.8 1.54V7.14a4.85 4.85 0 01-1.04-.45z"/></svg> @farma.la.rambla</a>
+    </div>
+</div>
 
 <!-- CTA -->
 <section class="cta">
     <div class="cta-panel anim">
         <h2>Tu salud, nuestra mision</h2>
-        <p>Visitanos en La Rambla 14 o llamanos al 971 71 15 11. Estamos aqui para cuidarte.</p>
-        <a href="#horario" class="btn-white">Contactar ahora &rarr;</a>
+        <p>Visitanos en La Rambla 14 o envianos un WhatsApp al 644 719 115 para tus pedidos.</p>
+        <a href="https://wa.me/34644719115" class="btn-ct w">Escríbenos por WhatsApp &rarr;</a>
     </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-brand">
-                <a href="#" class="logo">
-                    <div class="logo-mark">+</div>
-                    <span class="logo-label">Farmacia <span>La Rambla</span></span>
-                </a>
-                <p>Tu farmacia de confianza en el centro de Palma de Mallorca desde hace mas de 30 anos.</p>
+    <div class="ft-inner">
+        <div class="ft-cols">
+            <div class="ft-brand">
+                <span class="logo-label" style="font-size:1.05rem">Farmacia <span style="color:var(--cy)">La Rambla</span></span>
+                <p>Tu farmacia de confianza en el centro de Palma de Mallorca desde 1998.</p>
             </div>
-            <div class="footer-col">
-                <h4>Navegacion</h4>
-                <ul>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#horario">Horario</a></li>
-                    <li><a href="#opiniones">Opiniones</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Servicios</h4>
-                <ul>
-                    <li><a href="#">Medicamentos</a></li>
-                    <li><a href="#">Dermocosmetica</a></li>
-                    <li><a href="#">Fitoterapia</a></li>
-                    <li><a href="#">Pediatria</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <ul>
-                    <li><a href="#">La Rambla 14, Palma</a></li>
-                    <li><a href="tel:971711511">971 71 15 11</a></li>
-                    <li><a href="#">Google Maps</a></li>
-                </ul>
-            </div>
+            <div class="ft-col"><h4>Navegacion</h4><ul><li><a href="#servicios">Servicios</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#horario">Horario</a></li><li><a href="#opiniones">Opiniones</a></li></ul></div>
+            <div class="ft-col"><h4>Servicios</h4><ul><li><a href="#">Formulacion magistral</a></li><li><a href="#">SPD</a></li><li><a href="#">Dermocosmetica</a></li><li><a href="#">Ortopedia</a></li><li><a href="#">Entrega a domicilio</a></li></ul></div>
+            <div class="ft-col"><h4>Contacto</h4><ul><li><a href="#">La Rambla 14, 07003 Palma</a></li><li><a href="tel:971711511">971 71 15 11</a></li><li><a href="https://wa.me/34644719115">WhatsApp: 644 719 115</a></li><li><a href="https://instagram.com/farmacia_larambla14" target="_blank" rel="noopener">Instagram</a></li></ul></div>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Farmacia La Rambla</span>
-            <span>Palma de Mallorca, Illes Balears</span>
-        </div>
+        <div class="ft-bottom"><span>&copy; 2026 Farmacia La Rambla</span><span>Palma de Mallorca, Illes Balears</span></div>
     </div>
 </footer>
 
 <script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('show');
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.anim').forEach(e=>o.observe(e));
 </script>
-
 </body>
 </html>

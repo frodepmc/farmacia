@@ -3,225 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia La Rambla - Prototipos Web</title>
+    <title>Farmacia La Rambla — Propuestas de diseno web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --teal: #009688;
-            --teal-dark: #00796B;
-            --teal-light: #4DB6AC;
-            --teal-ghost: #E0F2F1;
-            --dark: #1a1a2e;
-            --white: #fff;
-            --gray-100: #f5f5f5;
-            --gray-400: #9e9e9e;
-            --gray-600: #616161;
-            --gray-900: #212121;
+            --tq: #009688; --tq-dark: #00796B; --tq-light: #4DB6AC;
+            --tq-ghost: #E0F2F1; --tq-whisper: #F4FAF9;
+            --white: #fff; --ivory: #FCFBF9;
+            --g100: #F0EDEA; --g200: #E0DBD5; --g400: #A39E97; --g600: #6B6560; --g900: #1E1B18;
         }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Outfit',sans-serif;background:var(--ivory);color:var(--g900);min-height:100vh;-webkit-font-smoothing:antialiased}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        .header{background:var(--white);border-bottom:1px solid rgba(0,0,0,.05);padding:1.5rem 2rem;text-align:center}
+        .header h1{font-family:'Lora',serif;font-size:1.3rem;font-weight:600;color:var(--g900);margin-bottom:.2rem}
+        .header h1 span{color:var(--tq)}
+        .header p{font-size:.85rem;color:var(--g400)}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--gray-100);
-            color: var(--gray-900);
-            min-height: 100vh;
+        .container{max-width:1080px;margin:0 auto;padding:3rem 2rem}
+        .intro{text-align:center;margin-bottom:3rem}
+        .intro h2{font-family:'Lora',serif;font-size:1.7rem;font-weight:600;margin-bottom:.6rem}
+        .intro p{font-size:.95rem;color:var(--g600);max-width:520px;margin:0 auto;line-height:1.65}
+
+        .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+        .card{
+            background:var(--white);border-radius:16px;overflow:hidden;
+            border:1px solid rgba(0,0,0,.05);transition:all .35s ease;
+            text-decoration:none;color:inherit;display:flex;flex-direction:column;
         }
+        .card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,.08);border-color:var(--tq-light)}
 
-        .header {
-            background: var(--white);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding: 1.5rem 2rem;
-            text-align: center;
+        .card-preview{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+        .card-preview.a{background:linear-gradient(135deg,#fff,var(--tq-ghost),#fff)}
+        .card-preview.b{background:linear-gradient(135deg,#FFF9F2,var(--tq-ghost),#F5EDE3)}
+        .card-preview.c{background:linear-gradient(135deg,#0B1120,#182740,#004D40)}
+        .preview-letter{font-family:'Lora',serif;font-size:4rem;font-weight:700;opacity:.08;position:absolute}
+        .card-preview.c .preview-letter{color:white}
+        .preview-cross{position:relative;z-index:1;width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+        .preview-cross svg{width:32px;height:32px}
+        .card-preview.a .preview-cross svg{stroke:var(--tq);opacity:.35}
+        .card-preview.b .preview-cross svg{stroke:#C4816B;opacity:.35}
+        .card-preview.c .preview-cross svg{stroke:#64FFDA;opacity:.3}
+
+        .card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+        .card-tag{
+            display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.1em;
+            text-transform:uppercase;color:var(--tq);background:var(--tq-ghost);
+            padding:3px 9px;border-radius:4px;margin-bottom:.65rem;width:fit-content;
         }
-
-        .header h1 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 0.25rem;
+        .card h3{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;margin-bottom:.4rem}
+        .card p{font-size:.85rem;color:var(--g600);line-height:1.6;margin-bottom:1rem;flex:1}
+        .card-features{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.25rem}
+        .card-features li{font-size:.72rem;background:var(--g100);padding:3px 9px;border-radius:100px;color:var(--g600)}
+        .card-btn{
+            display:flex;align-items:center;justify-content:center;gap:6px;
+            background:var(--tq);color:white;padding:11px;border-radius:9px;
+            font-size:.87rem;font-weight:600;transition:background .25s;
         }
+        .card-btn svg{width:14px;height:14px}
+        .card:hover .card-btn{background:var(--tq-dark)}
 
-        .header h1 span { color: var(--teal); }
+        .footer{text-align:center;padding:2rem;font-size:.78rem;color:var(--g400)}
+        .footer a{color:var(--tq);text-decoration:none}
 
-        .header p {
-            font-size: 0.88rem;
-            color: var(--gray-400);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .intro {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .intro h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--gray-900);
-        }
-
-        .intro p {
-            font-size: 1rem;
-            color: var(--gray-600);
-            max-width: 550px;
-            margin: 0 auto;
-            line-height: 1.65;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.06);
-            transition: all 0.35s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.1);
-            border-color: var(--teal-light);
-        }
-
-        .card-preview {
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-preview.a {
-            background: linear-gradient(135deg, #fff 0%, var(--teal-ghost) 50%, #fff 100%);
-        }
-
-        .card-preview.b {
-            background: linear-gradient(135deg, #FFF8F0, #E0F2F1, #F5EDE3);
-        }
-
-        .card-preview.c {
-            background: linear-gradient(135deg, #0A1628, #1A2942, #004D40);
-        }
-
-        .preview-label {
-            font-size: 3rem;
-            font-weight: 800;
-            opacity: 0.12;
-            position: absolute;
-        }
-
-        .preview-icon {
-            font-size: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-body {
-            padding: 1.75rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--teal);
-            background: var(--teal-ghost);
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-bottom: 0.75rem;
-            width: fit-content;
-        }
-
-        .card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
-            font-size: 0.88rem;
-            color: var(--gray-600);
-            line-height: 1.6;
-            margin-bottom: 1.25rem;
-            flex: 1;
-        }
-
-        .card-features {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-features li {
-            font-size: 0.75rem;
-            background: var(--gray-100);
-            padding: 4px 10px;
-            border-radius: 100px;
-            color: var(--gray-600);
-        }
-
-        .card-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: var(--teal);
-            color: white;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .card:hover .card-btn {
-            background: var(--teal-dark);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.8rem;
-            color: var(--gray-400);
-        }
-
-        @media (max-width: 768px) {
-            .cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-            .intro h2 { font-size: 1.5rem; }
-            .container { padding: 2rem 1.5rem; }
-        }
-
-        @media (max-width: 480px) {
-            .cards { max-width: 100%; }
-            .intro h2 { font-size: 1.3rem; }
-            .header h1 { font-size: 1.2rem; }
-        }
+        @media(max-width:768px){.cards{grid-template-columns:1fr;max-width:400px;margin:0 auto} .intro h2{font-size:1.4rem} .container{padding:2rem 1.5rem}}
+        @media(max-width:480px){.cards{max-width:100%} .intro h2{font-size:1.25rem} .header h1{font-size:1.15rem}}
     </style>
 </head>
 <body>
@@ -240,65 +88,74 @@
     <div class="cards">
         <a href="prototipo-a-elegante.html" class="card">
             <div class="card-preview a">
-                <span class="preview-label">A</span>
-                <span class="preview-icon">&#9674;</span>
+                <span class="preview-letter">A</span>
+                <div class="preview-cross"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
             </div>
             <div class="card-body">
                 <span class="card-tag">Prototipo A</span>
                 <h3>Elegante Minimalista</h3>
-                <p>Diseno limpio y sofisticado con tipografia serif. Mucho espacio en blanco, sombras sutiles y animaciones elegantes.</p>
+                <p>Diseno limpio y sofisticado con tipografia serif Lora. Tonos ivory y turquesa con sombras sutiles.</p>
                 <ul class="card-features">
                     <li>Fondo claro</li>
-                    <li>Playfair Display</li>
+                    <li>Lora + Outfit</li>
                     <li>Minimalista</li>
-                    <li>Premium</li>
+                    <li>Editorial</li>
                 </ul>
-                <div class="card-btn">Ver prototipo A &rarr;</div>
+                <div class="card-btn">
+                    Ver prototipo A
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
             </div>
         </a>
 
         <a href="prototipo-b-calida.html" class="card">
             <div class="card-preview b">
-                <span class="preview-label">B</span>
-                <span class="preview-icon">&#10047;</span>
+                <span class="preview-letter">B</span>
+                <div class="preview-cross"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
             </div>
             <div class="card-body">
                 <span class="card-tag">Prototipo B</span>
                 <h3>Calida y Cercana</h3>
-                <p>Estetica acogedora con tonos crema y turquesa. Transmite confianza, cercanía y tradicion familiar.</p>
+                <p>Estetica acogedora con tonos crema y turquesa. Tipografia Fraunces que transmite confianza y tradicion.</p>
                 <ul class="card-features">
                     <li>Tonos calidos</li>
-                    <li>DM Serif Display</li>
+                    <li>Fraunces + Nunito</li>
                     <li>Familiar</li>
                     <li>Acogedora</li>
                 </ul>
-                <div class="card-btn">Ver prototipo B &rarr;</div>
+                <div class="card-btn">
+                    Ver prototipo B
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
             </div>
         </a>
 
         <a href="prototipo-c-moderna.html" class="card">
             <div class="card-preview c">
-                <span class="preview-label" style="color: rgba(255,255,255,0.08);">C</span>
-                <span class="preview-icon" style="filter: brightness(2);">&#9889;</span>
+                <span class="preview-letter">C</span>
+                <div class="preview-cross"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
             </div>
             <div class="card-body">
                 <span class="card-tag">Prototipo C</span>
                 <h3>Moderna y Dinamica</h3>
-                <p>Tema oscuro con turquesa neon. Diseno contemporaneo, audaz y tech-forward con efectos de luz.</p>
+                <p>Tema oscuro con turquesa neon y grid luminoso. Tipografia Manrope con estetica contemporanea.</p>
                 <ul class="card-features">
                     <li>Tema oscuro</li>
-                    <li>Space Grotesk</li>
+                    <li>Manrope</li>
                     <li>Tech-forward</li>
                     <li>Audaz</li>
                 </ul>
-                <div class="card-btn">Ver prototipo C &rarr;</div>
+                <div class="card-btn">
+                    Ver prototipo C
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
             </div>
         </a>
     </div>
 </div>
 
 <div class="footer">
-    Farmacia La Rambla &mdash; La Rambla 14, 07003 Palma de Mallorca &mdash; 971 71 15 11
+    Farmacia La Rambla &mdash; La Rambla 14, 07003 Palma de Mallorca &mdash; <a href="tel:971711511">971 71 15 11</a>
 </div>
 
 </body>

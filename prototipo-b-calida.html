@@ -3,1028 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia La Rambla - Prototipo B: Calida y Cercana</title>
+    <title>Farmacia La Rambla — Tu farmacia de confianza en Palma</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --teal: #009688;
             --teal-dark: #00796B;
-            --teal-deeper: #004D40;
+            --teal-deep: #004D40;
             --teal-light: #4DB6AC;
             --teal-pale: #B2DFDB;
             --teal-ghost: #E0F2F1;
-            --cream: #FFF8F0;
-            --cream-dark: #F5EDE3;
-            --warm-white: #FFFCF9;
-            --sand: #E8DDD3;
+            --cream: #FFF9F2;
+            --cream-mid: #F5EDE3;
+            --cream-dark: #E8DDD1;
+            --warm-white: #FFFCF8;
             --terracotta: #C4816B;
-            --white: #FFFFFF;
             --text-dark: #2D2A26;
             --text-mid: #5C5650;
             --text-light: #8A8279;
             --text-faint: #B5AEA6;
-            --radius-sm: 12px;
-            --radius-md: 20px;
-            --radius-lg: 28px;
-            --radius-xl: 40px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            color: var(--text-dark);
-            background: var(--warm-white);
-            overflow-x: hidden;
-        }
-
-        /* ===== NAVBAR ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            transition: all 0.4s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.5rem 2rem;
-        }
-
-        .nav-bar {
-            max-width: 1140px;
-            margin: 0 auto;
-            background: rgba(255,252,249,0.92);
-            backdrop-filter: blur(24px);
-            border-radius: 100px;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 60px;
-            border: 1px solid rgba(0,150,136,0.08);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-cross {
-            width: 32px;
-            height: 32px;
-            background: var(--teal);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .logo-name {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.15rem;
-            color: var(--text-dark);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.75rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-mid);
-            font-size: 0.88rem;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover { color: var(--teal); }
-
-        .nav-pill {
-            background: var(--teal) !important;
-            color: white !important;
-            padding: 8px 22px;
-            border-radius: 100px;
-            transition: all 0.3s !important;
-        }
-
-        .nav-pill:hover {
-            background: var(--teal-dark) !important;
-            transform: scale(1.03);
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 7rem 2rem 4rem;
-            background: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg-shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.4;
-        }
-
-        .hero-bg-shape.one {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--teal-pale) 0%, transparent 70%);
-            top: -200px;
-            right: -100px;
-        }
-
-        .hero-bg-shape.two {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--cream-dark) 0%, transparent 70%);
-            bottom: -100px;
-            left: -50px;
-        }
-
-        .hero-inner {
-            max-width: 1140px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--white);
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--teal-dark);
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-        }
-
-        .hero-tag svg { flex-shrink: 0; }
-
-        .hero h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3.4rem;
-            line-height: 1.15;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 .highlight {
-            color: var(--teal);
-            position: relative;
-        }
-
-        .hero h1 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: var(--teal-pale);
-            opacity: 0.5;
-            border-radius: 4px;
-            z-index: -1;
-        }
-
-        .hero-desc {
-            font-size: 1.08rem;
-            line-height: 1.75;
-            color: var(--text-mid);
-            margin-bottom: 2.5rem;
-            max-width: 480px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn-warm {
-            background: var(--teal);
-            color: white;
-            padding: 15px 32px;
-            border: none;
-            border-radius: 100px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,150,136,0.25);
-        }
-
-        .btn-warm:hover {
-            background: var(--teal-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,150,136,0.3);
-        }
-
-        .btn-soft {
-            color: var(--text-mid);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s;
-        }
-
-        .btn-soft:hover { color: var(--teal); }
-
-        .btn-soft .arrow {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: all 0.3s;
-        }
-
-        .btn-soft:hover .arrow {
-            background: var(--teal-ghost);
-        }
-
-        .hero-visual {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .hero-mosaic {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-        }
-
-        .mosaic-tile {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 1.75rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: all 0.3s;
-        }
-
-        .mosaic-tile:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
-        }
-
-        .mosaic-tile.span { grid-column: span 2; }
-
-        .tile-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 1rem;
-        }
-
-        .tile-icon.teal { background: var(--teal-ghost); }
-        .tile-icon.cream { background: var(--cream-dark); }
-        .tile-icon.warm { background: #FFF3E0; }
-
-        .mosaic-tile h4 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .mosaic-tile p {
-            font-size: 0.83rem;
-            color: var(--text-light);
-            line-height: 1.55;
-        }
-
-        .hero-trust {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding-top: 1rem;
-        }
-
-        .trust-avatars {
-            display: flex;
-        }
-
-        .trust-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 3px solid var(--cream);
-            margin-left: -10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: white;
-        }
-
-        .trust-avatar:first-child { margin-left: 0; }
-
-        .trust-text {
-            font-size: 0.85rem;
-            color: var(--text-mid);
-        }
-
-        .trust-text strong { color: var(--teal-dark); }
-
-        /* ===== SECTIONS COMMON ===== */
-        section { padding: 6rem 2rem; }
-
-        .section-inner { max-width: 1140px; margin: 0 auto; }
-
-        .section-eyebrow {
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--teal);
-            margin-bottom: 0.75rem;
-        }
-
-        .section-heading {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.4rem;
-            line-height: 1.2;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
-            color: var(--text-light);
-            font-size: 1.02rem;
-            line-height: 1.7;
-            max-width: 520px;
-        }
-
-        .section-head { margin-bottom: 3.5rem; }
-        .section-head.centered { text-align: center; }
-        .section-head.centered .section-desc { margin: 0 auto; }
-
-        /* ===== SERVICIOS ===== */
-        .servicios-section { background: var(--warm-white); }
-
-        .servicios-flex {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-        }
-
-        .servicio-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 2rem;
-            border: 1px solid rgba(0,0,0,0.04);
-            display: flex;
-            gap: 1.25rem;
-            align-items: flex-start;
-            transition: all 0.35s ease;
-            cursor: default;
-        }
-
-        .servicio-card:hover {
-            background: var(--teal-ghost);
-            border-color: var(--teal-pale);
-            transform: translateX(4px);
-        }
-
-        .servicio-num {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            color: var(--teal-pale);
-            line-height: 1;
-            flex-shrink: 0;
-            width: 40px;
-            transition: color 0.3s;
-        }
-
-        .servicio-card:hover .servicio-num { color: var(--teal); }
-
-        .servicio-card h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .servicio-card p {
-            font-size: 0.88rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* ===== NOSOTROS ===== */
-        .nosotros-section { background: var(--cream); }
-
-        .nosotros-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .nosotros-img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            background: linear-gradient(160deg, var(--teal-pale) 0%, var(--teal-ghost) 50%, var(--cream-dark) 100%);
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nosotros-img-inner {
-            text-align: center;
-            color: var(--teal-dark);
-            opacity: 0.6;
-        }
-
-        .nosotros-img-inner .big-icon { font-size: 5rem; display: block; margin-bottom: 0.75rem; }
-
-        .nosotros-badge {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            right: 1.5rem;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(10px);
-            padding: 1.25rem 1.5rem;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nosotros-badge-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--teal);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .nosotros-badge-text {
-            font-size: 0.88rem;
-            color: var(--text-mid);
-            line-height: 1.5;
-        }
-
-        .nosotros-badge-text strong {
-            display: block;
-            color: var(--text-dark);
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem;
-        }
-
-        .nosotros-content .section-heading {
-            margin-bottom: 1.25rem;
-        }
-
-        .nosotros-content p {
-            color: var(--text-mid);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .valores-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            margin-top: 1.5rem;
-        }
-
-        .valores-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-            color: var(--text-mid);
-        }
-
-        .valor-dot {
-            width: 28px;
-            height: 28px;
-            background: var(--teal-ghost);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--teal);
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        /* ===== HORARIO / CONTACTO ===== */
-        .info-section { background: var(--warm-white); }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .info-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 2.25rem;
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: all 0.3s;
-        }
-
-        .info-card:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-        }
-
-        .info-card.featured {
-            background: var(--teal);
-            color: white;
-            border: none;
-            box-shadow: 0 8px 30px rgba(0,150,136,0.2);
-        }
-
-        .info-card h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem;
-            margin-bottom: 1.75rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .info-card.featured h3 { color: white; }
-
-        .schedule-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.7rem 0;
-            border-bottom: 1px solid var(--cream-dark);
-            font-size: 0.9rem;
-        }
-
-        .schedule-row:last-child { border-bottom: none; }
-
-        .schedule-row .day { color: var(--text-mid); }
-        .schedule-row .hours { font-weight: 600; color: var(--teal-dark); }
-
-        .contact-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 0.9rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-        }
-
-        .contact-row:last-child { border-bottom: none; }
-
-        .contact-row-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        .contact-row-text {
-            font-size: 0.88rem;
-            opacity: 0.9;
-        }
-
-        .contact-row-text strong {
-            display: block;
-            font-size: 0.95rem;
-            opacity: 1;
-        }
-
-        .map-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 180px;
-            background: linear-gradient(135deg, var(--teal-ghost), var(--cream-dark));
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--teal);
-            font-size: 2.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .map-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--teal);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: gap 0.3s;
-        }
-
-        .map-link:hover { gap: 12px; }
-
-        /* ===== REVIEWS ===== */
-        .reviews-section { background: var(--cream); }
-
-        .reviews-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 3rem;
-        }
-
-        .rating-summary {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .rating-big {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3.5rem;
-            color: var(--teal-dark);
-            line-height: 1;
-        }
-
-        .rating-meta .stars {
-            color: #FFB300;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
-        }
-
-        .rating-meta .count {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-
-        .review-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 2rem;
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: all 0.3s;
-        }
-
-        .review-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-        }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1.25rem;
-        }
-
-        .review-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: white;
-        }
-
-        .review-author-name {
-            font-weight: 600;
-            font-size: 0.92rem;
-            color: var(--text-dark);
-        }
-
-        .review-author-stars {
-            color: #FFB300;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .review-card blockquote {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--text-mid);
-            font-style: normal;
-        }
-
-        /* ===== CTA ===== */
-        .cta-section {
-            background: var(--warm-white);
-            padding: 6rem 2rem;
-        }
-
-        .cta-box {
-            max-width: 1140px;
-            margin: 0 auto;
-            background: var(--cream);
-            border-radius: var(--radius-xl);
-            padding: 4rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 250px;
-            height: 250px;
-            background: var(--teal-pale);
-            border-radius: 50%;
-            opacity: 0.3;
-        }
-
-        .cta-text { position: relative; z-index: 1; }
-
-        .cta-text h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-dark);
-        }
-
-        .cta-text p {
-            color: var(--text-mid);
-            font-size: 1rem;
-            line-height: 1.65;
-            max-width: 450px;
-        }
-
-        .cta-actions {
-            display: flex;
-            gap: 1rem;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-warm-outline {
-            background: var(--white);
-            color: var(--teal-dark);
-            padding: 14px 28px;
-            border: 1.5px solid var(--teal-pale);
-            border-radius: 100px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-warm-outline:hover {
-            background: var(--teal-ghost);
-            border-color: var(--teal);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--teal-deeper);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-inner { max-width: 1140px; margin: 0 auto; }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-about p {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.88rem;
-            line-height: 1.7;
-            margin-top: 1rem;
-        }
-
-        .footer-about .logo-name { color: white; }
-
-        .footer-col h4 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--teal-light);
-            margin-bottom: 1.25rem;
-        }
-
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.7rem; }
-
-        .footer-col a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            font-size: 0.88rem;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover { color: white; }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.3);
-        }
-
-        /* ===== RESPONSIVE ===== */
-
-        /* Tablet landscape */
-        @media (max-width: 1024px) {
-            .hero h1 { font-size: 2.8rem; }
-            .hero-inner { gap: 2.5rem; }
-            .info-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-        }
-
-        /* Tablet portrait */
-        @media (max-width: 768px) {
-            section { padding: 4rem 1.5rem; }
-
-            .nav-bar { padding: 0 1.25rem; height: 56px; }
-            nav { padding: 0.75rem 1.5rem; }
-
-            .hero { padding: 5.5rem 1.5rem 3rem; }
-            .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-            .hero-visual { order: -1; }
-            .hero h1 { font-size: 2.3rem; }
-            .hero-desc { font-size: 0.98rem; }
-            .hero-actions { flex-wrap: wrap; }
-
-            .servicios-flex { grid-template-columns: 1fr; }
-            .nosotros-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-            .nosotros-img { aspect-ratio: 16/10; }
-
-            .info-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .info-card:last-child { grid-column: span 2; }
-            .reviews-grid { grid-template-columns: 1fr 1fr; }
-            .reviews-top { flex-direction: column; gap: 1rem; align-items: flex-start; }
-
-            .cta-box { flex-direction: column; text-align: center; padding: 3rem 2rem; }
-            .cta-text p { margin: 0 auto; }
-            .cta-actions { justify-content: center; flex-wrap: wrap; }
-
-            .section-heading { font-size: 2rem; }
-            .section-desc { font-size: 0.95rem; }
-
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-        }
-
-        /* Mobile */
-        @media (max-width: 480px) {
-            section { padding: 3.5rem 1rem; }
-
-            .nav-links { display: none; }
-            nav { padding: 0.5rem 1rem; }
-            .nav-bar { padding: 0 1rem; }
-
-            .hero { padding: 5rem 1rem 2.5rem; }
-            .hero h1 { font-size: 1.9rem; }
-            .hero-desc { font-size: 0.92rem; }
-            .hero-tag { font-size: 0.75rem; padding: 6px 12px; }
-            .hero-actions { flex-direction: column; width: 100%; }
-            .btn-warm { width: 100%; justify-content: center; text-align: center; }
-            .btn-soft { justify-content: center; }
-
-            .hero-mosaic { grid-template-columns: 1fr; }
-            .mosaic-tile.span { grid-column: span 1; }
-            .mosaic-tile { padding: 1.5rem; }
-
-            .hero-trust { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
-
-            .servicio-card { padding: 1.5rem; gap: 1rem; }
-            .servicio-num { font-size: 1.5rem; width: 32px; }
-
-            .section-heading { font-size: 1.7rem; }
-            .section-eyebrow { font-size: 0.72rem; }
-
-            .nosotros-img { aspect-ratio: 4/3; }
-            .nosotros-badge { padding: 1rem; gap: 0.75rem; }
-            .nosotros-badge-icon { width: 40px; height: 40px; font-size: 16px; }
-            .valores-list li { font-size: 0.88rem; }
-
-            .info-grid { grid-template-columns: 1fr; }
-            .info-card:last-child { grid-column: span 1; }
-            .info-card { padding: 1.75rem; }
-            .schedule-row { font-size: 0.85rem; }
-
-            .reviews-grid { grid-template-columns: 1fr; }
-            .review-card { padding: 1.5rem; }
-            .rating-big { font-size: 2.5rem; }
-
-            .cta-box { padding: 2.5rem 1.25rem; border-radius: 24px; }
-            .cta-text h2 { font-size: 1.6rem; }
-            .cta-actions { flex-direction: column; width: 100%; }
-            .btn-warm, .btn-warm-outline { width: 100%; justify-content: center; }
-
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .footer-bottom { text-align: center; }
-        }
-
-        /* Tiny screens */
-        @media (max-width: 360px) {
-            .hero h1 { font-size: 1.65rem; }
-            .section-heading { font-size: 1.5rem; }
-            .hero-mosaic { gap: 0.75rem; }
-            .info-card { padding: 1.5rem; }
-            .rating-summary { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-        }
-
-        /* ===== SCROLL ANIMATIONS ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            --white: #FFFFFF;
+        }
+
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Nunito Sans',sans-serif;color:var(--text-dark);background:var(--warm-white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+        /* === NAV === */
+        nav{position:fixed;top:0;width:100%;z-index:100;padding:.75rem 1.5rem;transition:padding .3s}
+        nav.scrolled{padding:.5rem 1.5rem}
+        .nav-bar{
+            max-width:1120px;margin:0 auto;background:rgba(255,252,248,.92);backdrop-filter:blur(20px) saturate(1.4);
+            border-radius:100px;padding:0 1.75rem;display:flex;align-items:center;justify-content:space-between;
+            height:56px;border:1px solid rgba(0,150,136,.06);box-shadow:0 2px 16px rgba(0,0,0,.03);
+        }
+        .logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+        .logo-dot{
+            width:30px;height:30px;background:var(--teal);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+        }
+        .logo-dot svg{width:14px;height:14px}
+        .logo-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--text-dark)}
+        .nav-links{display:flex;list-style:none;gap:1.5rem;align-items:center}
+        .nav-links a{text-decoration:none;color:var(--text-light);font-size:.85rem;font-weight:500;transition:color .25s}
+        .nav-links a:hover{color:var(--teal)}
+        .nav-pill{background:var(--teal)!important;color:white!important;padding:7px 18px;border-radius:100px}
+        .nav-pill:hover{background:var(--teal-dark)!important}
+        .nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--text-dark)}
+
+        /* === HERO === */
+        .hero{min-height:100vh;display:flex;align-items:center;padding:6.5rem 1.5rem 4rem;background:var(--cream);position:relative;overflow:hidden}
+        .hero-orb{position:absolute;border-radius:50%;opacity:.35}
+        .hero-orb.a{width:500px;height:500px;background:radial-gradient(circle,var(--teal-pale),transparent 65%);top:-180px;right:-80px}
+        .hero-orb.b{width:350px;height:350px;background:radial-gradient(circle,var(--cream-dark),transparent 65%);bottom:-100px;left:-60px}
+        .hero-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:3.5rem;align-items:center;position:relative;z-index:1}
+        .hero-tag{
+            display:inline-flex;align-items:center;gap:7px;background:var(--white);
+            padding:7px 16px;border-radius:100px;font-size:.8rem;font-weight:500;color:var(--teal-dark);
+            box-shadow:0 2px 8px rgba(0,0,0,.03);margin-bottom:1.5rem;
+        }
+        .hero-tag .dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+        .hero h1{font-family:'Fraunces',serif;font-size:3.1rem;line-height:1.15;color:var(--text-dark);margin-bottom:1.25rem;font-weight:600}
+        .hero h1 .hl{color:var(--teal);position:relative}
+        .hero h1 .hl::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:6px;background:var(--teal-pale);opacity:.45;border-radius:3px;z-index:-1}
+        .hero-desc{font-size:1.05rem;line-height:1.75;color:var(--text-mid);margin-bottom:2.25rem;max-width:460px}
+        .hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+        .btn-warm{
+            background:var(--teal);color:white;padding:13px 28px;border:none;border-radius:100px;
+            font-size:.92rem;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;
+            display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(0,150,136,.2);
+        }
+        .btn-warm:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,150,136,.28)}
+        .btn-soft{
+            color:var(--text-mid);text-decoration:none;font-weight:500;font-size:.92rem;
+            display:inline-flex;align-items:center;gap:7px;transition:color .25s;
+        }
+        .btn-soft:hover{color:var(--teal)}
+        .btn-soft .arr{
+            width:32px;height:32px;border-radius:50%;background:var(--white);
+            display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.05);
+        }
+        .btn-soft .arr svg{width:14px;height:14px}
+        .hero-trust{display:flex;align-items:center;gap:1.25rem;margin-top:1.75rem}
+        .trust-avs{display:flex}
+        .trust-av{
+            width:32px;height:32px;border-radius:50%;border:2.5px solid var(--cream);margin-left:-8px;
+            display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:white;
+        }
+        .trust-av:first-child{margin-left:0}
+        .trust-txt{font-size:.82rem;color:var(--text-mid)}
+        .trust-txt strong{color:var(--teal-dark)}
+
+        /* hero mosaic */
+        .hero-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .mosaic-tile{
+            background:var(--white);border-radius:18px;padding:1.5rem;
+            box-shadow:0 3px 14px rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.02);transition:all .3s;
+        }
+        .mosaic-tile:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,.06)}
+        .mosaic-tile.span{grid-column:span 2}
+        .tile-ic{
+            width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+            margin-bottom:.75rem;
+        }
+        .tile-ic svg{width:20px;height:20px}
+        .tile-ic.teal{background:var(--teal-ghost);color:var(--teal)}
+        .tile-ic.cream{background:var(--cream-mid);color:var(--terracotta)}
+        .tile-ic.warm{background:#FFF3E0;color:#E65100}
+        .mosaic-tile h4{font-family:'Fraunces',serif;font-size:.98rem;margin-bottom:.35rem;color:var(--text-dark)}
+        .mosaic-tile p{font-size:.8rem;color:var(--text-light);line-height:1.5}
+
+        /* === BRANDS === */
+        .brands{padding:2.5rem 1.5rem;background:var(--warm-white);border-top:1px solid var(--cream-mid);border-bottom:1px solid var(--cream-mid)}
+        .brands-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+        .brands-label{font-size:.72rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+        .brand-tag{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--cream-dark);letter-spacing:.03em;transition:color .25s}
+        .brand-tag:hover{color:var(--teal)}
+
+        /* === SECTIONS === */
+        section{padding:5.5rem 1.5rem}
+        .sec-inner{max-width:1120px;margin:0 auto}
+        .sec-eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
+        .sec-heading{font-family:'Fraunces',serif;font-size:2.2rem;line-height:1.2;color:var(--text-dark);margin-bottom:.75rem}
+        .sec-desc{color:var(--text-light);font-size:1rem;line-height:1.7;max-width:500px}
+        .sec-head{margin-bottom:3rem}
+        .sec-head.c{text-align:center}
+        .sec-head.c .sec-desc{margin:0 auto}
+
+        /* === SERVICIOS === */
+        .servicios{background:var(--warm-white)}
+        .srv-flex{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .srv-item{
+            background:var(--white);border-radius:18px;padding:1.75rem;
+            border:1px solid rgba(0,0,0,.03);display:flex;gap:1.25rem;align-items:flex-start;
+            transition:all .3s;cursor:default;
+        }
+        .srv-item:hover{background:var(--teal-ghost);border-color:var(--teal-pale);transform:translateX(3px)}
+        .srv-num{font-family:'Fraunces',serif;font-size:1.8rem;color:var(--teal-pale);line-height:1;flex-shrink:0;width:36px;transition:color .25s}
+        .srv-item:hover .srv-num{color:var(--teal)}
+        .srv-item h3{font-family:'Fraunces',serif;font-size:1.02rem;margin-bottom:.35rem;color:var(--text-dark)}
+        .srv-item p{font-size:.85rem;color:var(--text-light);line-height:1.55}
+
+        /* === NOSOTROS === */
+        .nosotros{background:var(--cream)}
+        .nos-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+        .nos-img{
+            width:100%;aspect-ratio:4/5;border-radius:22px;overflow:hidden;position:relative;
+            background:linear-gradient(155deg,var(--teal-pale),var(--teal-ghost) 50%,var(--cream-mid));
+            display:flex;align-items:center;justify-content:center;
+        }
+        .nos-img-ph{text-align:center;color:var(--teal-dark);opacity:.45}
+        .nos-img-ph svg{width:56px;height:56px;margin-bottom:.5rem;display:block;margin:0 auto .5rem}
+        .nos-img-ph span{font-size:.8rem}
+        .nos-badge{
+            position:absolute;bottom:1.25rem;left:1.25rem;right:1.25rem;
+            background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+            padding:1rem 1.25rem;border-radius:12px;display:flex;align-items:center;gap:.75rem;
+        }
+        .nos-badge-ic{
+            width:42px;height:42px;background:var(--teal);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;flex-shrink:0;
+        }
+        .nos-badge-ic svg{width:20px;height:20px}
+        .nos-badge-txt strong{font-family:'Fraunces',serif;font-size:1rem;display:block;color:var(--text-dark)}
+        .nos-badge-txt span{font-size:.82rem;color:var(--text-mid)}
+        .nos-content .sec-heading{margin-bottom:1rem}
+        .nos-content p{color:var(--text-mid);line-height:1.8;margin-bottom:1.25rem}
+        .valores{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-top:1.25rem}
+        .valores li{display:flex;align-items:center;gap:9px;font-size:.92rem;color:var(--text-mid)}
+        .val-dot{
+            width:24px;height:24px;background:var(--teal-ghost);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);
+        }
+        .val-dot svg{width:12px;height:12px}
+
+        /* === INFO === */
+        .info{background:var(--warm-white)}
+        .info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem}
+        .info-card{background:var(--white);border-radius:18px;padding:2rem;border:1px solid rgba(0,0,0,.03);transition:all .25s}
+        .info-card:hover{box-shadow:0 6px 22px rgba(0,0,0,.04)}
+        .info-card.featured{background:var(--teal);color:white;border:none;box-shadow:0 6px 22px rgba(0,150,136,.18)}
+        .info-card h3{font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+        .info-card h3 svg{width:18px;height:18px;flex-shrink:0}
+        .info-card.featured h3{color:white}
+        .sched-row{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--cream-mid);font-size:.87rem}
+        .sched-row:last-child{border-bottom:none}
+        .sched-row .day{color:var(--text-mid)}
+        .sched-row .hrs{font-weight:600;color:var(--teal-dark)}
+        .ct-row{display:flex;align-items:center;gap:12px;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+        .ct-row:last-of-type{border-bottom:none}
+        .ct-row-ic{
+            width:36px;height:36px;background:rgba(255,255,255,.12);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;flex-shrink:0;
+        }
+        .ct-row-ic svg{width:16px;height:16px}
+        .ct-row-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;opacity:.6}
+        .ct-row-val{font-weight:500;font-size:.9rem}
+        .ct-btns{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+        .btn-ct{
+            padding:9px 18px;border-radius:100px;text-decoration:none;font-weight:600;font-size:.82rem;
+            transition:all .25s;display:inline-flex;align-items:center;gap:5px;
+        }
+        .btn-ct.white{background:white;color:var(--teal-dark)}
+        .btn-ct.white:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+        .btn-ct.wa{background:#25D366;color:white}
+        .btn-ct.wa:hover{background:#1fbd59}
+        .map-card{position:relative;overflow:hidden}
+        .map-ph{
+            width:100%;height:160px;background:linear-gradient(135deg,var(--teal-ghost),var(--cream-mid));
+            border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;
+        }
+        .map-ph svg{width:40px;height:40px;color:var(--teal);opacity:.4}
+        .map-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal);text-decoration:none;font-weight:600;font-size:.87rem;transition:gap .25s}
+        .map-link:hover{gap:10px}
+        .map-link svg{width:14px;height:14px}
+
+        /* === REVIEWS === */
+        .reviews{background:var(--cream)}
+        .reviews-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+        .rating-sum{display:flex;align-items:center;gap:1.25rem}
+        .rating-big{font-family:'Fraunces',serif;font-size:3rem;color:var(--teal-dark);line-height:1;font-weight:700}
+        .rating-stars{display:flex;gap:2px;margin-bottom:3px}
+        .rating-stars svg{width:15px;height:15px;color:#FFB300}
+        .rating-count{font-size:.82rem;color:var(--text-light)}
+        .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+        .rev-card{background:var(--white);border-radius:18px;padding:1.75rem;border:1px solid rgba(0,0,0,.02);transition:all .25s}
+        .rev-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.05)}
+        .rev-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+        .rev-av{
+            width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+            font-weight:700;font-size:.82rem;color:white;
+        }
+        .rev-author-name{font-weight:600;font-size:.88rem;color:var(--text-dark)}
+        .rev-author-stars{display:flex;gap:1px}
+        .rev-author-stars svg{width:12px;height:12px;color:#FFB300}
+        .rev-card blockquote{font-size:.87rem;line-height:1.65;color:var(--text-mid);font-style:normal}
+
+        /* === SOCIAL === */
+        .social{padding:2.5rem 1.5rem;background:var(--teal-ghost);border-top:1px solid var(--teal-pale)}
+        .social-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+        .social-inner>span{font-size:.82rem;color:var(--text-light);font-weight:500}
+        .social-a{
+            display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:var(--text-mid);
+            font-size:.85rem;font-weight:500;padding:7px 14px;border-radius:8px;
+            border:1px solid var(--cream-dark);background:var(--white);transition:all .25s;
+        }
+        .social-a:hover{border-color:var(--teal);color:var(--teal)}
+        .social-a svg{width:16px;height:16px}
+
+        /* === CTA === */
+        .cta{background:var(--warm-white);padding:5rem 1.5rem}
+        .cta-box{
+            max-width:1120px;margin:0 auto;background:var(--cream);border-radius:32px;
+            padding:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2.5rem;
+            position:relative;overflow:hidden;
+        }
+        .cta-box::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--teal-pale);border-radius:50%;opacity:.25}
+        .cta-txt{position:relative;z-index:1}
+        .cta-txt h2{font-family:'Fraunces',serif;font-size:1.8rem;margin-bottom:.6rem;color:var(--text-dark)}
+        .cta-txt p{color:var(--text-mid);font-size:.95rem;line-height:1.6;max-width:420px}
+        .cta-actions{display:flex;gap:.75rem;flex-shrink:0;position:relative;z-index:1;flex-wrap:wrap}
+
+        /* === FOOTER === */
+        footer{background:var(--teal-deep);color:white;padding:3.5rem 1.5rem 1.75rem}
+        .ft-inner{max-width:1120px;margin:0 auto}
+        .ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.08)}
+        .ft-about p{color:rgba(255,255,255,.5);font-size:.85rem;line-height:1.7;margin-top:.75rem}
+        .ft-about .logo-name{color:white}
+        .ft-col h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-light);margin-bottom:1rem}
+        .ft-col ul{list-style:none}
+        .ft-col li{margin-bottom:.55rem}
+        .ft-col a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.85rem;transition:color .25s}
+        .ft-col a:hover{color:white}
+        .ft-bottom{text-align:center;font-size:.78rem;color:rgba(255,255,255,.25)}
+
+        /* === RESPONSIVE === */
+        @media(max-width:1024px){
+            .hero h1{font-size:2.6rem} .hero-inner{gap:2.5rem}
+            .info-grid{grid-template-columns:1fr 1fr} .info-card:last-child{grid-column:span 2}
+            .ft-grid{grid-template-columns:1fr 1fr;gap:2rem}
+        }
+        @media(max-width:768px){
+            section{padding:4rem 1.5rem}
+            .nav-links{display:none} .nav-toggle{display:block}
+            nav{padding:.5rem 1rem} .nav-bar{padding:0 1rem;height:52px}
+            .hero{padding:5.5rem 1.5rem 3rem}
+            .hero-inner{grid-template-columns:1fr;gap:2rem}
+            .hero h1{font-size:2.2rem} .hero-desc{font-size:.95rem}
+            .hero-actions{flex-wrap:wrap}
+            .hero-mosaic{grid-template-columns:1fr 1fr}
+            .hero-trust{flex-direction:column;gap:.5rem;align-items:flex-start}
+            .srv-flex{grid-template-columns:1fr}
+            .nos-grid{grid-template-columns:1fr;gap:2.5rem}
+            .nos-img{aspect-ratio:16/10}
+            .info-grid{grid-template-columns:1fr} .info-card:last-child{grid-column:span 1}
+            .rev-grid{grid-template-columns:1fr 1fr}
+            .reviews-top{flex-direction:column;align-items:flex-start}
+            .sec-heading{font-size:1.85rem}
+            .cta-box{flex-direction:column;text-align:center;padding:2.5rem 2rem}
+            .cta-txt p{margin:0 auto}
+            .cta-actions{justify-content:center}
+            .ft-grid{grid-template-columns:1fr 1fr;gap:2rem}
+        }
+        @media(max-width:480px){
+            section{padding:3.5rem 1rem}
+            .hero{padding:5rem 1rem 2.5rem}
+            .hero h1{font-size:1.8rem} .hero-desc{font-size:.9rem}
+            .hero-tag{font-size:.73rem;padding:5px 12px}
+            .hero-actions{flex-direction:column;width:100%}
+            .btn-warm{width:100%;justify-content:center} .btn-soft{justify-content:center}
+            .hero-mosaic{grid-template-columns:1fr}
+            .mosaic-tile.span{grid-column:span 1} .mosaic-tile{padding:1.25rem}
+            .srv-item{padding:1.5rem;gap:1rem} .srv-num{font-size:1.4rem;width:28px}
+            .sec-heading{font-size:1.6rem} .sec-eyebrow{font-size:.7rem}
+            .nos-img{aspect-ratio:4/3} .nos-badge{padding:.75rem 1rem;gap:.6rem}
+            .info-card{padding:1.5rem} .sched-row{font-size:.83rem}
+            .rev-grid{grid-template-columns:1fr} .rev-card{padding:1.5rem}
+            .rating-big{font-size:2.2rem}
+            .cta-box{padding:2rem 1.25rem;border-radius:22px}
+            .cta-txt h2{font-size:1.5rem}
+            .cta-actions{flex-direction:column;width:100%}
+            .btn-warm,.btn-ct{width:100%;justify-content:center}
+            .ft-grid{grid-template-columns:1fr;gap:2rem}
+            .ft-bottom{text-align:center}
+        }
+        @media(max-width:360px){
+            .hero h1{font-size:1.55rem} .sec-heading{font-size:1.4rem}
+            .rating-sum{flex-direction:column;align-items:flex-start;gap:.5rem}
+        }
+
+        .reveal{opacity:0;transform:translateY(22px);transition:all .65s cubic-bezier(.22,1,.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
 <nav id="navbar">
     <div class="nav-bar">
         <a href="#" class="logo">
-            <div class="logo-cross">+</div>
+            <div class="logo-dot"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
             <span class="logo-name">Farmacia La Rambla</span>
         </a>
+        <button class="nav-toggle" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
         <ul class="nav-links">
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
@@ -1035,328 +357,268 @@
     </div>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-bg-shape one"></div>
-    <div class="hero-bg-shape two"></div>
+    <div class="hero-orb a"></div><div class="hero-orb b"></div>
     <div class="hero-inner">
-        <div class="hero-text">
-            <div class="hero-tag">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="4" fill="#4DB6AC"/><circle cx="8" cy="8" r="7" stroke="#4DB6AC" stroke-width="1.5" stroke-dasharray="3 3"/></svg>
-                Abiertos de 9:00 a 22:00 &mdash; Todos los dias
-            </div>
-            <h1>Cuidamos de ti con <span class="highlight">cercania</span> y profesionalidad</h1>
-            <p class="hero-desc">En el corazon de Palma de Mallorca, Farmacia La Rambla te ofrece atencion personalizada, consejo farmaceutico experto y el trato calido que mereces.</p>
+        <div class="reveal">
+            <div class="hero-tag"><span class="dot"></span> Abiertos de 9:00 a 22:00 — Todos los dias</div>
+            <h1>Cuidamos de ti con <span class="hl">cercania</span> y profesionalidad</h1>
+            <p class="hero-desc">Desde 1998, la farmacia del equipo Martorell ofrece atencion personalizada, formulacion magistral y consejo experto en el corazon de Palma, junto al Mercat de l'Olivar.</p>
             <div class="hero-actions">
-                <a href="#info" class="btn-warm">Contactanos &rarr;</a>
+                <a href="#info" class="btn-warm">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    Contactanos
+                </a>
                 <a href="#servicios" class="btn-soft">
-                    <span class="arrow">&darr;</span>
+                    <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
                     Descubre mas
                 </a>
             </div>
             <div class="hero-trust">
-                <div class="trust-avatars">
-                    <div class="trust-avatar" style="background: var(--teal)">JL</div>
-                    <div class="trust-avatar" style="background: var(--teal-light)">CR</div>
-                    <div class="trust-avatar" style="background: var(--teal-dark)">M</div>
-                    <div class="trust-avatar" style="background: var(--terracotta)">+47</div>
+                <div class="trust-avs">
+                    <div class="trust-av" style="background:var(--teal)">JL</div>
+                    <div class="trust-av" style="background:var(--teal-light)">CR</div>
+                    <div class="trust-av" style="background:var(--teal-dark)">M</div>
+                    <div class="trust-av" style="background:var(--terracotta)">+47</div>
                 </div>
-                <div class="trust-text"><strong>4.1/5</strong> valoracion media en Google</div>
+                <div class="trust-txt"><strong>4.1/5</strong> valoracion media en Google</div>
             </div>
         </div>
-        <div class="hero-visual">
+        <div class="reveal" style="transition-delay:.12s">
             <div class="hero-mosaic">
                 <div class="mosaic-tile">
-                    <div class="tile-icon teal">&#128138;</div>
+                    <div class="tile-ic teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
                     <h4>Farmacia</h4>
                     <p>Medicamentos, genericos y consejo profesional</p>
                 </div>
                 <div class="mosaic-tile">
-                    <div class="tile-icon cream">&#10024;</div>
+                    <div class="tile-ic cream"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
                     <h4>Dermocosmetica</h4>
-                    <p>Cuidado facial y corporal especializado</p>
+                    <p>ISDIN, Caudalie y cuidado especializado</p>
                 </div>
                 <div class="mosaic-tile span">
-                    <div class="tile-icon warm">&#128150;</div>
+                    <div class="tile-ic warm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
                     <h4>Atencion personalizada</h4>
-                    <p>Cada paciente es unico. Te escuchamos, te asesoramos y te acompanamos en el cuidado de tu salud.</p>
+                    <p>Formulacion magistral, SPD, pedidos por WhatsApp y entrega a domicilio. Cada paciente es unico.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Servicios -->
-<section class="servicios-section" id="servicios">
-    <div class="section-inner">
-        <div class="section-head centered reveal">
-            <span class="section-eyebrow">Nuestros servicios</span>
-            <h2 class="section-heading">Todo para tu bienestar</h2>
-            <p class="section-desc">Una farmacia completa con servicios pensados para cuidar de ti y de tu familia.</p>
+<!-- BRANDS -->
+<div class="brands">
+    <div class="brands-inner">
+        <span class="brands-label">Marcas de confianza</span>
+        <span class="brand-tag">ISDIN</span>
+        <span class="brand-tag">Caudalie</span>
+        <span class="brand-tag">Aboca</span>
+        <span class="brand-tag">Ricola</span>
+    </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+    <div class="sec-inner">
+        <div class="sec-head c reveal">
+            <span class="sec-eyebrow">Nuestros servicios</span>
+            <h2 class="sec-heading">Todo para tu bienestar</h2>
+            <p class="sec-desc">Servicios farmaceuticos completos, pensados para cuidar de ti y de tu familia desde hace mas de 27 anos.</p>
         </div>
-        <div class="servicios-flex">
-            <div class="servicio-card reveal">
-                <div class="servicio-num">01</div>
-                <div>
-                    <h3>Dispensacion de medicamentos</h3>
-                    <p>Medicamentos con y sin receta, genericos y de marca. Siempre acompanados del consejo farmaceutico.</p>
-                </div>
-            </div>
-            <div class="servicio-card reveal" style="transition-delay: 0.08s">
-                <div class="servicio-num">02</div>
-                <div>
-                    <h3>Dermocosmetica profesional</h3>
-                    <p>Analisis de piel y recomendacion personalizada con las mejores marcas del mercado.</p>
-                </div>
-            </div>
-            <div class="servicio-card reveal" style="transition-delay: 0.16s">
-                <div class="servicio-num">03</div>
-                <div>
-                    <h3>Fitoterapia y nutricion</h3>
-                    <p>Complementos alimenticios, vitaminas y productos naturales para complementar tu salud.</p>
-                </div>
-            </div>
-            <div class="servicio-card reveal" style="transition-delay: 0.24s">
-                <div class="servicio-num">04</div>
-                <div>
-                    <h3>Pediatria y maternidad</h3>
-                    <p>Productos y asesoramiento especifico para bebes, ninos y futuras mamas.</p>
-                </div>
-            </div>
-            <div class="servicio-card reveal" style="transition-delay: 0.32s">
-                <div class="servicio-num">05</div>
-                <div>
-                    <h3>Control de parametros de salud</h3>
-                    <p>Tension arterial, glucemia, colesterol. Seguimiento continuo para tu tranquilidad.</p>
-                </div>
-            </div>
-            <div class="servicio-card reveal" style="transition-delay: 0.4s">
-                <div class="servicio-num">06</div>
-                <div>
-                    <h3>Encargos y pedidos especiales</h3>
-                    <p>Si no lo tenemos, lo pedimos. Dejanos tus encargos y te avisamos cuando esten listos.</p>
-                </div>
-            </div>
+        <div class="srv-flex">
+            <div class="srv-item reveal"><div class="srv-num">01</div><div><h3>Dispensacion de medicamentos</h3><p>Medicamentos con y sin receta, genericos y de marca con consejo farmaceutico profesional.</p></div></div>
+            <div class="srv-item reveal" style="transition-delay:.06s"><div class="srv-num">02</div><div><h3>Formulacion magistral</h3><p>Formulas personalizadas preparadas a medida para las necesidades especificas de cada paciente.</p></div></div>
+            <div class="srv-item reveal" style="transition-delay:.12s"><div class="srv-num">03</div><div><h3>Dermocosmetica profesional</h3><p>Analisis de piel y recomendacion personalizada con ISDIN, Caudalie y las mejores marcas.</p></div></div>
+            <div class="srv-item reveal" style="transition-delay:.18s"><div class="srv-num">04</div><div><h3>SPD — Dosificacion personalizada</h3><p>Sistema de dosificacion para un control seguro y comodo de la medicacion diaria.</p></div></div>
+            <div class="srv-item reveal" style="transition-delay:.24s"><div class="srv-num">05</div><div><h3>Herbodietica y nutricion</h3><p>Productos Aboca, complementos alimenticios, vitaminas y soluciones naturales para tu bienestar.</p></div></div>
+            <div class="srv-item reveal" style="transition-delay:.3s"><div class="srv-num">06</div><div><h3>Ortopedia y control de salud</h3><p>Productos ortopedicos, tension arterial, glucemia y seguimiento continuo de parametros vitales.</p></div></div>
+            <div class="srv-item reveal" style="transition-delay:.36s"><div class="srv-num">07</div><div><h3>Entrega a domicilio</h3><p>Pedidos por WhatsApp al 644 719 115 con entrega a domicilio en Palma. Tambien en Uber Eats.</p></div></div>
+            <div class="srv-item reveal" style="transition-delay:.42s"><div class="srv-num">08</div><div><h3>Cosmetica y fragancias</h3><p>Seleccion de cosmetica, proteccion solar, higiene dental y fragancias de las mejores marcas.</p></div></div>
         </div>
     </div>
 </section>
 
-<!-- Nosotros -->
-<section class="nosotros-section" id="nosotros">
-    <div class="section-inner">
-        <div class="nosotros-layout">
-            <div class="nosotros-img reveal">
-                <div class="nosotros-img-inner">
-                    <span class="big-icon">&#127978;</span>
-                    <p>Foto de la farmacia</p>
+<!-- NOSOTROS -->
+<section class="nosotros" id="nosotros">
+    <div class="sec-inner">
+        <div class="nos-grid">
+            <div class="nos-img reveal">
+                <div class="nos-img-ph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <span>Foto de la farmacia</span>
                 </div>
-                <div class="nosotros-badge">
-                    <div class="nosotros-badge-icon">&#128150;</div>
-                    <div class="nosotros-badge-text">
-                        <strong>+30 anos de experiencia</strong>
-                        Cuidando de la salud en Palma
-                    </div>
+                <div class="nos-badge">
+                    <div class="nos-badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <div class="nos-badge-txt"><strong>Desde 1998</strong><span>Mas de 27 anos en Palma</span></div>
                 </div>
             </div>
-            <div class="nosotros-content reveal" style="transition-delay: 0.15s">
-                <span class="section-eyebrow">Sobre nosotros</span>
-                <h2 class="section-heading">Una farmacia familiar con valores</h2>
-                <p>Farmacia La Rambla nacio con la vocacion de ofrecer un servicio farmaceutico cercano, profesional y de confianza. Ubicados en La Rambla 14, en pleno centro de Palma, llevamos mas de tres decadas siendo la farmacia de referencia del barrio.</p>
-                <p>Nuestro equipo se forma continuamente para ofrecerte el mejor consejo y las soluciones mas actualizadas para tu salud.</p>
-                <ul class="valores-list">
-                    <li><div class="valor-dot">&#10003;</div> Trato humano y cercano</li>
-                    <li><div class="valor-dot">&#10003;</div> Profesionalidad y formacion continua</li>
-                    <li><div class="valor-dot">&#10003;</div> Compromiso con tu bienestar</li>
-                    <li><div class="valor-dot">&#10003;</div> Horario ampliado 365 dias</li>
+            <div class="nos-content reveal" style="transition-delay:.12s">
+                <span class="sec-eyebrow">Sobre nosotros</span>
+                <h2 class="sec-heading">Farmacia Martorell — una farmacia con valores</h2>
+                <p>Registrada en el COFIB como Farmacia Martorell, nuestro equipo lleva desde 1998 siendo referencia en La Rambla 14, esquina con C/ Horts, junto al Mercat de l'Olivar — una de las vias mas emblematicas de Palma.</p>
+                <p>Nuestro equipo se forma continuamente para ofrecerte el mejor consejo y las soluciones mas actualizadas para tu salud y bienestar.</p>
+                <ul class="valores">
+                    <li><div class="val-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Formulacion magistral y SPD</li>
+                    <li><div class="val-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Pedidos por WhatsApp</li>
+                    <li><div class="val-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Entrega a domicilio en Palma</li>
+                    <li><div class="val-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Abiertos 7 dias, horario ampliado</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Horario / Contacto / Mapa -->
-<section class="info-section" id="info">
-    <div class="section-inner">
-        <div class="section-head centered reveal">
-            <span class="section-eyebrow">Informacion practica</span>
-            <h2 class="section-heading">Horario, contacto y ubicacion</h2>
+<!-- INFO -->
+<section class="info" id="info">
+    <div class="sec-inner">
+        <div class="sec-head c reveal">
+            <span class="sec-eyebrow">Informacion practica</span>
+            <h2 class="sec-heading">Horario, contacto y ubicacion</h2>
         </div>
         <div class="info-grid">
             <div class="info-card reveal">
-                <h3>&#128336; Horario</h3>
-                <div class="schedule-row"><span class="day">Lunes</span><span class="hours">9:00 - 22:00</span></div>
-                <div class="schedule-row"><span class="day">Martes</span><span class="hours">9:00 - 22:00</span></div>
-                <div class="schedule-row"><span class="day">Miercoles</span><span class="hours">9:00 - 22:00</span></div>
-                <div class="schedule-row"><span class="day">Jueves</span><span class="hours">9:00 - 22:00</span></div>
-                <div class="schedule-row"><span class="day">Viernes</span><span class="hours">9:00 - 22:00</span></div>
-                <div class="schedule-row"><span class="day">Sabado</span><span class="hours">9:00 - 22:00</span></div>
-                <div class="schedule-row"><span class="day">Domingo</span><span class="hours">9:00 - 22:00</span></div>
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Horario</h3>
+                <div class="sched-row"><span class="day">Lunes</span><span class="hrs">9:00 – 22:00</span></div>
+                <div class="sched-row"><span class="day">Martes</span><span class="hrs">9:00 – 22:00</span></div>
+                <div class="sched-row"><span class="day">Miercoles</span><span class="hrs">9:00 – 22:00</span></div>
+                <div class="sched-row"><span class="day">Jueves</span><span class="hrs">9:00 – 22:00</span></div>
+                <div class="sched-row"><span class="day">Viernes</span><span class="hrs">9:00 – 22:00</span></div>
+                <div class="sched-row"><span class="day">Sabado</span><span class="hrs">9:00 – 22:00</span></div>
+                <div class="sched-row"><span class="day">Domingo</span><span class="hrs">9:00 – 22:00</span></div>
             </div>
-            <div class="info-card featured reveal" style="transition-delay: 0.1s">
-                <h3>&#128222; Contacto</h3>
-                <div class="contact-row">
-                    <div class="contact-row-icon">&#128205;</div>
-                    <div class="contact-row-text">
-                        Direccion
-                        <strong>La Rambla 14, 07003 Palma</strong>
-                    </div>
+            <div class="info-card featured reveal" style="transition-delay:.08s">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Contacto</h3>
+                <div class="ct-row">
+                    <div class="ct-row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                    <div><div class="ct-row-lbl">Direccion</div><div class="ct-row-val">La Rambla 14, 07003 Palma</div></div>
                 </div>
-                <div class="contact-row">
-                    <div class="contact-row-icon">&#128222;</div>
-                    <div class="contact-row-text">
-                        Telefono
-                        <strong>971 71 15 11</strong>
-                    </div>
+                <div class="ct-row">
+                    <div class="ct-row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3"/></svg></div>
+                    <div><div class="ct-row-lbl">Telefono</div><div class="ct-row-val">971 71 15 11</div></div>
                 </div>
-                <div class="contact-row">
-                    <div class="contact-row-icon">&#128337;</div>
-                    <div class="contact-row-text">
-                        Horario
-                        <strong>9:00 - 22:00 cada dia</strong>
-                    </div>
+                <div class="ct-row">
+                    <div class="ct-row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+                    <div><div class="ct-row-lbl">WhatsApp pedidos</div><div class="ct-row-val">644 719 115</div></div>
                 </div>
-                <div class="contact-row">
-                    <div class="contact-row-icon">&#127775;</div>
-                    <div class="contact-row-text">
-                        Valoracion
-                        <strong>4.1/5 en Google (50+ resenas)</strong>
-                    </div>
+                <div class="ct-btns">
+                    <a href="tel:971711511" class="btn-ct white"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3"/></svg> Llamar</a>
+                    <a href="https://wa.me/34644719115" class="btn-ct wa"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.687-1.225A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.584l-.386-.232-2.786.728.76-2.684-.264-.407A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp</a>
                 </div>
             </div>
-            <div class="info-card map-card reveal" style="transition-delay: 0.2s">
-                <h3>&#127758; Ubicacion</h3>
-                <div class="map-placeholder">&#128506;</div>
-                <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 1rem;">Centro de Palma de Mallorca, junto a Mercat de l'Olivar</p>
-                <a href="#" class="map-link">Abrir en Google Maps &rarr;</a>
+            <div class="info-card map-card reveal" style="transition-delay:.16s">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> Ubicacion</h3>
+                <div class="map-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <p style="font-size:.85rem;color:var(--text-light);margin-bottom:.75rem">Esquina La Rambla con C/ Horts, junto al Mercat de l'Olivar</p>
+                <a href="#" class="map-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg> Abrir en Google Maps</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Reviews -->
-<section class="reviews-section" id="opiniones">
-    <div class="section-inner">
+<!-- REVIEWS -->
+<section class="reviews" id="opiniones">
+    <div class="sec-inner">
         <div class="reviews-top reveal">
-            <div>
-                <span class="section-eyebrow">Opiniones</span>
-                <h2 class="section-heading">Lo que dicen nuestros clientes</h2>
-            </div>
-            <div class="rating-summary">
+            <div><span class="sec-eyebrow">Opiniones</span><h2 class="sec-heading">Lo que dicen nuestros clientes</h2></div>
+            <div class="rating-sum">
                 <div class="rating-big">4.1</div>
-                <div class="rating-meta">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-                    <div class="count">Basado en 50+ resenas de Google</div>
+                <div>
+                    <div class="rating-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" opacity=".3"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <div class="rating-count">Basado en 50+ resenas de Google</div>
                 </div>
             </div>
         </div>
-        <div class="reviews-grid">
-            <div class="review-card reveal">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: var(--teal)">JL</div>
+        <div class="rev-grid">
+            <div class="rev-card reveal">
+                <div class="rev-header">
+                    <div class="rev-av" style="background:var(--teal)">JL</div>
                     <div>
-                        <div class="review-author-name">Jordi Llabres Sans</div>
-                        <div class="review-author-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="rev-author-name">Jordi Llabres Sans</div>
+                        <div class="rev-author-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                     </div>
                 </div>
-                <blockquote>"Excelente trato, personalizado y atento. La misma atencion de siempre, un equipo que realmente se preocupa por sus clientes."</blockquote>
+                <blockquote>"Excelente trato, personalizado y atento. La misma atencion de siempre, un equipo que realmente se preocupa."</blockquote>
             </div>
-            <div class="review-card reveal" style="transition-delay: 0.1s">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: var(--teal-light)">CR</div>
+            <div class="rev-card reveal" style="transition-delay:.08s">
+                <div class="rev-header">
+                    <div class="rev-av" style="background:var(--teal-light)">CR</div>
                     <div>
-                        <div class="review-author-name">Camila Rocio Peralta</div>
-                        <div class="review-author-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="rev-author-name">Camila Rocio Peralta</div>
+                        <div class="rev-author-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                     </div>
                 </div>
-                <blockquote>"Muy buenos asesores, siempre dan muestras. Es mi farmacia de confianza, atienden muy bien y siempre puedes dejar pedidos."</blockquote>
+                <blockquote>"Muy buenos asesores, siempre dan muestras. Es mi farmacia de confianza, atienden muy bien y puedes dejar pedidos."</blockquote>
             </div>
-            <div class="review-card reveal" style="transition-delay: 0.2s">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: var(--teal-dark)">M</div>
+            <div class="rev-card reveal" style="transition-delay:.16s">
+                <div class="rev-header">
+                    <div class="rev-av" style="background:var(--teal-dark)">M</div>
                     <div>
-                        <div class="review-author-name">Mar</div>
-                        <div class="review-author-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="rev-author-name">Mar</div>
+                        <div class="rev-author-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                     </div>
                 </div>
-                <blockquote>"Farmacia muy recomendable. Las farmaceuticas siempre intentan resolver todas tus dudas con amabilidad."</blockquote>
+                <blockquote>"Farmacia muy recomendable. Las farmaceuticas resuelven todas tus dudas con amabilidad y siempre ofrecen soluciones."</blockquote>
             </div>
         </div>
     </div>
 </section>
+
+<!-- SOCIAL -->
+<div class="social">
+    <div class="social-inner">
+        <span>Siguenos en redes</span>
+        <a href="https://instagram.com/farmacia_larambla14" class="social-a" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @farmacia_larambla14
+        </a>
+        <a href="https://tiktok.com/@farma.la.rambla" class="social-a" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.05a8.23 8.23 0 004.8 1.54V7.14a4.85 4.85 0 01-1.04-.45z"/></svg>
+            @farma.la.rambla
+        </a>
+    </div>
+</div>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta">
     <div class="cta-box reveal">
-        <div class="cta-text">
+        <div class="cta-txt">
             <h2>Ven a visitarnos</h2>
-            <p>Estamos en La Rambla 14, en pleno centro de Palma. Te atenderemos con la dedicacion y el carino de siempre.</p>
+            <p>Estamos en La Rambla 14, esquina con C/ Horts. Puedes escribirnos al WhatsApp 644 719 115 para tus pedidos.</p>
         </div>
         <div class="cta-actions">
-            <a href="#info" class="btn-warm">Llamar ahora &rarr;</a>
-            <a href="#" class="btn-warm-outline">&#127758; Como llegar</a>
+            <a href="tel:971711511" class="btn-warm">Llamar ahora</a>
+            <a href="https://wa.me/34644719115" class="btn-warm" style="background:#25D366">WhatsApp</a>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <div class="logo">
-                    <div class="logo-cross">+</div>
-                    <span class="logo-name" style="color: white;">Farmacia La Rambla</span>
-                </div>
-                <p>Tu farmacia de confianza en el centro de Palma de Mallorca. Atencion personalizada desde hace mas de 30 anos.</p>
+    <div class="ft-inner">
+        <div class="ft-grid">
+            <div class="ft-about">
+                <span class="logo-name" style="color:white;font-family:'Fraunces',serif;font-size:1.1rem">Farmacia La Rambla</span>
+                <p>Tu farmacia de confianza en el centro de Palma de Mallorca. Atencion personalizada desde 1998.</p>
             </div>
-            <div class="footer-col">
-                <h4>Navegacion</h4>
-                <ul>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#info">Horario</a></li>
-                    <li><a href="#opiniones">Opiniones</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Servicios</h4>
-                <ul>
-                    <li><a href="#">Medicamentos</a></li>
-                    <li><a href="#">Dermocosmetica</a></li>
-                    <li><a href="#">Fitoterapia</a></li>
-                    <li><a href="#">Pediatria</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <ul>
-                    <li><a href="#">La Rambla 14, 07003 Palma</a></li>
-                    <li><a href="tel:971711511">971 71 15 11</a></li>
-                    <li><a href="#">Illes Balears</a></li>
-                </ul>
-            </div>
+            <div class="ft-col"><h4>Navegacion</h4><ul><li><a href="#servicios">Servicios</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#info">Horario</a></li><li><a href="#opiniones">Opiniones</a></li></ul></div>
+            <div class="ft-col"><h4>Servicios</h4><ul><li><a href="#">Formulacion magistral</a></li><li><a href="#">SPD</a></li><li><a href="#">Dermocosmetica</a></li><li><a href="#">Ortopedia</a></li><li><a href="#">Entrega a domicilio</a></li></ul></div>
+            <div class="ft-col"><h4>Contacto</h4><ul><li><a href="#">La Rambla 14, 07003 Palma</a></li><li><a href="tel:971711511">971 71 15 11</a></li><li><a href="https://wa.me/34644719115">WhatsApp: 644 719 115</a></li><li><a href="https://instagram.com/farmacia_larambla14" target="_blank" rel="noopener">Instagram</a></li></ul></div>
         </div>
-        <div class="footer-bottom">
-            &copy; 2026 Farmacia La Rambla. Todos los derechos reservados.
-        </div>
+        <div class="ft-bottom">&copy; 2026 Farmacia La Rambla. Todos los derechos reservados.</div>
     </div>
 </footer>
 
 <script>
-    // Navbar scroll
-    window.addEventListener('scroll', () => {
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    // Reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(e=>o.observe(e));
 </script>
-
 </body>
 </html>
