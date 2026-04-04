@@ -43,7 +43,11 @@
         .nav-menu a:hover{color:var(--cy)}
         .nav-btn{background:var(--cy)!important;color:var(--dark)!important;padding:8px 20px;border-radius:8px;font-weight:600!important;font-size:.84rem!important}
         .nav-btn:hover{background:var(--cy-light)!important;box-shadow:0 4px 16px var(--cy-glow)}
-        .nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--white)}
+        .nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--white);padding:4px;z-index:10}
+        .nav-toggle .hamburger-line{transition:all .3s ease}
+        .nav-toggle.active .hamburger-line:nth-child(1){transform:translateY(6px) rotate(45deg)}
+        .nav-toggle.active .hamburger-line:nth-child(2){opacity:0}
+        .nav-toggle.active .hamburger-line:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
         /* === HERO === */
         .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 50%,rgba(0,191,165,.07),transparent 50%),radial-gradient(ellipse at 70% 20%,rgba(0,137,123,.05),transparent 40%),var(--dark)}
@@ -202,7 +206,15 @@
             .ft-cols{grid-template-columns:1fr 1fr;gap:2rem}
         }
         @media(max-width:768px){
-            .nav-menu{display:none} .nav-toggle{display:block}
+            .nav-menu{
+                display:none;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100vh;
+                background:rgba(11,17,32,.97);backdrop-filter:blur(20px);
+                justify-content:center;align-items:center;gap:2rem;z-index:5;
+            }
+            .nav-menu.open{display:flex}
+            .nav-menu.open a{font-size:1.15rem;color:var(--white)}
+            .nav-menu.open .nav-btn{padding:12px 28px;font-size:1rem!important}
+            .nav-toggle{display:block}
             section{padding:4rem 1.5rem}
             .hero-inner{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2rem}
             .hero h1{font-size:2.1rem} .hero-sub{font-size:.93rem;max-width:100%}
@@ -257,7 +269,7 @@
             <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cy)" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
             <span class="logo-label">Farmacia <span>La Rambla</span></span>
         </a>
-        <button class="nav-toggle" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('active');document.querySelector('.nav-menu').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line class="hamburger-line" x1="3" y1="6" x2="21" y2="6"/><line class="hamburger-line" x1="3" y1="12" x2="21" y2="12"/><line class="hamburger-line" x1="3" y1="18" x2="21" y2="18"/></svg></button>
         <ul class="nav-menu">
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
@@ -461,6 +473,7 @@
 <script>
 const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.anim').forEach(e=>o.observe(e));
+document.querySelectorAll('.nav-menu a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.nav-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('active')}));
 </script>
 </body>
 </html>

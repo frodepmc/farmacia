@@ -45,12 +45,17 @@
         }
         .logo-dot svg{width:14px;height:14px}
         .logo-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--text-dark)}
-        .nav-links{display:flex;list-style:none;gap:1.5rem;align-items:center}
+        .nav-bar{position:relative}
+        .nav-links{display:flex;list-style:none;gap:1.5rem;align-items:center;position:absolute;right:1.75rem;top:50%;transform:translateY(-50%)}
         .nav-links a{text-decoration:none;color:var(--text-light);font-size:.85rem;font-weight:500;transition:color .25s}
         .nav-links a:hover{color:var(--teal)}
         .nav-pill{background:var(--teal)!important;color:white!important;padding:7px 18px;border-radius:100px}
         .nav-pill:hover{background:var(--teal-dark)!important}
-        .nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--text-dark)}
+        .nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--text-dark);padding:4px;z-index:10}
+        .nav-toggle .hamburger-line{transition:all .3s ease}
+        .nav-toggle.active .hamburger-line:nth-child(1){transform:translateY(6px) rotate(45deg)}
+        .nav-toggle.active .hamburger-line:nth-child(2){opacity:0}
+        .nav-toggle.active .hamburger-line:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
         /* === HERO === */
         .hero{min-height:100vh;display:flex;align-items:center;padding:6.5rem 1.5rem 4rem;background:var(--cream);position:relative;overflow:hidden}
@@ -287,7 +292,16 @@
         }
         @media(max-width:768px){
             section{padding:4rem 1.5rem}
-            .nav-links{display:none} .nav-toggle{display:block}
+            .nav-links{
+                display:none;flex-direction:column;position:fixed;top:0;left:0;width:100vw;height:100vh;
+                background:rgba(255,252,248,.97);
+                justify-content:center;align-items:center;gap:2rem;z-index:5;
+                margin:0;padding:0;border-radius:0;right:auto;transform:none;
+            }
+            .nav-links.open{display:flex}
+            .nav-links.open a{font-size:1.15rem;color:var(--text-dark)}
+            .nav-links.open .nav-pill{padding:12px 28px;font-size:1rem!important}
+            .nav-toggle{display:block}
             nav{padding:.5rem 1rem} .nav-bar{padding:0 1rem;height:52px}
             .hero{padding:5.5rem 1.5rem 3rem}
             .hero-inner{grid-template-columns:1fr;gap:2rem}
@@ -347,15 +361,15 @@
             <div class="logo-dot"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
             <span class="logo-name">Farmacia La Rambla</span>
         </a>
-        <button class="nav-toggle" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <ul class="nav-links">
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#info">Horario</a></li>
-            <li><a href="#opiniones">Opiniones</a></li>
-            <li><a href="#info" class="nav-pill">Llamar</a></li>
-        </ul>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line class="hamburger-line" x1="3" y1="6" x2="21" y2="6"/><line class="hamburger-line" x1="3" y1="12" x2="21" y2="12"/><line class="hamburger-line" x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
+    <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#info">Horario</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#info" class="nav-pill">Llamar</a></li>
+    </ul>
 </nav>
 
 <!-- HERO -->
@@ -620,6 +634,7 @@
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
 const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(e=>o.observe(e));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('active')}));
 </script>
 </body>
 </html>
