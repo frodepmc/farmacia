@@ -32,12 +32,13 @@
         /* === NAV === */
         nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(11,17,32,.82);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--dark-border)}
         .nav-inner{max-width:1180px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
-        .logo{display:flex;align-items:center;gap:9px;text-decoration:none}
-        .logo-mark{width:34px;height:34px;border:2px solid var(--cy);border-radius:9px;display:flex;align-items:center;justify-content:center;position:relative}
-        .logo-mark::after{content:'';position:absolute;inset:-4px;border-radius:13px;background:var(--cy-glow);z-index:-1}
-        .logo-mark svg{width:16px;height:16px}
-        .logo-label{font-weight:700;font-size:1.05rem;letter-spacing:-.02em}
-        .logo-label span{color:var(--cy)}
+        .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+        .logo-mark{width:38px;height:38px;border:2px solid var(--cy);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;background:rgba(0,191,165,.04)}
+        .logo-mark::after{content:'';position:absolute;inset:-5px;border-radius:50%;background:var(--cy-glow);z-index:-1;filter:blur(8px)}
+        .logo-mark svg{width:18px;height:18px}
+        .logo-label{display:flex;flex-direction:column;line-height:1}
+        .logo-label .ll-top{font-weight:700;font-size:1rem;letter-spacing:-.02em;color:var(--white)}
+        .logo-label .ll-sub{font-size:.58rem;color:var(--cy);letter-spacing:.22em;text-transform:uppercase;margin-top:4px;font-weight:600}
         .nav-menu{display:flex;list-style:none;gap:1.75rem;align-items:center}
         .nav-menu a{text-decoration:none;color:var(--g400);font-size:.84rem;font-weight:400;transition:color .25s}
         .nav-menu a:hover{color:var(--cy)}
@@ -164,11 +165,10 @@
         .about{background:var(--dark)}
         .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
         .about-visual{position:relative}
-        .about-frame{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--dark-card),var(--dark-lighter));border-radius:18px;border:1px solid var(--dark-border);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-        .about-frame::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,var(--cy-glow),transparent 55%)}
-        .about-ph{text-align:center;color:var(--g400);position:relative;z-index:1}
-        .about-ph svg{width:56px;height:56px;margin-bottom:.5rem;display:block;margin:0 auto .5rem;opacity:.4}
-        .about-ph span{font-size:.82rem;opacity:.5}
+        .about-frame{width:100%;aspect-ratio:1;background:var(--dark-card);border-radius:18px;border:1px solid var(--dark-border);overflow:hidden;position:relative}
+        .about-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1);filter:brightness(.85) contrast(1.05)}
+        .about-frame:hover img{transform:scale(1.04);filter:brightness(.95) contrast(1.05)}
+        .about-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,17,32,.7) 100%),radial-gradient(circle at 20% 30%,rgba(0,191,165,.12),transparent 60%);pointer-events:none}
         .about-float{position:absolute;bottom:-16px;right:-16px;background:var(--dark-card);border:1px solid var(--dark-border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
         .afc-num{font-size:1.8rem;font-weight:700;color:var(--cy)}
         .afc-txt{font-size:.78rem;color:var(--g400);line-height:1.3}
@@ -176,6 +176,34 @@
         .about-content p{color:var(--g400);line-height:1.8;margin-bottom:1rem;font-weight:300}
         .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
         .about-tag{background:rgba(0,191,165,.06);border:1px solid rgba(0,191,165,.12);color:var(--cy);padding:7px 14px;border-radius:100px;font-size:.78rem;font-weight:500}
+
+        /* === PRODUCTES === */
+        .productes{background:var(--dark);position:relative}
+        .productes::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,191,165,.18),transparent)}
+        .prod-row{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:1rem}
+        .prod-card{
+            background:var(--dark-card);border:1px solid var(--dark-border);border-radius:14px;
+            overflow:hidden;transition:all .35s;display:flex;flex-direction:column;position:relative;
+        }
+        .prod-card::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:var(--cy);transition:all .35s;transform:translateX(-50%)}
+        .prod-card:hover::after{width:60%}
+        .prod-card:hover{border-color:rgba(0,191,165,.15);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+        .prod-card.featured{grid-row:span 1}
+        .prod-media{width:100%;aspect-ratio:1;overflow:hidden;background:var(--dark-lighter);position:relative}
+        .prod-media img,.prod-media video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+        .prod-card:hover .prod-media img{transform:scale(1.05)}
+        .prod-media .play-badge{
+            position:absolute;top:10px;right:10px;background:rgba(0,191,165,.9);color:var(--dark);
+            padding:3px 9px;border-radius:100px;font-size:.64rem;font-weight:700;text-transform:uppercase;
+            letter-spacing:.08em;backdrop-filter:blur(4px);
+        }
+        .prod-body{padding:1.25rem 1.35rem 1.5rem;flex:1;display:flex;flex-direction:column}
+        .prod-tag{
+            display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.1em;
+            text-transform:uppercase;color:var(--cy);margin-bottom:.45rem;
+        }
+        .prod-card h3{font-size:1.02rem;font-weight:600;color:var(--white);margin-bottom:.35rem;line-height:1.3}
+        .prod-card p{font-size:.8rem;color:var(--g400);line-height:1.55;font-weight:300}
 
         /* === HORARIO === */
         .horario{background:linear-gradient(180deg,var(--dark),var(--dark-card))}
@@ -239,6 +267,8 @@
         .ft-inner{max-width:1180px;margin:0 auto}
         .ft-cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--dark-border)}
         .ft-brand p{font-size:.83rem;line-height:1.7;margin-top:.75rem;color:var(--g600)}
+        .ft-brand .ft-logo-name{color:var(--white);font-size:1.1rem;font-weight:700;display:block}
+        .ft-brand .ft-logo-name span{color:var(--cy)}
         .ft-col h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--g600);margin-bottom:1rem;font-weight:600}
         .ft-col ul{list-style:none}
         .ft-col li{margin-bottom:.55rem}
@@ -250,6 +280,7 @@
         @media(max-width:1024px){
             .hero h1{font-size:2.7rem} .srv-grid{grid-template-columns:1fr 1fr}
             .ft-cols{grid-template-columns:1fr 1fr;gap:2rem}
+            .prod-row{grid-template-columns:1fr 1fr;gap:1rem}
         }
         @media(max-width:768px){
             .nav-menu{display:none}
@@ -262,6 +293,9 @@
             .stat-row{grid-template-columns:1fr 1fr}
             .stat-card.wide{grid-column:span 2;flex-direction:column;text-align:center;gap:.5rem}
             .srv-grid{grid-template-columns:1fr 1fr;gap:.75rem}
+            .prod-row{grid-template-columns:1fr 1fr;gap:1rem}
+            .logo-label .ll-top{font-size:.92rem}
+            .logo-label .ll-sub{font-size:.54rem}
             .about-grid{grid-template-columns:1fr;gap:2.5rem}
             .about-frame{aspect-ratio:16/10}
             .about-float{position:relative;bottom:auto;right:auto;margin-top:.75rem;display:inline-flex}
@@ -282,6 +316,14 @@
             .stat-card{padding:1.25rem}
             .sec-title{font-size:1.6rem} .sec-tag{font-size:.68rem}
             .srv-grid{grid-template-columns:1fr} .srv-card{padding:1.5rem}
+            .prod-row{grid-template-columns:1fr 1fr;gap:.75rem}
+            .prod-body{padding:1rem 1.1rem 1.25rem}
+            .prod-card h3{font-size:.94rem}
+            .prod-card p{font-size:.76rem}
+            .logo-mark{width:34px;height:34px}
+            .logo-mark svg{width:16px;height:16px}
+            .logo-label .ll-top{font-size:.86rem}
+            .logo-label .ll-sub{font-size:.5rem}
             .about-frame{aspect-ratio:4/3}
             .about-tags{gap:.35rem} .about-tag{font-size:.72rem;padding:5px 10px}
             .h-card{padding:1.5rem} .h-row{font-size:.83rem}
@@ -293,7 +335,10 @@
         }
         @media(max-width:360px){
             .hero h1{font-size:1.55rem} .sec-title{font-size:1.4rem}
-            .stat-val{font-size:1.3rem} .logo-label{font-size:.92rem}
+            .stat-val{font-size:1.3rem}
+            .logo-label .ll-top{font-size:.8rem}
+            .logo-label .ll-sub{display:none}
+            .prod-row{grid-template-columns:1fr}
         }
 
         .anim{opacity:0;transform:translateY(22px);transition:all .65s cubic-bezier(.22,1,.36,1)}
@@ -306,13 +351,16 @@
     <div class="nav-inner">
         <a href="#" class="logo">
             <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cy)" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-            <span class="logo-label">Farmàcia <span>La Rambla</span></span>
+            <span class="logo-label">
+                <span class="ll-top">Apotecària La Rambla</span>
+                <span class="ll-sub">Palma · est. 1998</span>
+            </span>
         </a>
         <ul class="nav-menu">
             <li><a href="#servicios">Serveis</a></li>
             <li><a href="#nosotros">Nosaltres</a></li>
+            <li><a href="#productes">Productes</a></li>
             <li><a href="#horario">Horari</a></li>
-            <li><a href="#opiniones">Opinions</a></li>
             <li><a href="#horario" class="nav-btn">971 71 15 11</a></li>
         </ul>
     </div>
@@ -324,6 +372,7 @@
     <ul>
         <li><a href="#servicios">Serveis</a></li>
         <li><a href="#nosotros">Nosaltres</a></li>
+        <li><a href="#productes">Productes</a></li>
         <li><a href="#horario">Horari</a></li>
         <li><a href="#opiniones">Opinions</a></li>
     </ul>
@@ -373,7 +422,7 @@
 <div class="brands">
     <div class="brands-inner">
         <span class="brands-label">Marques de confiança</span>
-        <span class="brand-t">ISDIN</span><span class="brand-t">Caudalie</span><span class="brand-t">Aboca</span><span class="brand-t">Ricola</span>
+        <span class="brand-t">ISDIN</span><span class="brand-t">Caudalie</span><span class="brand-t">Cantabria Labs</span><span class="brand-t">Aboca</span><span class="brand-t">Ricola</span>
     </div>
 </div>
 
@@ -402,10 +451,7 @@
         <div class="about-grid">
             <div class="about-visual anim">
                 <div class="about-frame">
-                    <div class="about-ph">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                        <span>Foto de la farmàcia</span>
-                    </div>
+                    <img src="assets-facade.jpg" alt="Façana de la Farmàcia La Rambla al centre de Palma" loading="lazy">
                 </div>
                 <div class="about-float"><span class="afc-num">+27</span><span class="afc-txt">anys a<br>Palma</span></div>
             </div>
@@ -421,6 +467,56 @@
                     <span class="about-tag">Comandes WhatsApp</span>
                     <span class="about-tag">Herbodietètica</span>
                     <span class="about-tag">Ortopèdia</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTES -->
+<section class="productes" id="productes">
+    <div class="sec-inner">
+        <div class="sec-head c anim">
+            <span class="sec-tag">Productes destacats</span>
+            <h2 class="sec-title">Dermocosmètica de confiança</h2>
+            <p class="sec-desc">Les millors línies dermocosmètiques, seleccionades i recomanades pel nostre equip.</p>
+        </div>
+        <div class="prod-row">
+            <div class="prod-card featured anim">
+                <div class="prod-media">
+                    <video autoplay muted loop playsinline poster="assets-ureadin.jpg">
+                        <source src="assets-coverage.mp4" type="video/mp4">
+                    </video>
+                    <span class="play-badge">Vídeo</span>
+                </div>
+                <div class="prod-body">
+                    <span class="prod-tag">ISDIN Sun Care</span>
+                    <h3>Coverage SPF50+</h3>
+                    <p>Maquillatge que protegeix la pell i combat les imperfeccions. Vídeo demo.</p>
+                </div>
+            </div>
+            <div class="prod-card anim" style="transition-delay:.08s">
+                <div class="prod-media"><img src="assets-biretix-hero.jpg" alt="Biretix per a pell acneica" loading="lazy"></div>
+                <div class="prod-body">
+                    <span class="prod-tag">Cantabria Labs</span>
+                    <h3>Biretix</h3>
+                    <p>Protocol complet per a pell acneica.</p>
+                </div>
+            </div>
+            <div class="prod-card anim" style="transition-delay:.16s">
+                <div class="prod-media"><img src="assets-lambdapil.jpg" alt="ISDIN Lambdapil anticaiguda" loading="lazy"></div>
+                <div class="prod-body">
+                    <span class="prod-tag">ISDIN · Premis 2025</span>
+                    <h3>Lambdapil</h3>
+                    <p>Tractament anticaiguda guardonat.</p>
+                </div>
+            </div>
+            <div class="prod-card anim" style="transition-delay:.24s">
+                <div class="prod-media"><img src="assets-acniben.jpg" alt="ISDIN Acniben pell grassa" loading="lazy"></div>
+                <div class="prod-body">
+                    <span class="prod-tag">ISDIN Oily Skin</span>
+                    <h3>Acniben</h3>
+                    <p>Rutina per a pells grasses amb acne.</p>
                 </div>
             </div>
         </div>
@@ -511,7 +607,7 @@
     <div class="ft-inner">
         <div class="ft-cols">
             <div class="ft-brand">
-                <span class="logo-label" style="font-size:1.05rem">Farmàcia <span style="color:var(--cy)">La Rambla</span></span>
+                <span class="ft-logo-name">Apotecària <span>La Rambla</span></span>
                 <p>La teva farmàcia de confiança al centre de Palma de Mallorca des de 1998.</p>
             </div>
             <div class="ft-col"><h4>Navegació</h4><ul><li><a href="#servicios">Serveis</a></li><li><a href="#nosotros">Nosaltres</a></li><li><a href="#horario">Horari</a></li><li><a href="#opiniones">Opinions</a></li></ul></div>

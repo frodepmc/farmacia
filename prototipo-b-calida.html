@@ -38,13 +38,16 @@
             border-radius:100px;padding:0 1.75rem;display:flex;align-items:center;justify-content:space-between;
             height:56px;border:1px solid rgba(0,150,136,.06);box-shadow:0 2px 16px rgba(0,0,0,.03);
         }
-        .logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+        .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
         .logo-dot{
-            width:30px;height:30px;background:var(--teal);border-radius:50%;
+            width:36px;height:36px;background:var(--teal);border-radius:50%;
             display:flex;align-items:center;justify-content:center;
+            box-shadow:0 3px 10px rgba(0,150,136,.22);
         }
-        .logo-dot svg{width:14px;height:14px}
-        .logo-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--text-dark)}
+        .logo-dot svg{width:17px;height:17px}
+        .logo-name{display:flex;flex-direction:column;line-height:1}
+        .logo-name .ln-top{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--text-dark)}
+        .logo-name .ln-sub{font-family:'Nunito Sans',sans-serif;font-size:.6rem;color:var(--teal);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;font-weight:600}
         .nav-links{display:flex;list-style:none;gap:1.5rem;align-items:center}
         .nav-links a{text-decoration:none;color:var(--text-light);font-size:.85rem;font-weight:500;transition:color .25s}
         .nav-links a:hover{color:var(--teal)}
@@ -189,12 +192,11 @@
         .nos-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
         .nos-img{
             width:100%;aspect-ratio:4/5;border-radius:22px;overflow:hidden;position:relative;
-            background:linear-gradient(155deg,var(--teal-pale),var(--teal-ghost) 50%,var(--cream-mid));
-            display:flex;align-items:center;justify-content:center;
+            background:var(--cream-mid);
         }
-        .nos-img-ph{text-align:center;color:var(--teal-dark);opacity:.45}
-        .nos-img-ph svg{width:56px;height:56px;margin-bottom:.5rem;display:block;margin:0 auto .5rem}
-        .nos-img-ph span{font-size:.8rem}
+        .nos-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+        .nos-img:hover img{transform:scale(1.03)}
+        .nos-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(45,42,38,.4) 100%);pointer-events:none}
         .nos-badge{
             position:absolute;bottom:1.25rem;left:1.25rem;right:1.25rem;
             background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
@@ -216,6 +218,26 @@
             display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);
         }
         .val-dot svg{width:12px;height:12px}
+
+        /* === PRODUCTES === */
+        .productes{background:var(--warm-white)}
+        .prod-flex{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+        .prod-card{
+            background:var(--white);border-radius:22px;overflow:hidden;
+            border:1px solid rgba(0,0,0,.03);transition:all .35s ease;
+            display:flex;flex-direction:column;
+        }
+        .prod-card:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(0,0,0,.06)}
+        .prod-img{width:100%;aspect-ratio:1;overflow:hidden;background:var(--cream-mid)}
+        .prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+        .prod-card:hover .prod-img img{transform:scale(1.04)}
+        .prod-body{padding:1.35rem 1.35rem 1.5rem;flex:1;display:flex;flex-direction:column}
+        .prod-tag{
+            display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.1em;
+            text-transform:uppercase;color:var(--teal);margin-bottom:.45rem;
+        }
+        .prod-card h3{font-family:'Fraunces',serif;font-size:1.08rem;color:var(--text-dark);margin-bottom:.35rem;line-height:1.3}
+        .prod-card p{font-size:.82rem;color:var(--text-light);line-height:1.55}
 
         /* === INFO === */
         .info{background:var(--warm-white)}
@@ -309,7 +331,7 @@
         .ft-inner{max-width:1120px;margin:0 auto}
         .ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.08)}
         .ft-about p{color:rgba(255,255,255,.5);font-size:.85rem;line-height:1.7;margin-top:.75rem}
-        .ft-about .logo-name{color:white}
+        .ft-about .ft-logo-name{color:white;font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600}
         .ft-col h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-light);margin-bottom:1rem}
         .ft-col ul{list-style:none}
         .ft-col li{margin-bottom:.55rem}
@@ -322,6 +344,7 @@
             .hero h1{font-size:2.6rem} .hero-inner{gap:2.5rem}
             .info-grid{grid-template-columns:1fr 1fr} .info-card:last-child{grid-column:span 2}
             .ft-grid{grid-template-columns:1fr 1fr;gap:2rem}
+            .prod-flex{grid-template-columns:1fr 1fr;gap:1rem}
         }
         @media(max-width:768px){
             section{padding:4rem 1.5rem}
@@ -335,6 +358,9 @@
             .hero-mosaic{grid-template-columns:1fr 1fr}
             .hero-trust{flex-direction:column;gap:.5rem;align-items:flex-start}
             .srv-flex{grid-template-columns:1fr}
+            .prod-flex{grid-template-columns:1fr 1fr;gap:1rem}
+            .logo-name .ln-top{font-size:.92rem}
+            .logo-name .ln-sub{font-size:.56rem}
             .nos-grid{grid-template-columns:1fr;gap:2.5rem}
             .nos-img{aspect-ratio:16/10}
             .info-grid{grid-template-columns:1fr} .info-card:last-child{grid-column:span 1}
@@ -356,6 +382,14 @@
             .hero-mosaic{grid-template-columns:1fr}
             .mosaic-tile.span{grid-column:span 1} .mosaic-tile{padding:1.25rem}
             .srv-item{padding:1.5rem;gap:1rem} .srv-num{font-size:1.4rem;width:28px}
+            .prod-flex{grid-template-columns:1fr 1fr;gap:.75rem}
+            .prod-body{padding:1rem 1rem 1.25rem}
+            .prod-card h3{font-size:.96rem}
+            .prod-card p{font-size:.76rem}
+            .logo-dot{width:32px;height:32px}
+            .logo-dot svg{width:15px;height:15px}
+            .logo-name .ln-top{font-size:.88rem}
+            .logo-name .ln-sub{font-size:.52rem}
             .sec-heading{font-size:1.6rem} .sec-eyebrow{font-size:.7rem}
             .nos-img{aspect-ratio:4/3} .nos-badge{padding:.75rem 1rem;gap:.6rem}
             .info-card{padding:1.5rem} .sched-row{font-size:.83rem}
@@ -372,6 +406,8 @@
         @media(max-width:360px){
             .hero h1{font-size:1.55rem} .sec-heading{font-size:1.4rem}
             .rating-sum{flex-direction:column;align-items:flex-start;gap:.5rem}
+            .prod-flex{grid-template-columns:1fr}
+            .logo-name .ln-sub{display:none}
         }
 
         .reveal{opacity:0;transform:translateY(22px);transition:all .65s cubic-bezier(.22,1,.36,1)}
@@ -384,13 +420,16 @@
     <div class="nav-bar">
         <a href="#" class="logo">
             <div class="logo-dot"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-            <span class="logo-name">Farmàcia La Rambla</span>
+            <span class="logo-name">
+                <span class="ln-top">Apotecària La Rambla</span>
+                <span class="ln-sub">Palma · des de 1998</span>
+            </span>
         </a>
         <ul class="nav-links">
             <li><a href="#servicios">Serveis</a></li>
             <li><a href="#nosotros">Nosaltres</a></li>
+            <li><a href="#productes">Productes</a></li>
             <li><a href="#info">Horari</a></li>
-            <li><a href="#opiniones">Opinions</a></li>
             <li><a href="#info" class="nav-pill">Trucar</a></li>
         </ul>
     </div>
@@ -402,6 +441,7 @@
     <ul>
         <li><a href="#servicios">Serveis</a></li>
         <li><a href="#nosotros">Nosaltres</a></li>
+        <li><a href="#productes">Productes</a></li>
         <li><a href="#info">Horari</a></li>
         <li><a href="#opiniones">Opinions</a></li>
     </ul>
@@ -466,6 +506,7 @@
         <span class="brands-label">Marques de confiança</span>
         <span class="brand-tag">ISDIN</span>
         <span class="brand-tag">Caudalie</span>
+        <span class="brand-tag">Cantabria Labs</span>
         <span class="brand-tag">Aboca</span>
         <span class="brand-tag">Ricola</span>
     </div>
@@ -497,10 +538,7 @@
     <div class="sec-inner">
         <div class="nos-grid">
             <div class="nos-img reveal">
-                <div class="nos-img-ph">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                    <span>Foto de la farmàcia</span>
-                </div>
+                <img src="assets-facade.jpg" alt="Façana de la Farmàcia La Rambla al centre de Palma" loading="lazy">
                 <div class="nos-badge">
                     <div class="nos-badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                     <div class="nos-badge-txt"><strong>Des de 1998</strong><span>Més de 27 anys a Palma</span></div>
@@ -517,6 +555,51 @@
                     <li><div class="val-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Lliurament a domicili a Palma</li>
                     <li><div class="val-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Oberts 7 dies, horari ampliat</li>
                 </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTES -->
+<section class="productes" id="productes">
+    <div class="sec-inner">
+        <div class="sec-head c reveal">
+            <span class="sec-eyebrow">Productes destacats</span>
+            <h2 class="sec-heading">Marques de confiança per a la teva pell</h2>
+            <p class="sec-desc">Una selecció de les millors línies dermocosmètiques, recomanades pel nostre equip farmacèutic.</p>
+        </div>
+        <div class="prod-flex">
+            <div class="prod-card reveal">
+                <div class="prod-img"><img src="assets-biretix-hero.jpg" alt="Biretix per a pell acneica" loading="lazy"></div>
+                <div class="prod-body">
+                    <span class="prod-tag">Cantabria Labs</span>
+                    <h3>Biretix</h3>
+                    <p>Protocol complet per a pell acneica: neteja, tractament i protecció.</p>
+                </div>
+            </div>
+            <div class="prod-card reveal" style="transition-delay:.08s">
+                <div class="prod-img"><img src="assets-lambdapil.jpg" alt="ISDIN Lambdapil anticaiguda" loading="lazy"></div>
+                <div class="prod-body">
+                    <span class="prod-tag">ISDIN · Premis Bellesa 2025</span>
+                    <h3>Lambdapil Anticaiguda</h3>
+                    <p>Xampú i tractament per aturar la caiguda i enfortir el cabell.</p>
+                </div>
+            </div>
+            <div class="prod-card reveal" style="transition-delay:.16s">
+                <div class="prod-img"><img src="assets-acniben.jpg" alt="ISDIN Acniben per a pell grassa" loading="lazy"></div>
+                <div class="prod-body">
+                    <span class="prod-tag">ISDIN Oily Skin</span>
+                    <h3>Acniben</h3>
+                    <p>Rutina específica per a pells grasses amb tendència acneica.</p>
+                </div>
+            </div>
+            <div class="prod-card reveal" style="transition-delay:.24s">
+                <div class="prod-img"><img src="assets-ureadin.jpg" alt="ISDIN Ureadin hidratació corporal" loading="lazy"></div>
+                <div class="prod-body">
+                    <span class="prod-tag">ISDIN Hydration</span>
+                    <h3>Ureadin</h3>
+                    <p>Gamma d'hidratació intensa per a pell seca i necessitats específiques.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -657,7 +740,7 @@
     <div class="ft-inner">
         <div class="ft-grid">
             <div class="ft-about">
-                <span class="logo-name" style="color:white;font-family:'Fraunces',serif;font-size:1.1rem">Farmàcia La Rambla</span>
+                <span class="ft-logo-name">Apotecària La Rambla</span>
                 <p>La teva farmàcia de confiança al centre de Palma de Mallorca. Atenció personalitzada des de 1998.</p>
             </div>
             <div class="ft-col"><h4>Navegació</h4><ul><li><a href="#servicios">Serveis</a></li><li><a href="#nosotros">Nosaltres</a></li><li><a href="#info">Horari</a></li><li><a href="#opiniones">Opinions</a></li></ul></div>
