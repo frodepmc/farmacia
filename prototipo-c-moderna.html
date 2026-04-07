@@ -100,12 +100,28 @@
         .mobile-overlay .mob-foot a{color:var(--cy);text-decoration:none}
 
         /* === HERO === */
-        .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 50%,rgba(0,191,165,.07),transparent 50%),radial-gradient(ellipse at 70% 20%,rgba(0,137,123,.05),transparent 40%),var(--dark)}
-        .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 55% 55% at 50% 50%,black 20%,transparent 65%)}
-        .hero-glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.12}
-        .hero-glow.a{background:var(--cy);width:450px;height:450px;top:10%;left:18%}
-        .hero-glow.b{background:var(--cy-dark);width:350px;height:350px;bottom:8%;right:12%;opacity:.08}
-        .hero-inner{max-width:1180px;margin:0 auto;padding:7.5rem 2rem 4.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;position:relative;z-index:1}
+        .hero{
+            min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
+            background-image:url('assets-hero-c.jpg');
+            background-size:cover;background-position:center right;background-repeat:no-repeat;
+        }
+        .hero::before{
+            content:'';position:absolute;inset:0;
+            background:linear-gradient(100deg,
+                rgba(11,17,32,.96) 0%,
+                rgba(11,17,32,.88) 30%,
+                rgba(11,17,32,.6) 55%,
+                rgba(11,17,32,.25) 82%,
+                rgba(11,17,32,.05) 100%),
+                linear-gradient(180deg,transparent 65%,rgba(11,17,32,.45) 100%);
+            pointer-events:none;z-index:1;
+        }
+        .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 55% 55% at 30% 50%,black 20%,transparent 65%);z-index:2;pointer-events:none}
+        .hero-glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.18;z-index:2;pointer-events:none}
+        .hero-glow.a{background:var(--cy);width:450px;height:450px;top:10%;left:8%}
+        .hero-glow.b{background:var(--cy-dark);width:350px;height:350px;bottom:8%;right:45%;opacity:.1}
+        .hero-inner{max-width:1180px;margin:0 auto;padding:7.5rem 2rem 4.5rem;display:flex;align-items:center;position:relative;z-index:3;width:100%}
+        .hero-content{max-width:560px}
         .hero-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(0,191,165,.25);background:rgba(0,191,165,.06);padding:5px 14px;border-radius:100px;font-size:.76rem;font-weight:500;color:var(--cy);margin-bottom:1.75rem}
         .chip-dot{width:6px;height:6px;background:var(--cy);border-radius:50%;animation:blink 2s ease-in-out infinite}
         @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
@@ -119,7 +135,20 @@
         .btn-glass:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15)}
         .btn-glow svg,.btn-glass svg{width:15px;height:15px}
 
-        /* hero stats */
+        /* hero stats inline */
+        .hero-stats-inline{
+            display:inline-flex;align-items:center;gap:1.5rem;margin-top:2.5rem;
+            padding:1.1rem 1.5rem 1.25rem;background:rgba(255,255,255,.05);backdrop-filter:blur(14px);
+            border:1px solid rgba(0,191,165,.22);border-radius:14px;
+            box-shadow:0 8px 32px rgba(0,191,165,.1);
+            flex-wrap:wrap;
+        }
+        .hsi{display:inline-flex;flex-direction:column;gap:4px;align-items:flex-start}
+        .hsi strong{font-size:1.4rem;font-weight:700;color:var(--cy);line-height:1;letter-spacing:-.02em;display:block}
+        .hsi span{font-size:.7rem;color:var(--g400);font-weight:600;text-transform:uppercase;letter-spacing:.08em;display:block;line-height:1}
+        .hsi-sep{width:1px;height:32px;background:rgba(0,191,165,.25);display:block}
+
+        /* hero stats (legacy - kept for reference, removed) */
         .hero-right{display:flex;flex-direction:column;gap:.75rem}
         .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
         .stat-card{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:14px;padding:1.5rem;transition:all .3s;position:relative;overflow:hidden}
@@ -131,6 +160,28 @@
         .stat-lbl{font-size:.78rem;color:var(--g400);font-weight:400}
         .status-live{display:flex;align-items:center;gap:7px;font-size:.84rem;color:var(--cy);font-weight:500}
         .live-dot{width:8px;height:8px;background:var(--cy);border-radius:50%;box-shadow:0 0 8px var(--cy);animation:blink 2s ease-in-out infinite}
+        .stat-card.photo{
+            grid-column:span 2;padding:0;aspect-ratio:2/1;overflow:hidden;position:relative;
+            border:1px solid rgba(0,191,165,.18);
+        }
+        .stat-card.photo img{
+            width:100%;height:100%;object-fit:cover;display:block;
+            transition:transform .7s cubic-bezier(.2,.8,.2,1);
+        }
+        .stat-card.photo:hover img{transform:scale(1.06)}
+        .stat-card.photo::after{
+            content:'';position:absolute;inset:0;
+            background:linear-gradient(135deg,rgba(11,17,32,.75) 0%,rgba(11,17,32,.25) 55%,transparent 100%),
+                       radial-gradient(circle at 80% 20%,rgba(0,191,165,.15),transparent 55%);
+            pointer-events:none;
+        }
+        .photo-overlay{
+            position:absolute;left:1.25rem;bottom:1.1rem;right:1.25rem;z-index:1;
+            display:flex;flex-direction:column;gap:4px;
+        }
+        .photo-overlay .po-live{display:flex;align-items:center;gap:7px;color:var(--cy);font-weight:600;font-size:.8rem}
+        .photo-overlay .po-live .live-dot{width:7px;height:7px}
+        .photo-overlay .po-addr{color:var(--white);font-size:.88rem;font-weight:500;text-shadow:0 2px 12px rgba(0,0,0,.5)}
 
         /* === BRANDS === */
         .brands{padding:2.5rem 2rem;background:var(--dark-card);border-top:1px solid var(--dark-border);border-bottom:1px solid var(--dark-border)}
@@ -289,12 +340,14 @@
             .nav-menu{display:none}
             .nav-toggle{display:block}
             section{padding:4rem 1.5rem}
-            .hero-inner{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2rem}
-            .hero h1{font-size:2.1rem} .hero-sub{font-size:.93rem;max-width:100%}
+            .hero{background-position:center bottom}
+            .hero::before{background:linear-gradient(180deg,rgba(11,17,32,.97) 0%,rgba(11,17,32,.92) 50%,rgba(11,17,32,.82) 100%)}
+            .hero-inner{padding:6rem 1.5rem 3rem;justify-content:center;text-align:center}
+            .hero-content{max-width:100%}
+            .hero h1{font-size:2.1rem} .hero-sub{font-size:.93rem;max-width:100%;margin-left:auto;margin-right:auto}
             .hero-btns{flex-direction:column}
             .btn-glow,.btn-glass{width:100%;justify-content:center}
-            .stat-row{grid-template-columns:1fr 1fr}
-            .stat-card.wide{grid-column:span 2;flex-direction:column;text-align:center;gap:.5rem}
+            .hero-stats-inline{margin:2rem auto 0;justify-content:center}
             .srv-grid{grid-template-columns:1fr 1fr;gap:.75rem}
             .prod-row{grid-template-columns:1fr 1fr;gap:1rem}
             .logo-img{height:38px}
@@ -310,12 +363,13 @@
         }
         @media(max-width:480px){
             section{padding:3.5rem 1rem} .nav-inner{padding:0 1rem}
-            .hero-inner{padding:5.5rem 1rem 2.5rem;gap:1.75rem}
+            .hero-inner{padding:5.5rem 1rem 3rem}
             .hero h1{font-size:1.8rem} .hero-sub{font-size:.88rem}
             .hero-chip{font-size:.7rem;padding:4px 10px}
-            .stat-row{grid-template-columns:1fr;gap:.6rem}
-            .stat-card.wide{grid-column:span 1} .stat-val{font-size:1.5rem}
-            .stat-card{padding:1.25rem}
+            .hero-stats-inline{padding:.8rem 1rem;gap:.75rem}
+            .hsi strong{font-size:1.1rem}
+            .hsi span{font-size:.62rem}
+            .hsi-sep{height:22px}
             .sec-title{font-size:1.6rem} .sec-tag{font-size:.68rem}
             .srv-grid{grid-template-columns:1fr} .srv-card{padding:1.5rem}
             .prod-row{grid-template-columns:1fr 1fr;gap:.75rem}
@@ -380,7 +434,7 @@
     <div class="hero-grid-bg"></div>
     <div class="hero-glow a"></div><div class="hero-glow b"></div>
     <div class="hero-inner">
-        <div class="anim">
+        <div class="hero-content anim">
             <div class="hero-chip"><span class="chip-dot"></span> Obert ara &middot; 9:00 – 22:00</div>
             <h1>Salut i benestar al <span class="grad">centre de Palma</span></h1>
             <p class="hero-sub">Des de 1998, l'equip del farmacèutic Martorell ofereix atenció professional, formulació magistral i lliurament a domicili. Oberts tots els dies de l'any.</p>
@@ -394,19 +448,14 @@
                     Explorar serveis
                 </a>
             </div>
-        </div>
-        <div class="hero-right anim" style="transition-delay:.12s">
-            <div class="stat-row">
-                <div class="stat-card"><span class="stat-val">4.1</span><span class="stat-lbl">Rating a Google</span></div>
-                <div class="stat-card"><span class="stat-val">50+</span><span class="stat-lbl">Ressenyes verificades</span></div>
-            </div>
-            <div class="stat-row">
-                <div class="stat-card"><span class="stat-val">13h</span><span class="stat-lbl">Oberts al dia</span></div>
-                <div class="stat-card"><span class="stat-val">365</span><span class="stat-lbl">Dies a l'any</span></div>
-            </div>
-            <div class="stat-card wide">
-                <div class="status-live"><span class="live-dot"></span> Obert ara</div>
-                <span class="stat-lbl">La Rambla 14, 07003 Palma &middot; Al costat del Mercat de l'Olivar</span>
+            <div class="hero-stats-inline">
+                <div class="hsi"><strong>4.1</strong><span>Google</span></div>
+                <div class="hsi-sep"></div>
+                <div class="hsi"><strong>50+</strong><span>Ressenyes</span></div>
+                <div class="hsi-sep"></div>
+                <div class="hsi"><strong>13h</strong><span>Oberts al dia</span></div>
+                <div class="hsi-sep"></div>
+                <div class="hsi"><strong>365</strong><span>Dies l'any</span></div>
             </div>
         </div>
     </div>
