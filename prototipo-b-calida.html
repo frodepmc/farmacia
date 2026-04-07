@@ -38,16 +38,9 @@
             border-radius:100px;padding:0 1.75rem;display:flex;align-items:center;justify-content:space-between;
             height:56px;border:1px solid rgba(0,150,136,.06);box-shadow:0 2px 16px rgba(0,0,0,.03);
         }
-        .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-        .logo-dot{
-            width:36px;height:36px;background:var(--teal);border-radius:50%;
-            display:flex;align-items:center;justify-content:center;
-            box-shadow:0 3px 10px rgba(0,150,136,.22);
-        }
-        .logo-dot svg{width:17px;height:17px}
-        .logo-name{display:flex;flex-direction:column;line-height:1}
-        .logo-name .ln-top{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--text-dark)}
-        .logo-name .ln-sub{font-family:'Nunito Sans',sans-serif;font-size:.6rem;color:var(--teal);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;font-weight:600}
+        .logo{display:inline-flex;align-items:center;text-decoration:none}
+        .logo-img{height:40px;width:auto;display:block;transition:transform .3s ease}
+        .logo:hover .logo-img{transform:scale(1.03)}
         .nav-links{display:flex;list-style:none;gap:1.5rem;align-items:center}
         .nav-links a{text-decoration:none;color:var(--text-light);font-size:.85rem;font-weight:500;transition:color .25s}
         .nav-links a:hover{color:var(--teal)}
@@ -359,8 +352,7 @@
             .hero-trust{flex-direction:column;gap:.5rem;align-items:flex-start}
             .srv-flex{grid-template-columns:1fr}
             .prod-flex{grid-template-columns:1fr 1fr;gap:1rem}
-            .logo-name .ln-top{font-size:.92rem}
-            .logo-name .ln-sub{font-size:.56rem}
+            .logo-img{height:36px}
             .nos-grid{grid-template-columns:1fr;gap:2.5rem}
             .nos-img{aspect-ratio:16/10}
             .info-grid{grid-template-columns:1fr} .info-card:last-child{grid-column:span 1}
@@ -386,10 +378,7 @@
             .prod-body{padding:1rem 1rem 1.25rem}
             .prod-card h3{font-size:.96rem}
             .prod-card p{font-size:.76rem}
-            .logo-dot{width:32px;height:32px}
-            .logo-dot svg{width:15px;height:15px}
-            .logo-name .ln-top{font-size:.88rem}
-            .logo-name .ln-sub{font-size:.52rem}
+            .logo-img{height:32px}
             .sec-heading{font-size:1.6rem} .sec-eyebrow{font-size:.7rem}
             .nos-img{aspect-ratio:4/3} .nos-badge{padding:.75rem 1rem;gap:.6rem}
             .info-card{padding:1.5rem} .sched-row{font-size:.83rem}
@@ -407,7 +396,7 @@
             .hero h1{font-size:1.55rem} .sec-heading{font-size:1.4rem}
             .rating-sum{flex-direction:column;align-items:flex-start;gap:.5rem}
             .prod-flex{grid-template-columns:1fr}
-            .logo-name .ln-sub{display:none}
+            .logo-img{height:28px}
         }
 
         .reveal{opacity:0;transform:translateY(22px);transition:all .65s cubic-bezier(.22,1,.36,1)}
@@ -418,12 +407,8 @@
 
 <nav id="navbar">
     <div class="nav-bar">
-        <a href="#" class="logo">
-            <div class="logo-dot"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-            <span class="logo-name">
-                <span class="ln-top">Apotecària La Rambla</span>
-                <span class="ln-sub">Palma · des de 1998</span>
-            </span>
+        <a href="#" class="logo" aria-label="Apotecària La Rambla 14 — Inici">
+            <img src="assets-logo.png" alt="Apotecària La Rambla 14" class="logo-img" width="102" height="40">
         </a>
         <ul class="nav-links">
             <li><a href="#servicios">Serveis</a></li>

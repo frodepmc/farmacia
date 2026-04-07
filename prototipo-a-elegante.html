@@ -54,16 +54,9 @@
             max-width: 1180px; margin: 0 auto; padding: 0 2rem;
             display: flex; align-items: center; justify-content: space-between; height: 68px;
         }
-        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-mark {
-            width: 42px; height: 42px; background: var(--tq); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 3px 12px rgba(0,150,136,.25);
-        }
-        .logo-mark svg { width: 22px; height: 22px; }
-        .logo-type { display: flex; flex-direction: column; line-height: 1; }
-        .logo-type .lt-top { font-family: 'Lora', serif; font-weight: 600; font-size: 1.1rem; color: var(--gray-900); letter-spacing: .01em; }
-        .logo-type .lt-sub { font-family: 'Outfit', sans-serif; font-size: .62rem; color: var(--tq); letter-spacing: .22em; text-transform: uppercase; margin-top: 3px; font-weight: 500; }
+        .logo { display: inline-flex; align-items: center; text-decoration: none; }
+        .logo-img { height: 44px; width: auto; display: block; transition: transform .3s ease; }
+        .logo:hover .logo-img { transform: scale(1.03); }
         .nav-links { display: flex; list-style: none; gap: 1.75rem; align-items: center; }
         .nav-links a {
             text-decoration: none; color: var(--gray-600); font-size: .88rem; font-weight: 400;
@@ -460,8 +453,7 @@
             .float-pill.tr{right:0;top:-12px} .float-pill.bl{left:0;bottom:-8px}
             .srv-grid{grid-template-columns:1fr 1fr;gap:1rem}
             .prod-grid{grid-template-columns:1fr 1fr;gap:1rem}
-            .logo-type .lt-top{font-size:1rem}
-            .logo-type .lt-sub{font-size:.58rem}
+            .logo-img{height:40px}
             .about-grid{grid-template-columns:1fr;gap:2.5rem}
             .about-badge{right:16px;bottom:-14px}
             .hor-grid{grid-template-columns:1fr;gap:1.5rem}
@@ -484,10 +476,7 @@
             .prod-body{padding:1rem 1rem 1.25rem}
             .prod-card h3{font-size:.98rem}
             .prod-card p{font-size:.78rem}
-            .logo-mark{width:36px;height:36px}
-            .logo-mark svg{width:18px;height:18px}
-            .logo-type .lt-top{font-size:.92rem}
-            .logo-type .lt-sub{font-size:.54rem;letter-spacing:.18em}
+            .logo-img{height:34px}
             .sec-title{font-size:1.65rem} .sec-label{font-size:.7rem}
             .about-img{aspect-ratio:4/3}
             .about-badge{position:relative;bottom:auto;right:auto;margin-top:1rem;display:inline-flex;gap:10px;align-items:center}
@@ -506,7 +495,7 @@
             .hero h1{font-size:1.65rem} .hc-stats{grid-template-columns:1fr}
             .sec-title{font-size:1.45rem}
             .prod-grid{grid-template-columns:1fr}
-            .logo-type .lt-sub{display:none}
+            .logo-img{height:30px}
         }
 
         /* === ANIMATIONS === */
@@ -518,14 +507,8 @@
 
 <nav id="navbar">
     <div class="nav-inner">
-        <a href="#" class="logo">
-            <div class="logo-mark">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
-            <span class="logo-type">
-                <span class="lt-top">Apotecària La Rambla</span>
-                <span class="lt-sub">Farmàcia · Palma · 1998</span>
-            </span>
+        <a href="#" class="logo" aria-label="Apotecària La Rambla 14 — Inici">
+            <img src="assets-logo.png" alt="Apotecària La Rambla 14" class="logo-img" width="112" height="44">
         </a>
         <ul class="nav-links">
             <li><a href="#servicios">Serveis</a></li>
