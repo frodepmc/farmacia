@@ -377,22 +377,91 @@
 
         /* === SOCIAL BAR === */
         .social-bar {
-            padding: 3rem 2rem; background: var(--tq-whisper);
-            border-top: 1px solid var(--tq-ghost);
+            padding: 5rem 2rem; background: var(--ivory); position: relative; overflow: hidden;
+        }
+        .social-bar::before {
+            content: '+'; position: absolute; top: 50%; left: 6%; transform: translateY(-50%);
+            font-family: 'Lora', serif; font-size: 18rem; font-weight: 300; color: var(--tq-ghost);
+            line-height: 1; pointer-events: none; opacity: .7;
+        }
+        .social-bar::after {
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 1px; height: 60%; background: var(--gray-200);
         }
         .social-inner {
-            max-width: 1180px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;
+            max-width: 1080px; margin: 0 auto; position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center;
         }
-        .social-inner span { font-size: .82rem; color: var(--gray-400); font-weight: 500; }
+        .social-editorial {
+            padding-right: 4rem; text-align: right;
+        }
+        .social-editorial .social-eyebrow {
+            font-family: 'Outfit', sans-serif; font-size: .7rem; font-weight: 600;
+            letter-spacing: .18em; text-transform: uppercase; color: var(--tq);
+            margin-bottom: .75rem;
+        }
+        .social-editorial h3 {
+            font-family: 'Lora', serif; font-size: 1.7rem; font-weight: 400;
+            color: var(--gray-900); line-height: 1.35; margin: 0 0 .5rem;
+        }
+        .social-editorial h3 em {
+            font-style: italic; color: var(--tq-dark);
+        }
+        .social-editorial p {
+            font-size: .85rem; color: var(--gray-400); line-height: 1.6; margin: 0;
+        }
+        .social-cards {
+            padding-left: 4rem; display: flex; flex-direction: column; gap: 1rem;
+        }
         .social-link {
-            display: inline-flex; align-items: center; gap: 6px;
-            text-decoration: none; color: var(--gray-600); font-size: .88rem; font-weight: 500;
-            padding: 8px 16px; border-radius: 8px; border: 1px solid var(--gray-200);
-            background: white; transition: all .25s;
+            display: flex; align-items: center; gap: 1rem;
+            text-decoration: none; padding: 1.25rem 1.5rem; border-radius: 14px;
+            background: white; border: 1px solid var(--gray-100);
+            box-shadow: 0 2px 12px rgba(0,0,0,.03); transition: all .35s cubic-bezier(.25,.46,.45,.94);
+            position: relative; overflow: hidden;
         }
-        .social-link:hover { border-color: var(--tq); color: var(--tq); }
-        .social-link svg { width: 18px; height: 18px; }
+        .social-link::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+            background: var(--tq); transform: scaleY(0); transform-origin: center;
+            transition: transform .35s cubic-bezier(.25,.46,.45,.94);
+        }
+        .social-link:hover { border-color: var(--tq-pale); transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(0,150,136,.08);
+        }
+        .social-link:hover::before { transform: scaleY(1); }
+        .social-link-icon {
+            width: 44px; height: 44px; border-radius: 12px; display: flex;
+            align-items: center; justify-content: center; flex-shrink: 0;
+            background: var(--tq-whisper); border: 1px solid var(--tq-ghost);
+            transition: all .35s;
+        }
+        .social-link:hover .social-link-icon {
+            background: var(--tq); border-color: var(--tq);
+        }
+        .social-link-icon svg { width: 20px; height: 20px; color: var(--tq); transition: color .35s; }
+        .social-link:hover .social-link-icon svg { color: white; }
+        .social-link-text { display: flex; flex-direction: column; gap: 2px; }
+        .social-link-platform {
+            font-family: 'Outfit', sans-serif; font-size: .7rem; font-weight: 600;
+            letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400);
+        }
+        .social-link-handle {
+            font-family: 'Lora', serif; font-size: 1.05rem; color: var(--gray-800);
+            transition: color .35s;
+        }
+        .social-link:hover .social-link-handle { color: var(--tq-dark); }
+        .social-link-arrow {
+            margin-left: auto; color: var(--gray-200); transition: all .35s;
+        }
+        .social-link:hover .social-link-arrow { color: var(--tq); transform: translateX(3px); }
+        .social-link-arrow svg { width: 18px; height: 18px; }
+        @media (max-width: 768px) {
+            .social-bar::before { font-size: 10rem; left: -2%; top: 10%; }
+            .social-bar::after { display: none; }
+            .social-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .social-editorial { padding-right: 0; text-align: center; }
+            .social-cards { padding-left: 0; }
+        }
 
         /* === CTA === */
         .cta-section { background: var(--ivory); }
@@ -829,15 +898,33 @@
 <!-- SOCIAL -->
 <div class="social-bar">
     <div class="social-inner">
-        <span>Segueix-nos a les xarxes</span>
-        <a href="https://instagram.com/farmacia_larambla14" class="social-link" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            @farmacia_larambla14
-        </a>
-        <a href="https://tiktok.com/@farma.la.rambla" class="social-link" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.05a8.23 8.23 0 004.8 1.54V7.14a4.85 4.85 0 01-1.04-.45z"/></svg>
-            @farma.la.rambla
-        </a>
+        <div class="social-editorial">
+            <div class="social-eyebrow">La nostra comunitat</div>
+            <h3>Connecta amb <em>nosaltres</em></h3>
+            <p>Consells de salut, novetats i el dia a dia de la teva farmacia de La Rambla.</p>
+        </div>
+        <div class="social-cards">
+            <a href="https://instagram.com/farmacia_larambla14" class="social-link" target="_blank" rel="noopener">
+                <div class="social-link-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </div>
+                <div class="social-link-text">
+                    <span class="social-link-platform">Instagram</span>
+                    <span class="social-link-handle">@farmacia_larambla14</span>
+                </div>
+                <div class="social-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </a>
+            <a href="https://tiktok.com/@farma.la.rambla" class="social-link" target="_blank" rel="noopener">
+                <div class="social-link-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.05a8.23 8.23 0 004.8 1.54V7.14a4.85 4.85 0 01-1.04-.45z"/></svg>
+                </div>
+                <div class="social-link-text">
+                    <span class="social-link-platform">TikTok</span>
+                    <span class="social-link-handle">@farma.la.rambla</span>
+                </div>
+                <div class="social-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </a>
+        </div>
     </div>
 </div>
 
