@@ -19,11 +19,13 @@ window.__I18N__ = {
     "hero.cornerL2": "LA RAMBLA",
 
     "hf.eyebrow": "— La nostra forma",
-    "hf.h1":      "Sense pressa.",
-    "hf.h2":      "Amb consell.",
-    "hf.lead":    "Una farmàcia de barri es construeix amb anys de proximitat. Coneixem els nostres veïns pel nom i per la seva recepta. Aquí no t'atén un mostrador — t'atén una persona que escolta abans de dispensar.",
+    "hf.h1":      "Tot el que cal.",
+    "hf.h2":      "Sense moure't.",
+    "hf.lead":    "Recepta, formulació, dermo, lliurament a casa. Cada dia 9 a 22.",
     "hf.cta":     "Coneix-nos",
     "hf.tag":     "EST. 1998",
+
+    "hr.rating":  "basat en 50+ ressenyes a Google",
 
 
     "about.eyebrow": "— La casa",
@@ -277,11 +279,13 @@ window.__I18N__ = {
     "hero.cornerL2": "LA RAMBLA",
 
     "hf.eyebrow": "— Nuestra forma",
-    "hf.h1":      "Sin prisa.",
-    "hf.h2":      "Con consejo.",
-    "hf.lead":    "Una farmacia de barrio se construye con años de proximidad. Conocemos a nuestros vecinos por su nombre y por su receta. Aquí no te atiende un mostrador — te atiende una persona que escucha antes de dispensar.",
+    "hf.h1":      "Todo lo necesario.",
+    "hf.h2":      "Sin moverte.",
+    "hf.lead":    "Receta, formulación, dermo, entrega a casa. Cada día 9 a 22.",
     "hf.cta":     "Conócenos",
     "hf.tag":     "EST. 1998",
+
+    "hr.rating":  "basado en más de 50 reseñas en Google",
 
 
     "about.eyebrow": "— La casa",

@@ -124,27 +124,27 @@
 <section class="marquee-wrap" aria-label="Marques">
   <div class="marquee">
     <div class="marquee-track">
-      <span>ISDIN</span><em>✦</em>
-      <span>Caudalie</span><em>✦</em>
-      <span>Cantabria Labs</span><em>✦</em>
-      <span>Aboca</span><em>✦</em>
-      <span>Ricola</span><em>✦</em>
-      <span>Avène</span><em>✦</em>
-      <span>La Roche-Posay</span><em>✦</em>
-      <span>Vichy</span><em>✦</em>
-      <span>Bioderma</span><em>✦</em>
-      <span>Sebamed</span><em>✦</em>
-      <!-- duplicated for seamless loop -->
-      <span>ISDIN</span><em>✦</em>
-      <span>Caudalie</span><em>✦</em>
-      <span>Cantabria Labs</span><em>✦</em>
-      <span>Aboca</span><em>✦</em>
-      <span>Ricola</span><em>✦</em>
-      <span>Avène</span><em>✦</em>
-      <span>La Roche-Posay</span><em>✦</em>
-      <span>Vichy</span><em>✦</em>
-      <span>Bioderma</span><em>✦</em>
-      <span>Sebamed</span><em>✦</em>
+      <a href="https://www.isdin.com" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/isdin.png" alt="ISDIN" loading="lazy"></a>
+      <a href="https://es.caudalie.com" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/caudalie.png" alt="Caudalie" loading="lazy"></a>
+      <a href="https://www.cantabrialabs.es" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/cantabria-labs.png" alt="Cantabria Labs" loading="lazy"></a>
+      <a href="https://www.aboca.com/es" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/aboca.png" alt="Aboca" loading="lazy"></a>
+      <a href="https://www.ricola.com" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/ricola.png" alt="Ricola" loading="lazy"></a>
+      <a href="https://www.eau-thermale-avene.es" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/avene.png" alt="Avène" loading="lazy"></a>
+      <a href="https://www.laroche-posay.es" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/la-roche-posay.png" alt="La Roche-Posay" loading="lazy"></a>
+      <a href="https://www.vichy.es" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/vichy.png" alt="Vichy" loading="lazy"></a>
+      <a href="https://www.bioderma.es" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/bioderma.png" alt="Bioderma" loading="lazy"></a>
+      <a href="https://www.sebamed.es" target="_blank" rel="noopener" class="marquee-logo"><img src="logos/sebamed.png" alt="Sebamed" loading="lazy"></a>
+      <!-- duplicated for seamless loop (alt empty to avoid SR repetition) -->
+      <a href="https://www.isdin.com" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/isdin.png" alt="" loading="lazy"></a>
+      <a href="https://es.caudalie.com" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/caudalie.png" alt="" loading="lazy"></a>
+      <a href="https://www.cantabrialabs.es" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/cantabria-labs.png" alt="" loading="lazy"></a>
+      <a href="https://www.aboca.com/es" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/aboca.png" alt="" loading="lazy"></a>
+      <a href="https://www.ricola.com" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/ricola.png" alt="" loading="lazy"></a>
+      <a href="https://www.eau-thermale-avene.es" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/avene.png" alt="" loading="lazy"></a>
+      <a href="https://www.laroche-posay.es" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/la-roche-posay.png" alt="" loading="lazy"></a>
+      <a href="https://www.vichy.es" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/vichy.png" alt="" loading="lazy"></a>
+      <a href="https://www.bioderma.es" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/bioderma.png" alt="" loading="lazy"></a>
+      <a href="https://www.sebamed.es" target="_blank" rel="noopener" class="marquee-logo" aria-hidden="true" tabindex="-1"><img src="logos/sebamed.png" alt="" loading="lazy"></a>
     </div>
   </div>
 </section>
@@ -153,21 +153,79 @@
 <!-- =================== HOME FEATURE (editorial) =================== -->
 <section class="home-feature">
   <div class="home-feature-inner">
+    <!-- Imagen (col izq, full-height) -->
     <div class="home-feature-image reveal-on-scroll">
       <img src="assets-facade.jpg" alt="Façana de l'apotecària a Carrer La Rambla, 14" loading="lazy">
       <div class="home-feature-tag" data-i18n="hf.tag">EST. 1998</div>
     </div>
+
+    <!-- Editorial intro (col der, row 1) -->
     <div class="home-feature-text reveal-on-scroll">
       <span class="eyebrow" data-i18n="hf.eyebrow">— La nostra forma</span>
       <h2 class="display-h">
-        <span data-i18n="hf.h1">Sense pressa.</span>
-        <em data-i18n="hf.h2">Amb consell.</em>
+        <span data-i18n="hf.h1">Tot el que cal.</span>
+        <em data-i18n="hf.h2">Sense moure't.</em>
       </h2>
-      <p class="home-feature-lead" data-i18n="hf.lead">Una farmàcia de barri es construeix amb anys de proximitat. Coneixem els nostres veïns pel nom i per la seva recepta. Aquí no t'atén un mostrador — t'atén una persona que escolta abans de dispensar.</p>
+      <p class="home-feature-lead" data-i18n="hf.lead">Recepta, formulació, dermo, lliurament a casa. Cada dia 9 a 22.</p>
       <a href="nosaltres.html" class="btn-ghost">
         <span data-i18n="hf.cta">Coneix-nos</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
+    </div>
+
+    <!-- Featured review (col der, row 2) -->
+    <article class="home-feature-featured reveal-on-scroll" data-stagger="1">
+      <div class="hf-rating-line">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+        </div>
+        <span class="hf-rating-meta" data-i18n="hr.rating">basat en 50+ ressenyes a Google</span>
+      </div>
+      <blockquote class="hf-feat-quote">Excel·lent tracte, personalitzat i atent. La mateixa atenció de sempre, un equip que realment es preocupa.</blockquote>
+      <footer class="hf-feat-author">
+        <div class="review-avatar">JL</div>
+        <div>
+          <div class="review-name">Jordi Llabres Sans</div>
+          <div class="review-source">Google Reviews</div>
+        </div>
+      </footer>
+    </article>
+
+    <!-- 2 mini cards (col der, row 3) -->
+    <div class="home-feature-cards">
+      <article class="hf-mini-card reveal-on-scroll" data-stagger="2">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+        </div>
+        <blockquote class="hf-mini-quote">Molt bons assessors, sempre donen mostres. És la meva farmàcia de confiança.</blockquote>
+        <footer class="hf-mini-author">
+          <span class="hf-mini-name">Camila Rocio Peralta</span>
+          <span class="hf-mini-source">Google Reviews</span>
+        </footer>
+      </article>
+
+      <article class="hf-mini-card reveal-on-scroll" data-stagger="3">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568L24 9.75l-6 5.847 1.416 8.265L12 19.771l-7.416 4.091L6 15.597 0 9.75l8.332-1.595z"/></svg>
+        </div>
+        <blockquote class="hf-mini-quote">Farmàcia molt recomanable. Les farmacèutiques resolen tots els teus dubtes amb amabilitat.</blockquote>
+        <footer class="hf-mini-author">
+          <span class="hf-mini-name">Mar</span>
+          <span class="hf-mini-source">Google Reviews</span>
+        </footer>
+      </article>
     </div>
   </div>
 </section>
