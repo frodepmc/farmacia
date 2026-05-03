@@ -66,7 +66,7 @@ window.addEventListener('load', () => {
 
   const map = L.map(mapEl, {
     center: [LAT, LNG],
-    zoom: 16,
+    zoom: 15,
     zoomControl: false,
     scrollWheelZoom: false,
     dragging: true
@@ -113,6 +113,32 @@ window.addEventListener('load', () => {
     if (apothecaryMarker) map.removeLayer(apothecaryMarker);
     apothecaryMarker = buildApothecaryMarker().addTo(map);
   });
+
+  // Nearby public parkings — names are proper nouns, not translated
+  const PARKINGS = [
+    { name: "Mercat de l'Olivar",  lat: 39.5737, lng: 2.6519 },
+    { name: "Comtat del Rosselló", lat: 39.5740, lng: 2.6526 },
+    { name: 'SABA Vía Roma',       lat: 39.5710, lng: 2.6483 },
+    { name: 'Parking Patines',     lat: 39.5732, lng: 2.6480 },
+    { name: 'SABA Plaza Mayor',    lat: 39.5717, lng: 2.6499 },
+    { name: 'SABA Sa Gerreria',    lat: 39.5752, lng: 2.6555 }
+  ];
+  const parkingIcon = L.divIcon({
+    className: 'parking-pin',
+    html: '<span>P</span>',
+    iconSize: [24, 24],
+    iconAnchor: [12, 12]
+  });
+  L.layerGroup(
+    PARKINGS.map(p =>
+      L.marker([p.lat, p.lng], {
+        icon: parkingIcon,
+        title: p.name,
+        alt: 'Parking ' + p.name,
+        keyboard: false
+      })
+    )
+  ).addTo(map);
 
   L.control.zoom({ position: 'bottomright' }).addTo(map);
 });
