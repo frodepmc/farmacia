@@ -1,0 +1,9 @@
+# Local archive (huerfanos, originales raw, ZIPs, OSINT, prototipos legacy)
+_archive/
+
+# Claude Code workspace settings
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db

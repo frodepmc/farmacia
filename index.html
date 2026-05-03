@@ -1,152 +1,258 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmàcia La Rambla — Propostes de disseny web</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --tq: #009688; --tq-dark: #00796B; --tq-light: #4DB6AC;
-            --tq-ghost: #E0F2F1; --tq-whisper: #F4FAF9;
-            --white: #fff; --ivory: #FCFBF9;
-            --g100: #F0EDEA; --g200: #E0DBD5; --g400: #A39E97; --g600: #6B6560; --g900: #1E1B18;
-        }
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{font-family:'Outfit',sans-serif;background:var(--ivory);color:var(--g900);min-height:100vh;-webkit-font-smoothing:antialiased}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apotecària La Rambla 14 — La teva farmàcia de confiança a Palma</title>
+<meta name="description" content="Apotecària de barri al cor de Palma. Des de 1998. Atenció personalitzada, formulació magistral, dermocosmètica i SPD.">
 
-        .header{background:var(--white);border-bottom:1px solid rgba(0,0,0,.05);padding:1.5rem 2rem;text-align:center}
-        .header h1{font-family:'Lora',serif;font-size:1.3rem;font-weight:600;color:var(--g900);margin-bottom:.2rem}
-        .header h1 span{color:var(--tq)}
-        .header p{font-size:.85rem;color:var(--g400)}
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Apotecària La Rambla 14 — La teva farmàcia de barri a Palma">
+<meta property="og:description" content="Apotecària de barri al cor de Palma. Des de 1998. Atenció personalitzada, formulació magistral, dermocosmètica i SPD. Oberts cada dia 9–22h.">
+<meta property="og:image" content="assets-hero-a.jpg">
+<meta property="og:locale" content="ca_ES">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
 
-        .container{max-width:1080px;margin:0 auto;padding:3rem 2rem}
-        .intro{text-align:center;margin-bottom:3rem}
-        .intro h2{font-family:'Lora',serif;font-size:1.7rem;font-weight:600;margin-bottom:.6rem}
-        .intro p{font-size:.95rem;color:var(--g600);max-width:520px;margin:0 auto;line-height:1.65}
+<!-- Favicons -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-        .card{
-            background:var(--white);border-radius:16px;overflow:hidden;
-            border:1px solid rgba(0,0,0,.05);transition:all .35s ease;
-            text-decoration:none;color:inherit;display:flex;flex-direction:column;
-        }
-        .card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,.08);border-color:var(--tq-light)}
-
-        .card-preview{height:200px;position:relative;overflow:hidden;background:var(--g100)}
-        .card-preview img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-        .card:hover .card-preview img{transform:scale(1.04)}
-        .card-preview::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.08) 100%);pointer-events:none}
-
-        .card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
-        .card-tag{
-            display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.1em;
-            text-transform:uppercase;color:var(--tq);background:var(--tq-ghost);
-            padding:3px 9px;border-radius:4px;margin-bottom:.65rem;width:fit-content;
-        }
-        .card h3{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;margin-bottom:.4rem}
-        .card p{font-size:.85rem;color:var(--g600);line-height:1.6;margin-bottom:1rem;flex:1}
-        .card-features{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.25rem}
-        .card-features li{font-size:.72rem;background:var(--g100);padding:3px 9px;border-radius:100px;color:var(--g600)}
-        .card-btn{
-            display:flex;align-items:center;justify-content:center;gap:6px;
-            background:var(--tq);color:white;padding:11px;border-radius:9px;
-            font-size:.87rem;font-weight:600;transition:background .25s;
-        }
-        .card-btn svg{width:14px;height:14px}
-        .card:hover .card-btn{background:var(--tq-dark)}
-
-        .footer{text-align:center;padding:2rem;font-size:.78rem;color:var(--g400)}
-        .footer a{color:var(--tq);text-decoration:none}
-
-        @media(max-width:768px){.cards{grid-template-columns:1fr;max-width:400px;margin:0 auto} .intro h2{font-size:1.4rem} .container{padding:2rem 1.5rem}}
-        @media(max-width:480px){.cards{max-width:100%} .intro h2{font-size:1.25rem} .header h1{font-size:1.15rem}}
-    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
 
-<div class="header">
-    <h1>Farmàcia <span>La Rambla</span></h1>
-    <p>Propostes de disseny web &mdash; Selecciona un prototip per veure'l</p>
+<!-- =================== NAV =================== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand" aria-label="Apotecària La Rambla 14">
+      <img src="assets-logo.png" srcset="assets-logo.png 1x, assets-logo@2x.png 2x" alt="Apotecària La Rambla 14" class="brand-img" width="96" height="38">
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="serveis.html" data-i18n="nav.services">Serveis</a>
+      <a href="nosaltres.html" data-i18n="nav.about">Nosaltres</a>
+      <a href="#trobar-nos" data-i18n="nav.find">Trobar-nos</a>
+      <div class="lang-switch" role="group" aria-label="Idioma">
+        <button data-lang="ca" class="active">CA</button>
+        <span>/</span>
+        <button data-lang="es">ES</button>
+      </div>
+      <a href="https://wa.me/34644719115" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5 0 1.5 1.1 2.9 1.2 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.5-.3z"/><path d="M12 0C5.4 0 0 5.4 0 12c0 2.6.8 5.1 2.3 7L.8 23.5c-.1.2.1.4.3.4l4.7-1.2c1.9 1.1 4 1.7 6.3 1.7 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 22c-1.9 0-3.8-.5-5.4-1.6l-.4-.2-2.8.7.8-2.7-.3-.4C2.7 16 2 14 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/></svg>
+        <span data-i18n="nav.order">Comandes</span>
+      </a>
+    </nav>
+    <button class="nav-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    <ul>
+      <li><a href="serveis.html" data-i18n="nav.services">Serveis</a></li>
+      <li><a href="nosaltres.html" data-i18n="nav.about">Nosaltres</a></li>
+      <li><a href="#trobar-nos" data-i18n="nav.find">Trobar-nos</a></li>
+    </ul>
+    <div class="mobile-lang">
+      <button data-lang="ca" class="active">Català</button>
+      <button data-lang="es">Castellano</button>
+    </div>
+    <a href="https://wa.me/34644719115" class="mobile-cta" data-i18n="nav.order">Comandes</a>
+    <div class="mobile-foot">
+      <span>La Rambla 14, Palma</span>
+      <a href="tel:971711511">971 71 15 11</a>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-    <div class="intro">
-        <h2>3 propostes de disseny</h2>
-        <p>Cada prototip presenta una estètica diferent mantenint el turquesa sanitari com a color principal. Fes clic a qualsevol per veure'l a pantalla completa.</p>
+<!-- =================== HERO =================== -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('assets-hero-a.jpg')"></div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-meta-line"></span>
+      <span class="hero-meta-text" data-i18n="hero.meta">EST. 1998 · CARRER LA RAMBLA, 14 · PALMA</span>
     </div>
 
-    <div class="cards">
-        <a href="prototipo-a-elegante.html" class="card">
-            <div class="card-preview a">
-                <img src="preview-a.png" alt="Vista prèvia del prototip A — Elegant Minimalista" loading="lazy">
-            </div>
-            <div class="card-body">
-                <span class="card-tag">Prototip A</span>
-                <h3>Elegant Minimalista</h3>
-                <p>Disseny net i sofisticat amb tipografia serif Lora. Tons ivory i turquesa amb ombres subtils.</p>
-                <ul class="card-features">
-                    <li>Fons clar</li>
-                    <li>Lora + Outfit</li>
-                    <li>Minimalista</li>
-                    <li>Editorial</li>
-                </ul>
-                <div class="card-btn">
-                    Veure prototip A
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
-            </div>
-        </a>
+    <h1 class="hero-title">
+      <span class="line" data-i18n="hero.l1">L'apotecària</span>
+      <span class="line ital" data-i18n="hero.l2">de barri</span>
+      <span class="line" data-i18n="hero.l3">al cor de Palma.</span>
+    </h1>
 
-        <a href="prototipo-b-calida.html" class="card">
-            <div class="card-preview b">
-                <img src="preview-b.png" alt="Vista prèvia del prototip B — Càlida i Propera" loading="lazy">
-            </div>
-            <div class="card-body">
-                <span class="card-tag">Prototip B</span>
-                <h3>Càlida i Propera</h3>
-                <p>Estètica acollidora amb tons crema i turquesa. Tipografia Fraunces que transmet confiança i tradició.</p>
-                <ul class="card-features">
-                    <li>Tons càlids</li>
-                    <li>Fraunces + Nunito</li>
-                    <li>Familiar</li>
-                    <li>Acollidora</li>
-                </ul>
-                <div class="card-btn">
-                    Veure prototip B
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
-            </div>
-        </a>
+    <p class="hero-sub" data-i18n="hero.sub">Salut, consell i productes de confiança. Oberts cada dia, de 9 del matí a 10 del vespre.</p>
 
-        <a href="prototipo-c-moderna.html" class="card">
-            <div class="card-preview c">
-                <img src="preview-c.png" alt="Vista prèvia del prototip C — Moderna i Dinàmica" loading="lazy">
-            </div>
-            <div class="card-body">
-                <span class="card-tag">Prototip C</span>
-                <h3>Moderna i Dinàmica</h3>
-                <p>Tema fosc amb turquesa neó i grid lluminós. Tipografia Manrope amb estètica contemporània.</p>
-                <ul class="card-features">
-                    <li>Tema fosc</li>
-                    <li>Manrope</li>
-                    <li>Tech-forward</li>
-                    <li>Audaç</li>
-                </ul>
-                <div class="card-btn">
-                    Veure prototip C
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
-            </div>
-        </a>
+    <div class="hero-actions">
+      <a href="#trobar-nos" class="btn-primary">
+        <span data-i18n="hero.cta1">Com arribar</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:971711511" class="btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        971 71 15 11
+      </a>
     </div>
-</div>
 
-<div class="footer">
-    Farmàcia La Rambla &mdash; La Rambla 14, 07003 Palma &mdash; <a href="tel:971711511">971 71 15 11</a>
-</div>
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      <strong data-i18n="hero.openNow">Obert ara</strong>
+      <span class="status-sep"></span>
+      <span data-i18n="hero.openHours">Tanca a les 22:00</span>
+    </div>
+  </div>
 
+  <div class="hero-corner">
+    <div class="hero-corner-num">14</div>
+    <div class="hero-corner-meta">
+      <span data-i18n="hero.cornerL1">CARRER</span>
+      <span data-i18n="hero.cornerL2">LA RAMBLA</span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== MARQUEE MARCAS =================== -->
+<section class="marquee-wrap" aria-label="Marques">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>ISDIN</span><em>✦</em>
+      <span>Caudalie</span><em>✦</em>
+      <span>Cantabria Labs</span><em>✦</em>
+      <span>Aboca</span><em>✦</em>
+      <span>Ricola</span><em>✦</em>
+      <span>Avène</span><em>✦</em>
+      <span>La Roche-Posay</span><em>✦</em>
+      <span>Vichy</span><em>✦</em>
+      <span>Bioderma</span><em>✦</em>
+      <span>Sebamed</span><em>✦</em>
+      <!-- duplicated for seamless loop -->
+      <span>ISDIN</span><em>✦</em>
+      <span>Caudalie</span><em>✦</em>
+      <span>Cantabria Labs</span><em>✦</em>
+      <span>Aboca</span><em>✦</em>
+      <span>Ricola</span><em>✦</em>
+      <span>Avène</span><em>✦</em>
+      <span>La Roche-Posay</span><em>✦</em>
+      <span>Vichy</span><em>✦</em>
+      <span>Bioderma</span><em>✦</em>
+      <span>Sebamed</span><em>✦</em>
+    </div>
+  </div>
+</section>
+
+
+<!-- =================== HOME FEATURE (editorial) =================== -->
+<section class="home-feature">
+  <div class="home-feature-inner">
+    <div class="home-feature-image reveal-on-scroll">
+      <img src="assets-facade.jpg" alt="Façana de l'apotecària a Carrer La Rambla, 14" loading="lazy">
+      <div class="home-feature-tag" data-i18n="hf.tag">EST. 1998</div>
+    </div>
+    <div class="home-feature-text reveal-on-scroll">
+      <span class="eyebrow" data-i18n="hf.eyebrow">— La nostra forma</span>
+      <h2 class="display-h">
+        <span data-i18n="hf.h1">Sense pressa.</span>
+        <em data-i18n="hf.h2">Amb consell.</em>
+      </h2>
+      <p class="home-feature-lead" data-i18n="hf.lead">Una farmàcia de barri es construeix amb anys de proximitat. Coneixem els nostres veïns pel nom i per la seva recepta. Aquí no t'atén un mostrador — t'atén una persona que escolta abans de dispensar.</p>
+      <a href="nosaltres.html" class="btn-ghost">
+        <span data-i18n="hf.cta">Coneix-nos</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== TROBAR-NOS · MAPA =================== -->
+<section class="find" id="trobar-nos">
+  <div class="find-grid">
+    <div class="find-info">
+      <span class="eyebrow" data-i18n="find.eyebrow">— Trobar-nos</span>
+      <h2 class="display-h">
+        <span data-i18n="find.t1">Som a la cantonada</span>
+        <em data-i18n="find.t2">de La Rambla</em>
+        <span data-i18n="find.t3">amb el carrer dels Horts.</span>
+      </h2>
+      <p class="find-lead" data-i18n="find.lead">A quatre minuts a peu del Mercat de l'Olivar i a vuit de la Plaça d'Espanya. Aparcament al pàrquing d'Es Born o de Plaça Major.</p>
+
+      <div class="find-rows">
+        <div class="find-row">
+          <span class="find-row-lbl" data-i18n="find.addr">ADREÇA</span>
+          <span class="find-row-val">Carrer La Rambla, 14<br>07003 Palma · Mallorca</span>
+        </div>
+        <div class="find-row">
+          <span class="find-row-lbl" data-i18n="find.phone">TELÈFON</span>
+          <span class="find-row-val"><a href="tel:971711511">971 71 15 11</a></span>
+        </div>
+        <div class="find-row">
+          <span class="find-row-lbl" data-i18n="find.wa">WHATSAPP</span>
+          <span class="find-row-val"><a href="https://wa.me/34644719115">644 71 91 15</a></span>
+        </div>
+        <div class="find-row">
+          <span class="find-row-lbl" data-i18n="find.hours">HORARI</span>
+          <span class="find-row-val" data-i18n="find.hoursVal">Cada dia · 9:00 — 22:00</span>
+        </div>
+      </div>
+
+      <div class="find-actions">
+        <a href="https://maps.google.com/?q=La+Rambla+14+Palma" target="_blank" class="btn-primary" data-i18n="find.cta1">Indicacions a Google Maps</a>
+        <a href="https://wa.me/34644719115" class="btn-ghost" data-i18n="find.cta2">Escriu per WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="find-map-wrap">
+      <div id="map" class="find-map"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-mark">
+      <img src="assets-logo.png" srcset="assets-logo.png 1x, assets-logo@2x.png 2x" alt="Apotecària La Rambla 14" class="footer-logo" width="142" height="56">
+      <p data-i18n="foot.tag">Farmàcia de barri al cor de Palma. Des de 1998.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4 data-i18n="foot.c1">Visita'ns</h4>
+        <p>Carrer La Rambla, 14<br>07003 Palma · Mallorca</p>
+        <p>Cada dia · 9:00 — 22:00</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.c2">Parla amb nosaltres</h4>
+        <p><a href="tel:971711511">971 71 15 11</a></p>
+        <p><a href="https://wa.me/34644719115">644 71 91 15</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.c3">Seguir-nos</h4>
+        <p><a href="https://instagram.com/farmacia_larambla14" target="_blank" rel="noopener">Instagram</a></p>
+        <p><a href="https://tiktok.com/@farma.la.rambla" target="_blank" rel="noopener">TikTok</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>© 2026 Apotecària La Rambla 14</span>
+    <span class="footer-legal">
+      <a href="avis-legal.html" data-i18n="foot.legal1">Av. legal</a> ·
+      <a href="privacitat.html" data-i18n="foot.legal2">Política de privacitat</a> ·
+      <a href="cookies.html" data-i18n="foot.legal3">Cookies</a>
+    </span>
+    <span data-i18n="foot.made">Fet amb cura a Palma</span>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
