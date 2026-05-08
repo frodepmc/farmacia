@@ -36,6 +36,14 @@ window.__I18N__ = {
     "home.wa.title":    "FES LA TEVA COMANDA PER WHATSAPP",
     "home.wa.cta":      "Obrir WhatsApp",
 
+    "xs.eyebrow":     "— Xarxes socials",
+    "xs.t1":          "El nostre dia a dia",
+    "xs.t2":          "a Instagram.",
+    "xs.lead":        "Cada setmana, novetats, recomanacions i petites històries de la farmàcia.",
+    "xs.placeholder": "Imatge en preparació",
+    "xs.ig":          "Seguir-nos a Instagram",
+    "xs.tt":          "Veure'ns a TikTok",
+
 
     "serv.eyebrow":  "— Serveis",
     "serv.t1":       "Tot el que necessita",
@@ -285,6 +293,14 @@ window.__I18N__ = {
     "home.wa.eyebrow":  "— Pedidos rápidos",
     "home.wa.title":    "HAZ TU PEDIDO POR WHATSAPP",
     "home.wa.cta":      "Abrir WhatsApp",
+
+    "xs.eyebrow":     "— Redes sociales",
+    "xs.t1":          "Nuestro día a día",
+    "xs.t2":          "en Instagram.",
+    "xs.lead":        "Cada semana, novedades, recomendaciones y pequeñas historias de la farmacia.",
+    "xs.placeholder": "Imagen en preparación",
+    "xs.ig":          "Síguenos en Instagram",
+    "xs.tt":          "Vernos en TikTok",
 
 
 
