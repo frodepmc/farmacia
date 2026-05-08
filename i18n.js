@@ -37,18 +37,6 @@ window.__I18N__ = {
     "home.wa.cta":      "Obrir WhatsApp",
 
 
-    "about.eyebrow": "— La casa",
-    "about.t1":      "Una farmàcia",
-    "about.t2":      "de barri,",
-    "about.t3":      "d'aquelles de tota la vida.",
-    "about.p1":      "Som a La Rambla des de fa més de vint-i-set anys, a quatre passes del Mercat de l'Olivar. Coneixem els nostres veïns pel nom i per la seva recepta. Aquí no hi ha pressa: hi ha consell.",
-    "about.p2":      "Treballem amb les marques que confiem, formulem el que la pell necessita i et portem el que faci falta a casa si no pots venir. Senzill com sempre ha estat.",
-    "about.stat1":   "Anys a La Rambla",
-    "about.stat2":   "Dies oberts l'any",
-    "about.stat3":   "Horari ininterromput",
-    "about.caption": "Façana original · La Rambla, Palma",
-    "about.tape":    "FUNDADA · 1998",
-
     "serv.eyebrow":  "— Serveis",
     "serv.t1":       "Tot el que necessita",
     "serv.t2":       "la teva salut,",
@@ -254,13 +242,6 @@ window.__I18N__ = {
     "np.quote.text": "El millor consell sovint comença amb una conversa de cinc minuts.",
     "np.quote.attr": "— L'equip de la Farmàcia La Rambla 14",
 
-    "np.stats.eyebrow": "— Xifres",
-    "np.stats.title":   "Vint-i-set anys en quatre números.",
-    "np.stats.s1.lbl": "Anys a La Rambla",
-    "np.stats.s2.lbl": "Dies oberts l'any",
-    "np.stats.s3.lbl": "Horari ininterromput",
-    "np.stats.s4.lbl": "Hores cada dia",
-
     "np.kicker":     "Capítol I · La història",
     "np.toc.label":  "— En aquesta pàgina",
     "np.toc.t1":     "La història",
@@ -306,17 +287,6 @@ window.__I18N__ = {
     "home.wa.cta":      "Abrir WhatsApp",
 
 
-    "about.eyebrow": "— La casa",
-    "about.t1":      "Una farmacia",
-    "about.t2":      "de barrio,",
-    "about.t3":      "de las de toda la vida.",
-    "about.p1":      "Estamos en La Rambla desde hace más de veintisiete años, a cuatro pasos del Mercado del Olivar. Conocemos a nuestros vecinos por su nombre y por su receta. Aquí no hay prisa: hay consejo.",
-    "about.p2":      "Trabajamos con las marcas en las que confiamos, formulamos lo que la piel necesita y te llevamos a casa lo que haga falta si no puedes venir. Sencillo como siempre lo ha sido.",
-    "about.stat1":   "Años en La Rambla",
-    "about.stat2":   "Días abiertos al año",
-    "about.stat3":   "Horario ininterrumpido",
-    "about.caption": "Fachada original · La Rambla, Palma",
-    "about.tape":    "FUNDADA · 1998",
 
     "serv.eyebrow":  "— Servicios",
     "serv.t1":       "Todo lo que necesita",
@@ -522,13 +492,6 @@ window.__I18N__ = {
 
     "np.quote.text": "El mejor consejo a menudo empieza con una conversación de cinco minutos.",
     "np.quote.attr": "— El equipo de la Farmacia La Rambla 14",
-
-    "np.stats.eyebrow": "— Cifras",
-    "np.stats.title":   "Veintisiete años en cuatro números.",
-    "np.stats.s1.lbl": "Años en La Rambla",
-    "np.stats.s2.lbl": "Días abiertos al año",
-    "np.stats.s3.lbl": "Horario ininterrumpido",
-    "np.stats.s4.lbl": "Horas cada día",
 
     "np.kicker":     "Capítulo I · La historia",
     "np.toc.label":  "— En esta página",
