@@ -54,94 +54,22 @@ try {
 } catch (e) {}
 applyLang(initLang);
 
-// ============ Map (Leaflet) ============
-window.addEventListener('load', () => {
-  if (typeof L === 'undefined') return;
-  const mapEl = document.getElementById('map');
-  if (!mapEl) return;
-
-  // La Rambla 14, Palma de Mallorca — coords from OSINT
-  const LAT = 39.5736887;
-  const LNG = 2.6496162;
-
-  const map = L.map(mapEl, {
-    center: [LAT, LNG],
-    zoom: 15,
-    zoomControl: false,
-    scrollWheelZoom: false,
-    dragging: true
-  });
-
-  map.attributionControl
-    .setPrefix(false)
-    .addAttribution('© <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a>');
-
-  // CartoDB Positron — clean, light tiles
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19,
-    subdomains: 'abcd'
-  }).addTo(map);
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19,
-    subdomains: 'abcd',
-    opacity: .9
-  }).addTo(map);
-
-  // Apothecary marker — anchored to the real lat/lng so it stays put when panning
-  function buildApothecaryMarker() {
-    const dict = (window.__I18N__ && window.__I18N__[document.documentElement.lang])
-      || (window.__I18N__ && window.__I18N__.ca)
-      || {};
-    const icon = L.divIcon({
-      className: 'apothecary-pin',
-      html: `
-        <div class="pin-cross"><span></span><span></span></div>
-        <div class="pin-text">
-          <strong>${dict['find.pin1'] || 'Apotecària'}</strong>
-          <span>${dict['find.pin2'] || 'La Rambla 14'}</span>
-        </div>`,
-      iconSize: [140, 90],
-      iconAnchor: [70, 90]
-    });
-    return L.marker([LAT, LNG], { icon, interactive: false, keyboard: false });
+// ============ WhatsApp links — language-aware prefilled message ============
+(function () {
+  const PHONE = '34644719115';
+  const PREFILL = {
+    ca: 'Hola, escric des de la web…',
+    es: 'Hola, escribo desde la web…'
+  };
+  function refreshWaLinks() {
+    const lang = document.documentElement.lang || 'ca';
+    const text = PREFILL[lang] || PREFILL.ca;
+    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`;
+    document.querySelectorAll('.wa-band-link, .wa-fab').forEach(a => { a.href = url; });
   }
-  let apothecaryMarker = buildApothecaryMarker().addTo(map);
-
-  // Re-create marker if user switches language so the callout updates
-  document.addEventListener('lr14:lang-change', () => {
-    if (apothecaryMarker) map.removeLayer(apothecaryMarker);
-    apothecaryMarker = buildApothecaryMarker().addTo(map);
-  });
-
-  // Nearby public parkings — names are proper nouns, not translated
-  const PARKINGS = [
-    { name: "Mercat de l'Olivar",  lat: 39.5737, lng: 2.6519 },
-    { name: "Comtat del Rosselló", lat: 39.5740, lng: 2.6526 },
-    { name: 'SABA Vía Roma',       lat: 39.5710, lng: 2.6483 },
-    { name: 'Parking Patines',     lat: 39.5732, lng: 2.6480 },
-    { name: 'SABA Plaza Mayor',    lat: 39.5717, lng: 2.6499 },
-    { name: 'SABA Sa Gerreria',    lat: 39.5752, lng: 2.6555 }
-  ];
-  const parkingIcon = L.divIcon({
-    className: 'parking-pin',
-    html: '<span>P</span>',
-    iconSize: [24, 24],
-    iconAnchor: [12, 12]
-  });
-  L.layerGroup(
-    PARKINGS.map(p =>
-      L.marker([p.lat, p.lng], {
-        icon: parkingIcon,
-        title: p.name,
-        alt: 'Parking ' + p.name,
-        keyboard: false
-      })
-    )
-  ).addTo(map);
-
-  L.control.zoom({ position: 'bottomright' }).addTo(map);
-});
+  refreshWaLinks();
+  document.addEventListener('lr14:lang-change', refreshWaLinks);
+})();
 
 // ============ Reveal on scroll (IntersectionObserver) ============
 const obs = new IntersectionObserver((entries) => {

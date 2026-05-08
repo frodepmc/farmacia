@@ -7,15 +7,15 @@ window.__I18N__ = {
     "nav.find":     "Trobar-nos",
     "nav.order":    "Comandes",
 
-    "hero.meta":    "EST. 1998 · CARRER LA RAMBLA, 14 · PALMA",
-    "hero.l1":      "L'apotecària",
-    "hero.l2":      "de barri",
+    "hero.meta":    "EST. 1998 · PASSEIG DE LA RAMBLA, 14 · PALMA",
+    "hero.l1":      "La farmàcia",
+    "hero.l2":      "de tota la vida",
     "hero.l3":      "al cor de Palma.",
     "hero.sub":     "Salut, consell i productes de confiança. Oberts cada dia, de 9 del matí a 10 del vespre.",
     "hero.cta1":    "Com arribar",
     "hero.openNow": "Obert ara",
     "hero.openHours": "Tanca a les 22:00",
-    "hero.cornerL1": "CARRER",
+    "hero.cornerL1": "PASSEIG",
     "hero.cornerL2": "LA RAMBLA",
 
     "hf.eyebrow": "— La nostra forma",
@@ -26,6 +26,15 @@ window.__I18N__ = {
     "hf.tag":     "EST. 1998",
 
     "hr.rating":  "basat en 50+ ressenyes a Google",
+
+    "home.stats.t1":    "365 dies",
+    "home.stats.t2":    "9—22h",
+    "home.stats.sub":   "Oberts cada dia, sense pausa.",
+    "home.stats.badge": "50+ ressenyes a Google",
+    "home.stats.cta":   "Veure els nostres serveis",
+    "home.wa.eyebrow":  "— Encàrrecs ràpids",
+    "home.wa.title":    "FES LA TEVA COMANDA PER WHATSAPP",
+    "home.wa.cta":      "Obrir WhatsApp",
 
 
     "about.eyebrow": "— La casa",
@@ -98,7 +107,7 @@ window.__I18N__ = {
     "find.t1":       "Som a la cantonada",
     "find.t2":       "de La Rambla",
     "find.t3":       "amb el carrer dels Horts.",
-    "find.lead":     "A quatre minuts a peu del Mercat de l'Olivar i a vuit de la Plaça d'Espanya. Aparcament al pàrquing d'Es Born o de Plaça Major.",
+    "find.lead":     "A quatre minuts a peu del Mercat de l'Olivar i a vuit de la Plaça d'Espanya. Aparcament al pàrquing del Mercat de l'Olivar o de Plaça Major.",
     "find.addr":     "ADREÇA",
     "find.phone":    "TELÈFON",
     "find.wa":       "WHATSAPP",
@@ -106,10 +115,10 @@ window.__I18N__ = {
     "find.hoursVal": "Cada dia · 9:00 — 22:00",
     "find.cta1":     "Indicacions a Google Maps",
     "find.cta2":     "Escriu per WhatsApp",
-    "find.pin1":     "Apotecària",
+    "find.pin1":     "Farmàcia",
     "find.pin2":     "La Rambla 14",
 
-    "foot.tag":      "Farmàcia de barri al cor de Palma. Des de 1998.",
+    "foot.tag":      "Farmàcia de tota la vida al cor de Palma. Des de 1998.",
     "foot.c1":       "Visita'ns",
     "foot.c2":       "Parla amb nosaltres",
     "foot.c3":       "Seguir-nos",
@@ -188,7 +197,7 @@ window.__I18N__ = {
 
     "sp.cta.eyebrow": "— Vine a veure'ns",
     "sp.cta.title":  "La consulta sempre és gratuïta.",
-    "sp.cta.lead":   "Som a Carrer La Rambla 14, cantonada amb el carrer dels Horts. Oberts cada dia, de 9 del matí a 10 del vespre.",
+    "sp.cta.lead":   "Som al Passeig de la Rambla 14, cantonada amb el carrer dels Horts. Oberts cada dia, de 9 del matí a 10 del vespre.",
     "sp.cta.btn1":   "Truca'ns 971 71 15 11",
     "sp.cta.btn2":   "Escriu per WhatsApp",
 
@@ -200,7 +209,7 @@ window.__I18N__ = {
 
     /* === NOSALTRES PAGE === */
     "np.eyebrow":    "— La casa",
-    "np.h1a":        "Una farmàcia de barri,",
+    "np.h1a":        "Una farmàcia de tota la vida,",
     "np.h1b":        "d'aquelles",
     "np.h1c":        "de tota la vida.",
     "np.lead":       "Som a La Rambla des de 1998. Un equip petit, una porta oberta cada dia, i la convicció que la salut és cosa de tots dos.",
@@ -214,10 +223,10 @@ window.__I18N__ = {
     "np.story.p3":   "Hem vist créixer pacients que ara venen amb els seus fills. Hem aprés a formular el que els metges del barri demanen. Hem incorporat tecnologia quan era útil i l'hem rebutjada quan només era soroll. Aquesta és la nostra forma d'entendre la professió.",
 
     "np.tl.eyebrow": "— Línia del temps",
-    "np.tl.title":   "Vint-i-set anys, breument",
+    "np.tl.title":   "El camí, breument",
     "np.tl.t1.year": "1998",
     "np.tl.t1.title": "Obertura",
-    "np.tl.t1.body": "Obrim portes a Carrer La Rambla, 14. Tres farmacèutiques i una idea: atenció personal.",
+    "np.tl.t1.body": "Obrim portes al Passeig de la Rambla, 14. Tres farmacèutiques i una idea: atenció personal.",
     "np.tl.t2.year": "2008",
     "np.tl.t2.title": "Laboratori",
     "np.tl.t2.body": "Renovem el laboratori intern. Comencem la formulació magistral en dermatologia i pediatria.",
@@ -229,7 +238,7 @@ window.__I18N__ = {
     "np.tl.t4.body": "Durant els mesos més durs de la pandèmia, multipliquem els lliuraments a casa. La cosa s'ha quedat.",
     "np.tl.t5.year": "2026",
     "np.tl.t5.title": "Avui",
-    "np.tl.t5.body": "Vint-i-set anys després, seguim aquí. Mateixa porta, mateixos valors, una mica més de gent que en sap.",
+    "np.tl.t5.body": "Dècades després, seguim aquí. Mateixa porta, mateixos valors, una mica més de gent que en sap.",
 
     "np.val.eyebrow": "— Què ens importa",
     "np.val.title":  "Quatre coses, cap d'extraordinària.",
@@ -243,7 +252,7 @@ window.__I18N__ = {
     "np.val.v4.body": "Un consell, una mostra, una trucada per recordar la medicació. Sovint el que fa la diferència no surt al tiquet.",
 
     "np.quote.text": "El millor consell sovint comença amb una conversa de cinc minuts.",
-    "np.quote.attr": "— L'equip de l'Apotecària La Rambla 14",
+    "np.quote.attr": "— L'equip de la Farmàcia La Rambla 14",
 
     "np.stats.eyebrow": "— Xifres",
     "np.stats.title":   "Vint-i-set anys en quatre números.",
@@ -267,15 +276,15 @@ window.__I18N__ = {
     "nav.find":     "Cómo llegar",
     "nav.order":    "Pedidos",
 
-    "hero.meta":    "EST. 1998 · CALLE LA RAMBLA, 14 · PALMA",
+    "hero.meta":    "EST. 1998 · PASSEIG DE LA RAMBLA, 14 · PALMA",
     "hero.l1":      "La farmacia",
-    "hero.l2":      "de barrio",
+    "hero.l2":      "de toda la vida",
     "hero.l3":      "en el corazón de Palma.",
     "hero.sub":     "Salud, consejo y productos de confianza. Abiertos todos los días, de 9 de la mañana a 10 de la noche.",
     "hero.cta1":    "Cómo llegar",
     "hero.openNow": "Abierto ahora",
     "hero.openHours": "Cierra a las 22:00",
-    "hero.cornerL1": "CALLE",
+    "hero.cornerL1": "PASSEIG",
     "hero.cornerL2": "LA RAMBLA",
 
     "hf.eyebrow": "— Nuestra forma",
@@ -286,6 +295,15 @@ window.__I18N__ = {
     "hf.tag":     "EST. 1998",
 
     "hr.rating":  "basado en más de 50 reseñas en Google",
+
+    "home.stats.t1":    "365 días",
+    "home.stats.t2":    "9—22h",
+    "home.stats.sub":   "Abiertos cada día, sin pausa.",
+    "home.stats.badge": "50+ reseñas en Google",
+    "home.stats.cta":   "Ver nuestros servicios",
+    "home.wa.eyebrow":  "— Pedidos rápidos",
+    "home.wa.title":    "HAZ TU PEDIDO POR WHATSAPP",
+    "home.wa.cta":      "Abrir WhatsApp",
 
 
     "about.eyebrow": "— La casa",
@@ -358,7 +376,7 @@ window.__I18N__ = {
     "find.t1":       "Estamos en la esquina",
     "find.t2":       "de La Rambla",
     "find.t3":       "con calle dels Horts.",
-    "find.lead":     "A cuatro minutos a pie del Mercado del Olivar y a ocho de Plaza España. Aparcamiento en el parking de Es Born o de Plaza Mayor.",
+    "find.lead":     "A cuatro minutos a pie del Mercado del Olivar y a ocho de Plaza España. Aparcamiento en el parking del Mercat de l'Olivar o de Plaza Mayor.",
     "find.addr":     "DIRECCIÓN",
     "find.phone":    "TELÉFONO",
     "find.wa":       "WHATSAPP",
@@ -369,7 +387,7 @@ window.__I18N__ = {
     "find.pin1":     "Farmacia",
     "find.pin2":     "La Rambla 14",
 
-    "foot.tag":      "Farmacia de barrio en el corazón de Palma. Desde 1998.",
+    "foot.tag":      "Farmacia de toda la vida en el corazón de Palma. Desde 1998.",
     "foot.c1":       "Visítanos",
     "foot.c2":       "Habla con nosotros",
     "foot.c3":       "Síguenos",
@@ -448,7 +466,7 @@ window.__I18N__ = {
 
     "sp.cta.eyebrow": "— Ven a vernos",
     "sp.cta.title":  "La consulta siempre es gratuita.",
-    "sp.cta.lead":   "Estamos en Calle La Rambla 14, esquina con calle dels Horts. Abiertos cada día, de 9 de la mañana a 10 de la noche.",
+    "sp.cta.lead":   "Estamos en el Passeig de la Rambla 14, esquina con calle dels Horts. Abiertos cada día, de 9 de la mañana a 10 de la noche.",
     "sp.cta.btn1":   "Llámanos 971 71 15 11",
     "sp.cta.btn2":   "Escríbenos por WhatsApp",
 
@@ -460,7 +478,7 @@ window.__I18N__ = {
 
     /* === NOSOTROS PAGE === */
     "np.eyebrow":    "— La casa",
-    "np.h1a":        "Una farmacia de barrio,",
+    "np.h1a":        "Una farmacia de toda la vida,",
     "np.h1b":        "de las",
     "np.h1c":        "de toda la vida.",
     "np.lead":       "Estamos en La Rambla desde 1998. Un equipo pequeño, una puerta abierta cada día y la convicción de que la salud es cosa de los dos.",
@@ -474,10 +492,10 @@ window.__I18N__ = {
     "np.story.p3":   "Hemos visto crecer a pacientes que ahora vienen con sus hijos. Hemos aprendido a formular lo que los médicos del barrio piden. Hemos incorporado tecnología cuando era útil y la hemos rechazado cuando solo era ruido. Esta es nuestra forma de entender la profesión.",
 
     "np.tl.eyebrow": "— Línea del tiempo",
-    "np.tl.title":   "Veintisiete años, brevemente",
+    "np.tl.title":   "El camino, brevemente",
     "np.tl.t1.year": "1998",
     "np.tl.t1.title": "Apertura",
-    "np.tl.t1.body": "Abrimos puertas en Calle La Rambla, 14. Tres farmacéuticas y una idea: atención personal.",
+    "np.tl.t1.body": "Abrimos puertas en el Passeig de la Rambla, 14. Tres farmacéuticas y una idea: atención personal.",
     "np.tl.t2.year": "2008",
     "np.tl.t2.title": "Laboratorio",
     "np.tl.t2.body": "Renovamos el laboratorio interno. Empezamos la formulación magistral en dermatología y pediatría.",
@@ -489,7 +507,7 @@ window.__I18N__ = {
     "np.tl.t4.body": "Durante los meses más duros de la pandemia, multiplicamos las entregas a casa. La cosa se ha quedado.",
     "np.tl.t5.year": "2026",
     "np.tl.t5.title": "Hoy",
-    "np.tl.t5.body": "Veintisiete años después, seguimos aquí. Misma puerta, mismos valores, un poco más de gente que lo sabe.",
+    "np.tl.t5.body": "Décadas después, seguimos aquí. Misma puerta, mismos valores, un poco más de gente que lo sabe.",
 
     "np.val.eyebrow": "— Lo que nos importa",
     "np.val.title":  "Cuatro cosas, ninguna extraordinaria.",
@@ -503,7 +521,7 @@ window.__I18N__ = {
     "np.val.v4.body": "Un consejo, una muestra, una llamada para recordar la medicación. A menudo lo que marca la diferencia no sale en el tique.",
 
     "np.quote.text": "El mejor consejo a menudo empieza con una conversación de cinco minutos.",
-    "np.quote.attr": "— El equipo de la Apotecaria La Rambla 14",
+    "np.quote.attr": "— El equipo de la Farmacia La Rambla 14",
 
     "np.stats.eyebrow": "— Cifras",
     "np.stats.title":   "Veintisiete años en cuatro números.",

@@ -4,6 +4,12 @@ _archive/
 # Claude Code workspace settings
 .claude/
 
+# Internal CRUX-Dev artifacts (delivery reports, meeting minutes, OSINT notes).
+# These contain "USO INTERNO" markers and lists of material we ask the client —
+# not for the public repo. Add `!path/to/file.pdf` here if a public PDF is ever needed.
+docs/
+*.pdf
+
 # OS
 .DS_Store
 Thumbs.db
