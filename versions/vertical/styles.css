@@ -173,12 +173,12 @@ button:focus-visible,
 
 /* ============ VERTICAL — HERO FULL VIEWPORT ============ */
 .vt-hero {
-  min-height: calc(100vh - 76px);
+  min-height: min(640px, calc(100vh - 76px));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(3rem, 8vw, 8rem) var(--pad);
+  padding: clamp(2.5rem, 5vw, 5rem) var(--pad);
   text-align: center;
   position: relative;
   border-bottom: 1px solid var(--rule);
@@ -190,7 +190,7 @@ button:focus-visible,
   text-transform: uppercase;
   color: var(--green-700);
   font-weight: 500;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.75rem;
   display: flex; align-items: center; gap: 1.25rem;
 }
 .vt-hero-eyebrow::before, .vt-hero-eyebrow::after {
@@ -214,7 +214,7 @@ button:focus-visible,
   display: block;
 }
 .vt-hero-lead {
-  margin-top: 3rem;
+  margin-top: 1.85rem;
   font-family: var(--serif);
   font-style: italic;
   font-variation-settings: "opsz" 32;
@@ -225,7 +225,7 @@ button:focus-visible,
   letter-spacing: -.005em;
 }
 .vt-hero-meta {
-  margin-top: 4rem;
+  margin-top: 2.25rem;
   font-family: var(--mono);
   font-size: .65rem;
   letter-spacing: .14em;
@@ -254,10 +254,14 @@ button:focus-visible,
   0%, 100% { transform: translate(-50%, 0); }
   50%      { transform: translate(-50%, 6px); }
 }
+@keyframes bob-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
 
 /* ============ VERTICAL — CHAPTER DIVIDER ============ */
 .vt-chapter {
-  padding: clamp(5rem, 10vw, 9rem) var(--pad) clamp(2rem, 4vw, 3.5rem);
+  padding: clamp(3rem, 5.5vw, 5.5rem) var(--pad) clamp(1.4rem, 2.5vw, 2.25rem);
   text-align: center;
   border-top: 1px solid var(--rule);
   scroll-margin-top: 80px;
@@ -267,11 +271,11 @@ button:focus-visible,
   font-style: italic;
   font-variation-settings: "opsz" 144;
   font-weight: 400;
-  font-size: clamp(4rem, 12vw, 9rem);
+  font-size: clamp(3rem, 9vw, 7rem);
   line-height: .9;
   letter-spacing: -.05em;
   color: var(--green-700);
-  margin-bottom: 1.5rem;
+  margin-bottom: .85rem;
 }
 .vt-chapter-title {
   font-family: var(--mono);
@@ -280,7 +284,7 @@ button:focus-visible,
   text-transform: uppercase;
   color: var(--ink-3);
   font-weight: 500;
-  margin-bottom: 2rem;
+  margin-bottom: 1.1rem;
 }
 .vt-chapter-h {
   font-family: var(--serif);
@@ -297,12 +301,12 @@ button:focus-visible,
 .vt-chapter-rule {
   width: 60px; height: 2px;
   background: var(--green-700);
-  margin: 2.5rem auto 0;
+  margin: 1.5rem auto 0;
 }
 
 /* ============ VERTICAL — STORY (centered with drop-cap) ============ */
 .vt-story {
-  padding: clamp(2rem, 5vw, 4rem) var(--pad) clamp(5rem, 8vw, 8rem);
+  padding: clamp(1.25rem, 3vw, 2.25rem) var(--pad) clamp(2.75rem, 5vw, 4.5rem);
   display: flex; justify-content: center;
 }
 .vt-story-body {
@@ -310,11 +314,11 @@ button:focus-visible,
   font-family: var(--serif);
   font-variation-settings: "opsz" 32;
   font-size: clamp(1.15rem, 1.6vw, 1.4rem);
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--ink-2);
   letter-spacing: -.005em;
   display: flex; flex-direction: column;
-  gap: clamp(1.75rem, 3vw, 2.5rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 .vt-story-body p:first-child::first-letter {
   font-family: var(--serif);
@@ -331,7 +335,7 @@ button:focus-visible,
 
 /* ============ VERTICAL — TIMELINE (1fr 3fr scroll story) ============ */
 .vt-timeline {
-  padding: clamp(2rem, 4vw, 3rem) var(--pad) clamp(5rem, 8vw, 8rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem) var(--pad) clamp(2.75rem, 5vw, 4.5rem);
   max-width: var(--max);
   margin: 0 auto;
 }
@@ -339,7 +343,7 @@ button:focus-visible,
   display: grid;
   grid-template-columns: clamp(120px, 14vw, 200px) 1fr;
   gap: clamp(2rem, 5vw, 5rem);
-  padding: clamp(2.5rem, 5vw, 5rem) 0;
+  padding: clamp(1.5rem, 3vw, 3rem) 0;
   border-top: 1px solid var(--rule);
   align-items: start;
 }
@@ -355,14 +359,14 @@ button:focus-visible,
   letter-spacing: -.045em;
   color: var(--green-700);
 }
-.vt-tl-content { padding-top: .5rem; max-width: 48ch; }
+.vt-tl-content { padding-top: .35rem; max-width: 48ch; }
 .vt-tl-meta {
   font-family: var(--mono);
   font-size: .62rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink-4);
-  margin-bottom: .85rem;
+  margin-bottom: .55rem;
 }
 .vt-tl-title {
   font-family: var(--serif);
@@ -372,7 +376,7 @@ button:focus-visible,
   line-height: 1.05;
   letter-spacing: -.025em;
   color: var(--ink);
-  margin-bottom: 1.25rem;
+  margin-bottom: .75rem;
 }
 .vt-tl-title em { font-style: italic; color: var(--green-700); }
 .vt-tl-body {
@@ -383,12 +387,12 @@ button:focus-visible,
 
 /* ============ VERTICAL — VALUES (full-width stacked) ============ */
 .vt-values {
-  padding: clamp(2rem, 4vw, 3rem) 0 clamp(5rem, 8vw, 8rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem) 0 clamp(2.75rem, 5vw, 4.5rem);
 }
 .vt-value {
   display: grid;
   grid-template-columns: 1fr;
-  padding: clamp(3.5rem, 6vw, 6rem) var(--pad);
+  padding: clamp(2.25rem, 4vw, 4rem) var(--pad);
   border-top: 1px solid var(--rule);
   text-align: center;
   position: relative;
@@ -399,11 +403,11 @@ button:focus-visible,
   font-style: italic;
   font-variation-settings: "opsz" 144;
   font-weight: 400;
-  font-size: clamp(5rem, 12vw, 10rem);
+  font-size: clamp(4rem, 9vw, 7.5rem);
   line-height: .9;
   letter-spacing: -.05em;
   color: var(--green-700);
-  margin-bottom: 1rem;
+  margin-bottom: .65rem;
   display: block;
 }
 .vt-value-meta {
@@ -412,7 +416,7 @@ button:focus-visible,
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--ink-4);
-  margin-bottom: 1.25rem;
+  margin-bottom: .75rem;
 }
 .vt-value h3 {
   font-family: var(--serif);
@@ -422,7 +426,7 @@ button:focus-visible,
   line-height: 1.05;
   letter-spacing: -.03em;
   color: var(--ink);
-  margin-bottom: 1.5rem;
+  margin-bottom: .85rem;
 }
 .vt-value p {
   font-family: var(--serif);
@@ -438,12 +442,12 @@ button:focus-visible,
 
 /* ============ VERTICAL — QUOTE (full-screen breath) ============ */
 .vt-quote {
-  min-height: 80vh;
+  min-height: min(440px, 50vh);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(4rem, 9vw, 9rem) var(--pad);
+  padding: clamp(2.5rem, 5vw, 5rem) var(--pad);
   text-align: center;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
@@ -474,7 +478,7 @@ button:focus-visible,
   position: relative;
 }
 .vt-quote-attr {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   font-family: var(--mono);
   font-size: .68rem;
   letter-spacing: .22em;
@@ -485,11 +489,10 @@ button:focus-visible,
 
 /* ============ VERTICAL — SERVICES (one per viewport) ============ */
 .vt-service {
-  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(3rem, 7vw, 7rem) var(--pad);
+  padding: clamp(2.25rem, 4vw, 4rem) var(--pad);
   border-top: 1px solid var(--rule);
   scroll-margin-top: 80px;
 }
@@ -522,7 +525,7 @@ button:focus-visible,
   text-transform: uppercase;
   color: var(--green-700);
   font-weight: 500;
-  margin-bottom: 1.25rem;
+  margin-bottom: .85rem;
   display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
 }
 .vt-service-meta::before {
@@ -538,7 +541,7 @@ button:focus-visible,
   line-height: 1.02;
   letter-spacing: -.035em;
   color: var(--ink);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.1rem;
 }
 .vt-service-title em { font-style: italic; color: var(--green-700); }
 .vt-service-text {
@@ -550,11 +553,11 @@ button:focus-visible,
   max-width: 42rem;
   letter-spacing: -.005em;
 }
-.vt-service-text p { margin-bottom: 1.25rem; }
+.vt-service-text p { margin-bottom: .85rem; }
 .vt-service-text p:last-child { margin-bottom: 0; }
 .vt-service-process {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--rule);
 }
 .vt-service-process h4 {
@@ -563,14 +566,14 @@ button:focus-visible,
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink-3);
-  margin-bottom: 1.25rem;
+  margin-bottom: .85rem;
   font-weight: 500;
 }
 .vt-service-process ol {
   list-style: none;
   counter-reset: pr;
   display: flex; flex-direction: column;
-  gap: 1rem;
+  gap: .65rem;
 }
 .vt-service-process li {
   counter-increment: pr;
@@ -592,7 +595,7 @@ button:focus-visible,
   letter-spacing: .04em;
 }
 .vt-service-cta {
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   display: inline-flex; align-items: center; gap: .65rem;
   font-family: var(--mono);
   font-size: .72rem;
@@ -600,7 +603,7 @@ button:focus-visible,
   text-transform: uppercase;
   color: var(--green-700);
   font-weight: 500;
-  padding: .85rem 0;
+  padding: .55rem 0;
   border-bottom: 2px solid var(--green-700);
   transition: color .25s ease, transform .25s ease;
 }
@@ -608,10 +611,10 @@ button:focus-visible,
 
 /* ============ VERTICAL — PRODUCTS (full-width gallery) ============ */
 .vt-products {
-  padding: clamp(2rem, 4vw, 3rem) 0 clamp(5rem, 8vw, 8rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem) 0 clamp(2.75rem, 5vw, 4.5rem);
 }
 .vt-prod {
-  padding: clamp(3rem, 5vw, 5rem) var(--pad);
+  padding: clamp(2rem, 3.5vw, 3.5rem) var(--pad);
   border-top: 1px solid var(--rule);
 }
 .vt-prod:last-child { border-bottom: 1px solid var(--rule); }
@@ -660,7 +663,7 @@ button:focus-visible,
   text-transform: uppercase;
   color: var(--green-700);
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: .65rem;
   display: flex; gap: 1rem; align-items: baseline;
 }
 .vt-prod-meta::before {
@@ -677,17 +680,17 @@ button:focus-visible,
   line-height: 1.05;
   letter-spacing: -.025em;
   color: var(--ink);
-  margin-bottom: 1.25rem;
+  margin-bottom: .85rem;
 }
 .vt-prod-name em { font-style: italic; color: var(--green-700); }
 .vt-prod-desc {
   font-family: var(--serif);
   font-variation-settings: "opsz" 32;
   font-size: 1.05rem;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--ink-2);
   letter-spacing: -.005em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .vt-prod-link {
   font-family: var(--mono);
@@ -705,16 +708,15 @@ button:focus-visible,
 
 /* ============ VERTICAL — CTA FINAL ============ */
 .vt-cta {
-  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(5rem, 10vw, 10rem) var(--pad);
+  padding: clamp(2.75rem, 5.5vw, 5.5rem) var(--pad);
   text-align: center;
   border-top: 1px solid var(--rule);
 }
-.vt-cta .eyebrow { justify-content: center; margin-bottom: 1.75rem; }
+.vt-cta .eyebrow { justify-content: center; margin-bottom: 1rem; }
 .vt-cta .eyebrow::before { display: none; }
 .vt-cta h2 {
   font-family: var(--serif);
@@ -724,7 +726,7 @@ button:focus-visible,
   line-height: 1.02;
   letter-spacing: -.04em;
   color: var(--ink);
-  margin-bottom: 1.5rem;
+  margin-bottom: .85rem;
   max-width: 18ch;
 }
 .vt-cta h2 em { font-style: italic; color: var(--green-700); }
@@ -736,13 +738,13 @@ button:focus-visible,
   line-height: 1.55;
   color: var(--ink-2);
   max-width: 40ch;
-  margin: 0 auto 3rem;
+  margin: 0 auto 1.5rem;
 }
 .vt-cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
 /* ============ FOOTER MIN ============ */
 .sc-footer {
-  padding: clamp(2.5rem, 4vw, 3.5rem) var(--pad);
+  padding: clamp(1.5rem, 2.75vw, 2.5rem) var(--pad);
   border-top: 1px solid var(--rule);
   font-family: var(--mono);
   font-size: .65rem;
@@ -773,89 +775,99 @@ button:focus-visible,
 }
 
 @media (max-width: 1023px) {
-  .vt-hero { min-height: 80vh; }
-  .vt-tl-item { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 0; }
+  .vt-hero { min-height: min(560px, 70vh); }
+  .vt-tl-item { grid-template-columns: 1fr; gap: .75rem; padding: 1.5rem 0; }
   .vt-tl-year { font-size: clamp(2.4rem, 6vw, 4rem); }
 
-  .vt-service { min-height: auto; padding: 4rem var(--pad); }
-  .vt-service-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .vt-service { padding: 2.25rem var(--pad); }
+  .vt-service-inner { grid-template-columns: 1fr; gap: 1.1rem; }
   .vt-service-num { position: static; font-size: clamp(3rem, 7vw, 4.5rem); }
 
-  .vt-prod-inner { grid-template-columns: 1fr; gap: 2rem; direction: ltr !important; }
+  .vt-prod { padding: 2rem var(--pad); }
+  .vt-prod-inner { grid-template-columns: 1fr; gap: 1.25rem; direction: ltr !important; }
   .vt-prod:nth-child(even) .vt-prod-inner { direction: ltr; }
-
-  .vt-cta { min-height: 50vh; }
 }
 
 @media (max-width: 767px) {
   .sc-nav-inner { grid-template-columns: auto auto; gap: 1rem; }
   .sc-mark { display: none; }
 
-  /* hero — reducir altura y arreglar eyebrow que se rompía en 2 líneas */
+  /* hero — compactado al máximo manteniendo respiración */
   .vt-hero {
     min-height: auto;
-    padding: clamp(3.5rem, 10vw, 5rem) var(--pad) clamp(4.5rem, 10vw, 6rem);
+    padding: clamp(2.5rem, 7vw, 3.5rem) var(--pad) clamp(2.25rem, 5vw, 3rem);
   }
   .vt-hero-eyebrow {
     font-size: .65rem;
     letter-spacing: .14em;
     gap: .85rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.4rem;
   }
   .vt-hero-eyebrow::before, .vt-hero-eyebrow::after { width: 28px; }
   .vt-hero h1 { font-size: clamp(2.6rem, 11vw, 4rem); }
-  .vt-hero-lead { margin-top: 2rem; }
-  .vt-hero-meta { font-size: .58rem; gap: .65rem; margin-top: 2.5rem; }
-  /* scroll indicator: en mobile el hero ya no es full-viewport, así que el absolute solapaba.
-     Lo bajo más al borde inferior (más padding) y lo hago visualmente más discreto. */
-  .vt-hero-scroll { bottom: 1rem; font-size: .55rem; opacity: .7; }
+  .vt-hero-lead { margin-top: 1.4rem; }
+  .vt-hero-meta { font-size: .58rem; gap: .65rem; margin-top: 1.6rem; }
+  /* scroll-indicator a flow normal en mobile (no absolute) para evitar solapamiento */
+  .vt-hero-scroll {
+    position: static;
+    transform: none;
+    margin-top: 1.5rem;
+    font-size: .55rem;
+    opacity: .7;
+    animation: none;
+  }
+  .vt-hero-scroll svg { animation: bob-y 2.2s ease-in-out infinite; }
 
-  /* chapter dividers más compactos pero conservando ritmo */
-  .vt-chapter { padding: 3.5rem var(--pad) 1.5rem; }
-  .vt-chapter-num { font-size: clamp(3.5rem, 14vw, 5rem); margin-bottom: 1.25rem; }
-  .vt-chapter-title { letter-spacing: .14em; margin-bottom: 1.5rem; }
+  /* chapter dividers compactos */
+  .vt-chapter { padding: 2.25rem var(--pad) 1rem; }
+  .vt-chapter-num { font-size: clamp(3rem, 12vw, 4.5rem); margin-bottom: .65rem; }
+  .vt-chapter-title { letter-spacing: .14em; margin-bottom: .75rem; }
   .vt-chapter-h { font-size: clamp(1.8rem, 6vw, 2.4rem); }
-  .vt-chapter-rule { margin-top: 1.75rem; }
+  .vt-chapter-rule { margin-top: 1rem; }
 
-  .vt-story { padding: 1.5rem var(--pad) 4rem; }
+  .vt-story { padding: 1rem var(--pad) 2.5rem; }
   .vt-story-body p:first-child::first-letter { font-size: 4.2em; }
+  .vt-story-body { gap: 1rem; }
 
-  .vt-timeline { padding: 1.5rem var(--pad) 4rem; }
-  .vt-tl-item { padding: 1.75rem 0; }
+  .vt-timeline { padding: 1rem var(--pad) 2.5rem; }
+  .vt-tl-item { padding: 1.1rem 0; }
 
-  .vt-values { padding: 1rem 0 4rem; }
-  .vt-value { padding: 2.75rem var(--pad); }
-  .vt-value-num { font-size: clamp(4rem, 14vw, 6rem); margin-bottom: .75rem; }
+  .vt-values { padding: .65rem 0 2.5rem; }
+  .vt-value { padding: 1.75rem var(--pad); }
+  .vt-value-num { font-size: clamp(3.5rem, 12vw, 5rem); margin-bottom: .35rem; }
+  .vt-value-meta { margin-bottom: .55rem; }
+  .vt-value h3 { margin-bottom: .55rem; }
 
   .vt-quote {
-    min-height: 50vh;
-    padding: 3.5rem var(--pad);
+    min-height: auto;
+    padding: 2.5rem var(--pad);
   }
-  .vt-quote-mark { font-size: 6rem; }
-  .vt-quote-attr { margin-top: 2rem; }
+  .vt-quote-mark { font-size: 5rem; margin-bottom: -.4em; }
+  .vt-quote-attr { margin-top: 1.1rem; }
 
   .vt-service {
-    min-height: auto;
-    padding: 2.75rem var(--pad);
+    padding: 1.75rem var(--pad);
   }
   .vt-service-num { font-size: clamp(2.6rem, 9vw, 3.6rem); }
-  .vt-service-meta { letter-spacing: .14em; }
-  .vt-service-process { margin-top: 1.75rem; padding-top: 1rem; }
-  .vt-service-cta { margin-top: 1.75rem; }
+  .vt-service-meta { letter-spacing: .14em; margin-bottom: .55rem; }
+  .vt-service-title { margin-bottom: .85rem; }
+  .vt-service-process { margin-top: 1.1rem; padding-top: .75rem; }
+  .vt-service-cta { margin-top: 1.1rem; }
 
-  .vt-products { padding: 1rem 0 4rem; }
-  .vt-prod { padding: 2.25rem var(--pad); }
+  .vt-products { padding: .65rem 0 2.5rem; }
+  .vt-prod { padding: 1.5rem var(--pad); }
   .vt-prod-info { padding: 0; }
 
   .vt-cta {
-    min-height: auto;
-    padding: 4rem var(--pad);
+    padding: 2.5rem var(--pad);
   }
-  .vt-cta p { margin-bottom: 2rem; }
+  .vt-cta h2 { margin-bottom: .55rem; }
+  .vt-cta p { margin-bottom: 1.25rem; }
   .vt-cta-actions { flex-direction: column; width: 100%; }
   .vt-cta-actions .btn { width: 100%; justify-content: center; }
 
-  .sc-footer-inner { flex-direction: column; align-items: flex-start; gap: .75rem; }
+  .sc-footer { padding: 1.5rem var(--pad); }
+  .sc-footer-inner { flex-direction: column; align-items: flex-start; gap: .5rem; }
 }
 
 @media (max-width: 599px) {

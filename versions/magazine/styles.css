@@ -199,7 +199,7 @@ button:focus-visible,
 
 /* ============ MAGAZINE — HERO ASIMÉTRICO ============ */
 .mg-hero {
-  padding: clamp(3rem, 6vw, 6rem) var(--pad) clamp(3rem, 5vw, 4.5rem);
+  padding: clamp(2.25rem, 4.5vw, 4.5rem) var(--pad) clamp(2.25rem, 4vw, 3.5rem);
   position: relative;
   border-bottom: 1px solid var(--rule);
 }
@@ -244,7 +244,7 @@ button:focus-visible,
 .mg-hero-rule {
   width: 60px; height: 2px;
   background: var(--green-700);
-  margin: 2rem 0 1.75rem;
+  margin: 1.5rem 0 1.25rem;
 }
 
 .mg-hero-meta {
@@ -306,20 +306,20 @@ button:focus-visible,
 
 /* ============ MAGAZINE — STORY 2-COL ============ */
 .mg-section {
-  padding: clamp(3.5rem, 6vw, 6rem) var(--pad);
+  padding: clamp(2.5rem, 4.5vw, 4.5rem) var(--pad);
   border-bottom: 1px solid var(--rule);
   position: relative;
   scroll-margin-top: 90px;
 }
 .mg-section-head {
   max-width: var(--max);
-  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  margin: 0 auto clamp(1.5rem, 3vw, 2.25rem);
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 1.5rem;
   align-items: end;
   border-bottom: 1px solid var(--rule);
-  padding-bottom: 1.25rem;
+  padding-bottom: 1rem;
 }
 .mg-section-num {
   font-family: var(--mono);
@@ -424,7 +424,7 @@ button:focus-visible,
   display: grid;
   grid-template-columns: clamp(120px, 16vw, 200px) 1fr clamp(140px, 22vw, 220px);
   gap: clamp(1.5rem, 3.5vw, 3rem);
-  padding: clamp(2rem, 3.5vw, 3rem) 0;
+  padding: clamp(1.4rem, 2.5vw, 2.25rem) 0;
   border-top: 1px solid var(--rule);
   align-items: start;
   transition: background .35s ease;
@@ -481,13 +481,13 @@ button:focus-visible,
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 5vw, 4rem);
+  gap: clamp(1rem, 2.25vw, 1.85rem) clamp(2rem, 5vw, 4rem);
 }
 .mg-value {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 1.5rem;
-  padding-top: 1.25rem;
+  gap: 1.25rem;
+  padding-top: .9rem;
   border-top: 1px solid var(--rule);
 }
 .mg-value-num {
@@ -521,7 +521,7 @@ button:focus-visible,
 .mg-quote {
   background: var(--green-900);
   color: var(--cream);
-  padding: clamp(4rem, 9vw, 9rem) var(--pad);
+  padding: clamp(3rem, 6vw, 6rem) var(--pad);
   border-bottom: 1px solid var(--rule);
   position: relative;
   overflow: hidden;
@@ -565,7 +565,7 @@ button:focus-visible,
   z-index: 2;
 }
 .mg-quote-attr {
-  margin-top: 2.25rem;
+  margin-top: 1.5rem;
   font-family: var(--mono);
   font-size: .7rem;
   letter-spacing: .18em;
@@ -584,7 +584,7 @@ button:focus-visible,
   display: grid;
   grid-template-columns: clamp(80px, 12vw, 140px) minmax(0, 1.4fr) clamp(220px, 30vw, 320px);
   gap: clamp(1.5rem, 3vw, 2.5rem);
-  padding: clamp(2.5rem, 4vw, 4rem) 0;
+  padding: clamp(1.85rem, 3vw, 3rem) 0;
   border-top: 1px solid var(--rule);
   align-items: start;
   transition: background .35s ease;
@@ -621,7 +621,7 @@ button:focus-visible,
   letter-spacing: -.025em;
   line-height: 1.05;
   color: var(--ink);
-  margin-bottom: 1.25rem;
+  margin-bottom: .85rem;
 }
 .mg-service-text {
   font-size: 1rem;
@@ -632,7 +632,7 @@ button:focus-visible,
 .mg-service-text p:last-child { margin-bottom: 0; }
 .mg-service-cta {
   display: inline-flex; align-items: center; gap: .5rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   font-family: var(--mono);
   font-size: .68rem;
   letter-spacing: .14em;
@@ -781,7 +781,7 @@ button:focus-visible,
 
 /* ============ MAGAZINE — CTA ============ */
 .mg-cta {
-  padding: clamp(4rem, 7vw, 7rem) var(--pad);
+  padding: clamp(2.75rem, 5vw, 4.5rem) var(--pad);
   border-bottom: 1px solid var(--rule);
   position: relative;
   text-align: center;
@@ -805,12 +805,12 @@ button:focus-visible,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.4rem;
   position: relative;
   z-index: 1;
 }
 .mg-cta-text { max-width: 38ch; }
-.mg-cta .eyebrow { margin-bottom: 1rem; justify-content: center; }
+.mg-cta .eyebrow { margin-bottom: .75rem; justify-content: center; }
 .mg-cta h2 {
   font-family: var(--serif);
   font-weight: 400;
@@ -819,7 +819,7 @@ button:focus-visible,
   line-height: 1.05;
   letter-spacing: -.03em;
   color: var(--ink);
-  margin-bottom: 1.25rem;
+  margin-bottom: .85rem;
 }
 .mg-cta h2 em { font-style: italic; color: var(--green-700); }
 .mg-cta p {
@@ -840,7 +840,7 @@ button:focus-visible,
 
 /* ============ FOOTER MIN ============ */
 .sc-footer {
-  padding: clamp(2.5rem, 4vw, 3.5rem) var(--pad);
+  padding: clamp(1.5rem, 2.75vw, 2.5rem) var(--pad);
   font-family: var(--mono);
   font-size: .65rem;
   letter-spacing: .14em;
@@ -908,40 +908,44 @@ button:focus-visible,
   .sc-mark { display: none; }
   .sc-cross { gap: 1rem; }
 
-  .mg-section { padding: 3rem var(--pad); }
+  .mg-section { padding: 2rem var(--pad); }
 
-  .mg-hero { padding: 2.5rem var(--pad); }
-  .mg-hero-inner::before { font-size: 3.5rem; top: -2rem; left: -.5rem; }
+  .mg-hero { padding: 1.75rem var(--pad) 1.5rem; }
+  .mg-hero-inner::before { font-size: 3rem; top: -1.5rem; left: -.5rem; }
   .mg-hero-meta { font-size: .58rem; gap: .65rem; }
   .mg-callout { transform: none; }
 
-  .mg-section-head { grid-template-columns: 1fr; }
+  .mg-section-head { grid-template-columns: 1fr; margin-bottom: 1.25rem; }
   .mg-section-num { padding-top: .35rem; }
 
-  .mg-tl-item { grid-template-columns: 1fr; gap: .65rem; }
+  .mg-tl-item { grid-template-columns: 1fr; gap: .55rem; padding: 1.1rem 0; }
   .mg-tl-year { font-size: clamp(2rem, 7vw, 2.6rem); }
 
-  .mg-values { grid-template-columns: 1fr; gap: 1.75rem; }
-  .mg-value { gap: 1rem; padding-top: 1rem; }
+  .mg-values { grid-template-columns: 1fr; gap: 1.1rem; }
+  .mg-value { gap: 1rem; padding-top: .85rem; }
   .mg-value-num { font-size: 2.2rem; }
 
-  .mg-quote { padding: 4rem var(--pad); }
+  .mg-quote { padding: 2.75rem var(--pad); }
   .mg-quote-text { font-size: clamp(1.4rem, 6vw, 2.2rem); max-width: 100%; }
-  .mg-quote-mark { font-size: 6rem; top: -.3em; left: -.05em; }
+  .mg-quote-mark { font-size: 5rem; top: -.3em; left: -.05em; }
 
-  .mg-service { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
+  .mg-service { grid-template-columns: 1fr; gap: .85rem; padding: 1.5rem 0; }
   .mg-service-num { font-size: 2.4rem; }
 
-  .mg-products { grid-template-columns: 1fr; }
+  .mg-products { grid-template-columns: 1fr; gap: .85rem; }
   .mg-prod-hero, .mg-prod-wide { grid-column: auto; }
 
-  .sc-footer-inner { flex-direction: column; align-items: flex-start; gap: .75rem; }
+  .mg-cta { padding: 2rem var(--pad); }
+  .mg-cta-inner { gap: 1rem; }
+
+  .sc-footer { padding: 1.5rem var(--pad); }
+  .sc-footer-inner { flex-direction: column; align-items: flex-start; gap: .5rem; }
 }
 
 @media (max-width: 599px) {
   .sc-back span { display: none; }
-  .mg-section { padding: 2.5rem var(--pad); }
-  .mg-tl-item { padding: 1.5rem 0; }
+  .mg-section { padding: 1.75rem var(--pad); }
+  .mg-tl-item { padding: 1rem 0; }
   .mg-cta-actions .btn { width: 100%; justify-content: center; }
 }
 
