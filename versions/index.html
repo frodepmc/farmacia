@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Tres composicions · Farmàcia La Rambla 14</title>
+<meta name="description" content="Showcase intern: 3 composicions de layout × 2 pàgines. Mateixa estètica del lloc, distintes arquitectures.">
+<link rel="icon" href="../favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green-900: #003B33;
+  --green-800: #004D40;
+  --green-700: #00796B;
+  --green-600: #009688;
+  --green-500: #4DB6AC;
+  --cream:     #F5EFE3;
+  --cream-2:   #EFE8D8;
+  --stone:     #E0D3B8;
+  --ink:       #1A1714;
+  --ink-2:     #3C3631;
+  --ink-3:     #6B635A;
+  --ink-4:     #A39A8E;
+  --bg:        #FBF7EE;
+  --bg-soft:   #F5EFE3;
+  --rule:      rgba(26,23,20,.12);
+  --rule-soft: rgba(26,23,20,.06);
+
+  --serif: 'Spectral', 'Georgia', serif;
+  --sans:  'Inter', system-ui, sans-serif;
+  --mono:  'JetBrains Mono', monospace;
+
+  --max: 1280px;
+  --pad: clamp(1.5rem, 4vw, 3rem);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  overflow-x: hidden;
+}
+img, video { max-width: 100%; display: block; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+/* paper grain — same as site */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.18 0 0 0 0 0.11 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+  opacity: .35; mix-blend-mode: multiply;
+}
+
+::selection { background: var(--green-700); color: var(--cream); }
+
+/* ============ HEADER ============ */
+.h {
+  padding: clamp(2.5rem, 5vw, 4rem) var(--pad) clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--rule);
+}
+.h-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: end;
+}
+.h-eyebrow {
+  display: inline-flex; align-items: center; gap: .85rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--green-700);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+.h-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--green-700);
+}
+.h-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  line-height: .98;
+  letter-spacing: -.035em;
+  color: var(--ink);
+  max-width: 16ch;
+}
+.h-title .roman { font-style: normal; display: block; font-weight: 500; }
+.h-title em { color: var(--green-700); }
+
+.h-side {
+  font-family: var(--mono);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-top: 1px solid var(--ink);
+  padding-top: .65rem;
+  line-height: 1.6;
+}
+.h-side strong { color: var(--ink); display: block; font-weight: 500; margin-bottom: .35rem; }
+
+/* ============ INTRO ============ */
+.intro {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 3rem) var(--pad);
+}
+.intro p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 32;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 60ch;
+  letter-spacing: -.005em;
+}
+.intro p strong { color: var(--ink); font-weight: 500; font-style: normal; }
+.intro p em { color: var(--green-700); }
+
+/* ============ CONCEPTS GRID ============ */
+.concepts {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) var(--pad) clamp(4rem, 6vw, 6rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.concept {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.concept:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px -32px rgba(26,23,20,.4);
+}
+
+/* preview area — wireframe representations */
+.c-preview {
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  background: var(--cream-2);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Magazine wireframe — asymmetric blocks */
+.c-pv-magazine {
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: .65rem;
+}
+.c-pv-magazine .blk {
+  background: rgba(26,23,20,.08);
+  border-radius: 2px;
+}
+.c-pv-magazine .b-h { grid-row: 1; background: rgba(0,121,107,.18); }
+.c-pv-magazine .b-r { grid-column: 2; grid-row: 1; background: rgba(26,23,20,.18); transform: rotate(-1.5deg); }
+.c-pv-magazine .b-t { grid-row: 2; }
+.c-pv-magazine .b-tt { grid-column: 2; grid-row: 2; }
+
+/* Manual wireframe — sidebar + content blocks */
+.c-pv-manual {
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: .65rem;
+}
+.c-pv-manual .side {
+  background: rgba(0,121,107,.18);
+  border-radius: 2px;
+  display: flex; flex-direction: column; gap: .35rem; padding: .5rem .35rem;
+}
+.c-pv-manual .side span {
+  height: 4px; background: rgba(26,23,20,.4); border-radius: 1px;
+}
+.c-pv-manual .side span:first-child { background: rgba(0,121,107,.7); }
+.c-pv-manual .body { display: flex; flex-direction: column; gap: .45rem; }
+.c-pv-manual .body .row {
+  background: rgba(26,23,20,.08);
+  border-radius: 2px;
+  padding: .35rem .55rem;
+  display: grid;
+  grid-template-columns: 22px 1fr 22px;
+  gap: .35rem;
+}
+.c-pv-manual .body .row span { height: 6px; background: rgba(26,23,20,.4); border-radius: 1px; }
+.c-pv-manual .body .row span:first-child { background: rgba(0,121,107,.7); }
+
+/* Vertical wireframe — full-width stacked blocks */
+.c-pv-vertical {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  justify-content: center;
+}
+.c-pv-vertical .full {
+  background: rgba(26,23,20,.08);
+  border-radius: 2px;
+  width: 100%;
+}
+.c-pv-vertical .h1 { height: 36px; background: rgba(0,121,107,.22); }
+.c-pv-vertical .div {
+  display: flex; gap: .5rem; align-items: center;
+  font-family: var(--serif); font-style: italic;
+  font-size: 1.4rem; color: var(--green-700); font-weight: 400;
+  padding: 0 .25rem;
+}
+.c-pv-vertical .div::after {
+  content: ''; flex: 1; height: 1px; background: var(--rule);
+}
+.c-pv-vertical .body { height: 26px; }
+
+/* concept body */
+.c-body {
+  padding: 1.5rem 1.5rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+.c-num {
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  font-weight: 500;
+}
+.c-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+  line-height: 1.05;
+  letter-spacing: -.025em;
+  color: var(--ink);
+}
+.c-name em { font-style: italic; color: var(--green-700); }
+.c-keywords {
+  font-family: var(--mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--green-700);
+  font-weight: 500;
+}
+.c-desc {
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin-top: .25rem;
+}
+.c-desc em { color: var(--green-700); font-style: italic; }
+.c-feel {
+  margin-top: .5rem;
+  padding-top: .75rem;
+  border-top: 1px dashed var(--rule);
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 32;
+  font-size: .92rem;
+  color: var(--ink-3);
+  letter-spacing: -.005em;
+}
+
+.c-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--rule);
+}
+.c-actions a {
+  padding: 1.05rem 1rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: .65rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--bg);
+  border-right: 1px solid var(--rule);
+  transition: background .2s ease, color .2s ease;
+}
+.c-actions a:last-child { border-right: 0; }
+.c-actions a:hover { background: var(--green-700); color: var(--cream); }
+
+/* ============ FOOTER ============ */
+.f {
+  border-top: 1px solid var(--rule);
+  padding: clamp(2rem, 3.5vw, 3rem) var(--pad);
+  font-family: var(--mono);
+  font-size: .65rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.f-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 2rem; flex-wrap: wrap;
+}
+.f em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 144;
+  font-size: 1rem;
+  letter-spacing: -.005em;
+  text-transform: none;
+  color: var(--green-700);
+}
+.f a {
+  color: var(--green-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  padding: .35rem .55rem;
+  margin: -.35rem -.55rem;
+  border-radius: 3px;
+  transition: background .2s ease, color .2s ease;
+}
+.f a:hover { background: var(--green-700); color: var(--cream); text-decoration: none; }
+
+/* a11y — focus ring teclado */
+a:focus-visible,
+.c-actions a:focus-visible,
+.f a:focus-visible {
+  outline: 2px solid var(--green-700);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* skip-link */
+.skip-link {
+  position: absolute; top: -100px; left: 1rem;
+  background: var(--green-700); color: var(--cream);
+  padding: .65rem 1rem; font-family: var(--mono);
+  font-size: .72rem; letter-spacing: .14em;
+  text-transform: uppercase; z-index: 1000;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1023px) {
+  .concepts { grid-template-columns: 1fr 1fr; }
+  .concepts .concept:last-child { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
+}
+@media (max-width: 767px) {
+  .h-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .concepts { grid-template-columns: 1fr; }
+  .concepts .concept:last-child { max-width: 100%; }
+  .f-inner { flex-direction: column; gap: .65rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#concepts">Saltar al contingut</a>
+
+<header class="h">
+  <div class="h-inner">
+    <div>
+      <span class="h-eyebrow">Showcase intern · 2026.05.09</span>
+      <h1 class="h-title">
+        <span class="roman">Tres composicions,</span>
+        <em>una sola estètica.</em>
+      </h1>
+    </div>
+    <aside class="h-side">
+      <strong>Farmàcia La Rambla 14</strong>
+      Mostra interna · CRUX<br>
+      Per Joan Carles Verd<br>
+      Reunió 3 · 27 maig 2026
+    </aside>
+  </div>
+</header>
+
+<section class="intro">
+  <p>Sis arxius, <strong>tres arquitectures de layout</strong>, una <em>mateixa estètica</em>: cream, verd, Spectral italic, Inter, mono. Tria com vols que el contingut <em>respiri</em> — els colors, les fonts i el to són els mateixos del lloc principal. Canvia només la composició.</p>
+</section>
+
+<section class="concepts" id="concepts">
+
+  <!-- A · MAGAZINE -->
+  <article class="concept">
+    <div class="c-preview c-pv-magazine" aria-hidden="true">
+      <div class="blk b-h"></div>
+      <div class="blk b-r"></div>
+      <div class="blk b-t"></div>
+      <div class="blk b-tt"></div>
+    </div>
+    <div class="c-body">
+      <span class="c-num">Composició A</span>
+      <h2 class="c-name">Magazine <em>Spread</em></h2>
+      <span class="c-keywords">Asimètric · Editorial · Mensual</span>
+      <p class="c-desc">Layout de revista impresa: hero asimètric amb <em>callout rotat</em>, columnes anchas i estretes, captions laterals, drop-caps, quote a spread complet.</p>
+      <p class="c-feel">"Apotecaria mensual #03"</p>
+    </div>
+    <div class="c-actions">
+      <a href="magazine/nosaltres.html">Nosaltres →</a>
+      <a href="magazine/serveis.html">Serveis →</a>
+    </div>
+  </article>
+
+  <!-- B · MANUAL -->
+  <article class="concept">
+    <div class="c-preview c-pv-manual" aria-hidden="true">
+      <div class="side">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="body">
+        <div class="row"><span></span><span></span><span></span></div>
+        <div class="row"><span></span><span></span><span></span></div>
+        <div class="row"><span></span><span></span><span></span></div>
+        <div class="row"><span></span><span></span><span></span></div>
+        <div class="row"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <div class="c-body">
+      <span class="c-num">Composició B</span>
+      <h2 class="c-name">Documentary <em>Index</em></h2>
+      <span class="c-keywords">Estructurat · Manual · Tabular</span>
+      <p class="c-desc">Layout de manual de camp: <em>sticky sidebar</em> amb numeració estricta § I.1, § I.2…, micro-meta (lectura/tags), timeline com a taula, valors com a fitxa.</p>
+      <p class="c-feel">"Manual de camp · Edició 2026"</p>
+    </div>
+    <div class="c-actions">
+      <a href="manual/nosaltres.html">Nosaltres →</a>
+      <a href="manual/serveis.html">Serveis →</a>
+    </div>
+  </article>
+
+  <!-- C · VERTICAL -->
+  <article class="concept">
+    <div class="c-preview c-pv-vertical" aria-hidden="true">
+      <div class="full h1"></div>
+      <div class="div">01</div>
+      <div class="full body"></div>
+      <div class="div">02</div>
+      <div class="full body"></div>
+    </div>
+    <div class="c-body">
+      <span class="c-num">Composició C</span>
+      <h2 class="c-name">Cinematic <em>Vertical</em></h2>
+      <span class="c-keywords">Immersiu · Capítols · Whitespace</span>
+      <p class="c-desc">Layout de scroll storytelling: <em>hero a viewport complet</em>, divisors de capítol amb número monumental, una secció per pantalla, ritme lent i generós.</p>
+      <p class="c-feel">"Cinc minuts contigo"</p>
+    </div>
+    <div class="c-actions">
+      <a href="vertical/nosaltres.html">Nosaltres →</a>
+      <a href="vertical/serveis.html">Serveis →</a>
+    </div>
+  </article>
+
+</section>
+
+<footer class="f">
+  <div class="f-inner">
+    <div>Showcase intern · CRUX Consulting · <em>frontend-design</em> · 2026</div>
+    <div>← <a href="../index.html">Sortir al lloc públic</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

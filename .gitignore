@@ -10,6 +10,9 @@ _archive/
 docs/
 *.pdf
 
+# Chat transcripts / scratchpads
+chat*.txt
+
 # OS
 .DS_Store
 Thumbs.db
