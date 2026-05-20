@@ -7,9 +7,8 @@ window.__I18N__ = {
     "nav.find":     "Trobar-nos",
     "nav.order":    "Comandes",
 
-    "hero.meta":    "EST. 1998 · PASSEIG DE LA RAMBLA, 14 · PALMA",
+    "hero.meta":    "PASSEIG DE LA RAMBLA, 14 · PALMA",
     "hero.l1":      "La farmàcia",
-    "hero.l2":      "de tota la vida",
     "hero.l3":      "al cor de Palma.",
     "hero.sub":     "Salut, consell i productes de confiança. Oberts cada dia, de 9 del matí a 10 del vespre.",
     "hero.cta1":    "Com arribar",
@@ -23,7 +22,6 @@ window.__I18N__ = {
     "hf.h2":      "Sense moure't.",
     "hf.lead":    "Recepta, formulació, dermo, lliurament a casa. Cada dia 9 a 22.",
     "hf.cta":     "Coneix-nos",
-    "hf.tag":     "EST. 1998",
 
     "hr.rating":  "basat en 50+ ressenyes a Google",
 
@@ -114,7 +112,7 @@ window.__I18N__ = {
     "find.pin1":     "Farmàcia",
     "find.pin2":     "La Rambla 14",
 
-    "foot.tag":      "Farmàcia de tota la vida al cor de Palma. Des de 1998.",
+    "foot.tag":      "Farmàcia al cor de Palma.",
     "foot.c1":       "Visita'ns",
     "foot.c2":       "Parla amb nosaltres",
     "foot.c3":       "Seguir-nos",
@@ -265,9 +263,8 @@ window.__I18N__ = {
     "nav.find":     "Cómo llegar",
     "nav.order":    "Pedidos",
 
-    "hero.meta":    "EST. 1998 · PASSEIG DE LA RAMBLA, 14 · PALMA",
+    "hero.meta":    "PASSEIG DE LA RAMBLA, 14 · PALMA",
     "hero.l1":      "La farmacia",
-    "hero.l2":      "de toda la vida",
     "hero.l3":      "en el corazón de Palma.",
     "hero.sub":     "Salud, consejo y productos de confianza. Abiertos todos los días, de 9 de la mañana a 10 de la noche.",
     "hero.cta1":    "Cómo llegar",
@@ -281,7 +278,6 @@ window.__I18N__ = {
     "hf.h2":      "Sin moverte.",
     "hf.lead":    "Receta, formulación, dermo, entrega a casa. Cada día 9 a 22.",
     "hf.cta":     "Conócenos",
-    "hf.tag":     "EST. 1998",
 
     "hr.rating":  "basado en más de 50 reseñas en Google",
 
@@ -373,7 +369,7 @@ window.__I18N__ = {
     "find.pin1":     "Farmacia",
     "find.pin2":     "La Rambla 14",
 
-    "foot.tag":      "Farmacia de toda la vida en el corazón de Palma. Desde 1998.",
+    "foot.tag":      "Farmacia en el corazón de Palma.",
     "foot.c1":       "Visítanos",
     "foot.c2":       "Habla con nosotros",
     "foot.c3":       "Síguenos",
