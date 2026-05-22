@@ -591,6 +591,12 @@ body::before {
   line-height: 1.75;
   font-size: 1.05rem;
 }
+.home-feature-actions {
+  display: flex;
+  gap: .85rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
 /* ===== Featured review (col der, row 2) ===== */
 .home-feature-featured {

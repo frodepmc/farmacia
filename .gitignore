@@ -1,6 +1,9 @@
 # Local archive (huerfanos, originales raw, ZIPs, OSINT, prototipos legacy)
 _archive/
 
+# Work-in-progress drafts (refactors, experimentos, snapshots)
+_drafts/
+
 # Claude Code workspace settings
 .claude/
 
@@ -12,6 +15,12 @@ docs/
 
 # Chat transcripts / scratchpads
 chat*.txt
+
+# Productivity plugin (internal task list, memory, dashboard — contains client context)
+TASKS.md
+CLAUDE.md
+dashboard.html
+memory/
 
 # OS
 .DS_Store
